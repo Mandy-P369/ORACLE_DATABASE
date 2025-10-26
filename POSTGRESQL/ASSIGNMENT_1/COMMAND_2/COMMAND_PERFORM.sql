@@ -30,11 +30,7 @@ join
 books b on o.book_id = b.book_id
 group by b.author ;
 
-
--- 6. List the cities where customers who spent over 1800 are located..
-Select 
-
--- 7. List customers who have placed atleast 2 orders
+-- 6. List customers who have placed atleast 2 orders
 Select customer_id,count(order_id) as order_count 
 from orders group by customer_id  having count(order_id) >=2;
 				-- or
@@ -42,6 +38,31 @@ Select o.customer_id,c.name, count(o.order_id) as order_count from orders o
 join
 customers c on c.customer_id = o.customer_id
 group by o.customer_id,c.name having count(order_id) >=2;
+
+-- 7. List the cities where customer who spent over 600 are located...
+Select distinct c.city, total_amount from orders o
+join
+customers c on 
+o.customer_id = c.customer_id
+where o.total_amount>1800;
+
+-- 8. Find the customers who spent more on orders
+Select  c.customer_id,c.name,sum(o.total_amount) as total_spent from customers c
+join
+orders o on
+c.customer_id = o.customer_id 
+group by c.customer_id , c.name
+order by total_spent desc limit 1 ;
+
+-- 9. Calculate the stock remaining after fulfilling all orders ...
+Select b.book_id,b.title,b.stock,coalesce(sum(o.quantity),0) as order_quantity,
+b.stock-coalesce(sum(o.quantity),0) as remaining_stock from books b
+Left join 
+orders o
+on b.book_id = o.book_id
+group by b.book_id ;  	-- We will use the left join in this becuase we will have the all the book_id
+						    -- inside the book table but we donot have all the book_id inside the order_table ...
+
 
 
 
