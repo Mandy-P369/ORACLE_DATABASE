@@ -164,12 +164,10 @@ Select * from Student;
 -- 21.	List all instructors in a department.
 Select * from instructor;
 Select * from department;
-Select 
 
 
 -- 22.	Count the number of instructors in each department.
 Select distinct d.name from department d order by d.name desc;
-
 
 -- 23.	Find instructors hired after 2020.
 Select * from instructor;
@@ -189,6 +187,16 @@ Select * from department;
 Select distinct concat(i.first_name,' ',i.last_name) as instructors,d.name as department_name from instructor i
 right join
 department d on d.dept_id = i.dept_id order by concat(i.first_name,' ',last_name) desc;
+
+-- 26.	List all sections of a specific course in a semester.
+Select * from section ;
+Select * from course;
+Select s.section_id ,c.course_id,c.name as course_name,s.semester as semester_name from course c
+join
+section s on c.course_id = s.course_id where c.course_id=854 and s.semester='Summer' order by s.section_id;
+
+
+
 
 
 
