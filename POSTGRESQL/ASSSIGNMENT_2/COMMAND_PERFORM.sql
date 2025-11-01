@@ -195,7 +195,149 @@ Select s.section_id ,c.course_id,c.name as course_name,s.semester as semester_na
 join
 section s on c.course_id = s.course_id where c.course_id=854 and s.semester='Summer' order by s.section_id;
 
+-- 27.	Count the number of students enrolled in each section.
+Select * from section ;
+Select * from student ;
+Select * from enrollment ;
+Select section_id,count(student_id) as total_students from enrollment group by section_id  order by section_id ;
 
+-- 28.	Find sections scheduled in a particular classroom.
+Select *  from student;
+Select * from section ;
+Select distinct substring(classroom,length(classroom),length(classroom)+1) from  section ;
+Select distinct substring(classroom,length(classroom),length(classroom)+1) from section;
+alter table section add column class_section varchar(50);
+Select *  from section ;
+update section set class_section = substring(classroom,length(classroom),length(classroom));
+Select * from section;
+Select distinct s.class_section ,count(s.section_id) from section s
+join
+enrollment e on e.section_id = s.section_id group by s.section_id ;
+
+-- 29.	Retrieve section schedules along with instructor names.
+Select *  from instructor;
+Select * from section ;
+
+Select s.semester,s.schedule,concat(i.first_name,' ',i.last_name) as instructor_name from instructor i join
+section s on s.instructor_id = i.instructor_id order by instructor_name;
+
+Select  s.semester,s.schedule,concat(i.first_name,' ',i.last_name) as instructor_name from instructor i
+join
+section s on s.instructor_id = i.instructor_id  where s.semester = 'Winter' order by instructor_name DESC  ;
+
+-- 30.	List sections for a particular year.
+Select * from section ;
+Select distinct class_section from section where year=2025;
+-- 31.	List all students in a particular department.
+Select * from student;
+Select *  from department;
+Select * from colleges;
+
+Select distinct  d.head as department_head,d.name as department_name,s.first_name as student_name from student s 
+join 
+department d on s.major_dept_id=d.dept_id where d.name='Physics Dept' order by d.head;
+
+-- 32.	Find students enrolled in more than 3 courses.
+Select *  from student;
+Select * from enrollment;
+Select s.student_id , concat(s.first_name,' ',s.last_name) as student_name,count(e.section_id) as total_courses from
+enrollment e join student s on s.student_id = e.student_id group by s.student_id having count(e.section_id)>3
+order by total_courses desc;
+
+-- 33.	Retrieve student names along with their major/department.
+Select * from student ;
+Select * from department;
+Select concat(s.first_name,' ',s.last_name) as student_name,d.name from student s  left join department d on s.major_dept_id=d.dept_id
+order by d.name; 
+-- 34.	List students who do not have an assigned advisor.
+Select * from advisor;
+Select * from student;
+Select * from section order by section_id;
+
+
+-- 35.	Count the number of students per year (Freshman, Sophomore, etc.).
+Select distinct enrollment_year from student order by enrollment_year asc;
+--In this question , I stuck becuase we have 11 distinct enrollment_year , so as we have 4 term to describe the
+--student  whether they are freshman , sophomore, junior or senior. If we have only 4 enrollment_year then 
+-- it is easy to execute .. but i will smartly to execute it........
+
+-- 36.	List all courses a specific student is enrolled in.
+Select * from student;
+Select *  from enrollment;
+Select * from course;
+SELECT 
+    s.first_name,
+    s.last_name,
+	trim(concat(s.first_name,' ',s.last_name)) as student_fullname,
+    c.course_id,
+    c.name AS course_name
+FROM student s
+JOIN enrollment e ON s.student_id = e.student_id  -- => Student-->Enrollment-->Section-->Course
+JOIN section sec ON e.section_id = sec.section_id
+JOIN course c ON sec.course_id = c.course_id
+WHERE s.first_name = 'Eric'
+ORDER BY c.course_id;
+
+-- 37.	Count the number of students in each course.
+-- My Approach 
+-- =>Student-->Enrollment-->Section-->Course
+Select * from student ;
+Select * from Enrollment;
+Select * from section;	
+Select * from course ;
+Select 
+    c.course_id,
+    c.name AS course_name,
+    COUNT(e.student_id) AS num_of_students
+from course c
+join section sec on c.course_id = sec.course_id
+join enrollment e on sec.section_id = e.section_id
+group by c.course_id, c.name
+order by c.course_id;
+
+
+-- 38.	Find students enrolled in a particular course.
+Select * from student;
+Select * from enrollment;
+Select * from section ;
+Select * from course;
+Select
+    s.student_id,
+    s.first_name,
+    s.last_name,
+    c.course_id,
+    c.name as course_name
+from student s
+join enrollment e on s.student_id = e.student_id
+join section sec on e.section_id = sec.section_id
+join course c on sec.course_id = c.course_id
+where c.course_id = 101; 
+
+-- 39.	Retrieve courses with no enrolled students.
+Select * from course;
+Select * from enrollment;
+Select * from section;
+Select 
+    c.course_id,
+    c.name as course_name from course c
+left join section sec on c.course_id = sec.course_id
+left join enrollment e on sec.section_id = e.section_id
+where e.student_id is null;
+
+-- 40.	List students along with the sections they are enrolled in.
+Select * from student ;
+Select * from enrollment;
+Select * from section;
+Select 
+    s.student_id,
+    s.first_name,
+    s.last_name,
+    sec.section_id,
+    sec.semester
+from student s
+join enrollment e on s.student_id = e.student_id
+join section sec on e.section_id = sec.section_id
+order by  s.student_id, sec.section_id;
 
 
 
