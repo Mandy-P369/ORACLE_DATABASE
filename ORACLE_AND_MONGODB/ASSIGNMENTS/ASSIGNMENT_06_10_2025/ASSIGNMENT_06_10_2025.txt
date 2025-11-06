@@ -1,0 +1,818 @@
+
+SQL> create table customer(customer_id number primary key, name varchar(25) not null,email varchar(25) unique not null, phone varchar(12));'
+  2  ;
+create table customer(customer_id number primary key, name varchar(25) not null,email varchar(25) unique not null, phone varchar(12));'
+                                                                                                                                     *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> create table customer(customer_id number primary key, name varchar(25) not null,email varchar(25) unique not null, phone varchar(12));
+create table customer(customer_id number primary key, name varchar(25) not null,email varchar(25) unique not null, phone varchar(12))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> drop table customer;
+
+Table dropped.
+
+SQL> create table customer(customer_id number primary key, name varchar(25) not null,email varchar(25) unique not null, phone varchar(12));
+
+Table created.
+
+SQL> select * from customer;
+
+no rows selected
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE                                              VARCHAR2(12)
+
+SQL> insert into customer values (&customer_id,'&name','&email','&phone');
+Enter value for customer_id: 1
+Enter value for name: aayush
+Enter value for email: aayushp53423@gmail.com
+Enter value for phone: 987654342
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (1,'aayush','aayushp53423@gmail.com','987654342')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 2
+Enter value for name: Akshay
+Enter value for email: akshay6@gmail.com
+Enter value for phone: 7455343453
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (2,'Akshay','akshay6@gmail.com','7455343453')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: Rajeshwari
+Enter value for name: rgerg
+Enter value for email: dfgdf
+Enter value for phone: fdgd
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (Rajeshwari,'rgerg','dfgdf','fdgd')
+insert into customer values (Rajeshwari,'rgerg','dfgdf','fdgd')
+                             *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> /
+Enter value for customer_id: 3
+Enter value for name: Rajeshwari
+Enter value for email: rajeshwari65@yahoo.com
+Enter value for phone: 67754675
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (3,'Rajeshwari','rajeshwari65@yahoo.com','67754675')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 4
+Enter value for name: Disha pateriya
+Enter value for email: disha56@gmail.com
+Enter value for phone: 677456456
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (4,'Disha pateriya','disha56@gmail.com','677456456')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 5
+Enter value for name: Aastha
+Enter value for email: aastha56@gmail.com
+Enter value for phone: 677457654
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (5,'Aastha ','aastha56@gmail.com','677457654')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 6
+Enter value for name: Raghvendra
+Enter value for email: raghuvar545@hotmail.com
+Enter value for phone: 66225334
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (6,'Raghvendra ','raghuvar545@hotmail.com','66225334')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 7
+Enter value for name: Peace
+Enter value for email: shanti455@gmail.com
+Enter value for phone: 56676575
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (7,'Peace','shanti455@gmail.com','56676575')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 8
+Enter value for name: Ramnarayan
+Enter value for email: ramlal45@gmail.com
+Enter value for phone: 5465465
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (8,'Ramnarayan','ramlal45@gmail.com','5465465')
+
+1 row created.
+
+SQL> /
+Enter value for customer_id: 9
+Enter value for name: TunTunmausi
+Enter value for email: tuntun5@bharatmail.com
+Enter value for phone: 665464545
+old   1: insert into customer values (&customer_id,'&name','&email','&phone')
+new   1: insert into customer values (9,'TunTunmausi','tuntun5@bharatmail.com','665464545')
+
+1 row created.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+          1 aayush                    aayushp53423@gmail.com    987654342
+          2 Akshay                    akshay6@gmail.com         7455343453
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+          4 Disha pateriya            disha56@gmail.com         677456456
+          5 Aastha                    aastha56@gmail.com        677457654
+          6 Raghvendra                raghuvar545@hotmail.com   66225334
+          7 Peace                     shanti455@gmail.com       56676575
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+9 rows selected.
+
+SQL> alter table customer add column (city varchar(30));
+alter table customer add column (city varchar(30))
+                         *
+ERROR at line 1:
+ORA-00904: : invalid identifier
+
+
+SQL> alter table customer add (city varchar(30));
+
+Table altered.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE                                              VARCHAR2(12)
+ CITY                                               VARCHAR2(30)
+
+SQL> alter table customer add (city varchar(50));
+alter table customer add (city varchar(50))
+                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table
+
+
+SQL> alter table customer rename city to (city varchar(50));
+alter table customer rename city to (city varchar(50))
+                            *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table customer modify(city varchar(50));
+
+Table altered.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE                                              VARCHAR2(12)
+ CITY                                               VARCHAR2(50)
+
+SQL> delete from customer where email like '%@gmail.com%;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> delete from customer where email like '%@gmail.com%';
+
+6 rows deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          1 aayush                    aayushp53423@gmail.com    987654342
+
+
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          6 Raghvendra                raghuvar545@hotmail.com   66225334
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          7 Peace                     shanti455@gmail.com       56676575
+
+
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+9 rows selected.
+
+SQL> delete from customer where email like '%@hotmail.com%';
+
+1 row deleted.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          1 aayush                    aayushp53423@gmail.com    987654342
+
+
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          7 Peace                     shanti455@gmail.com       56676575
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+8 rows selected.
+
+SQL> truncate from customer where customer_id = 1;
+truncate from customer where customer_id = 1
+              *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> truncate  customer where customer_id = 1;
+truncate  customer where customer_id = 1
+                   *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> delete from customer where  customer_id = 1;
+
+1 row deleted.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          7 Peace                     shanti455@gmail.com       56676575
+
+
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+7 rows selected.
+
+SQL> /
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          7 Peace                     shanti455@gmail.com       56676575
+
+
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+7 rows selected.
+
+SQL> /
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          7 Peace                     shanti455@gmail.com       56676575
+
+
+          8 Ramnarayan                ramlal45@gmail.com        5465465
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+7 rows selected.
+
+SQL> delete from customer where phone like '5%';
+
+2 rows deleted.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay6@gmail.com         7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+SQL> /*Update command*/
+SQL> update customer set email='akshay534@hotmail.com' where customer_id =2;
+
+1 row updated.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+SQL> /*To update the city of all customers*/
+SQL> update customer city='Sagar' where customer_id = 2l;
+update customer city='Sagar' where customer_id = 2l
+                    *
+ERROR at line 1:
+ORA-00971: missing SET keyword
+
+
+SQL> update customer city='Sagar' where customer_id = 2;
+update customer city='Sagar' where customer_id = 2
+                    *
+ERROR at line 1:
+ORA-00971: missing SET keyword
+
+
+SQL> update customer  set city='Sagar' where customer_id = 2;
+
+1 row updated.
+
+SQL> update customer  set city='NewYork' where customer_id = 3;
+
+1 row updated.
+
+SQL> update customer  set city='jaipur' where customer_id = 4;
+
+1 row updated.
+
+SQL> update customer  set city='Malegaon' where customer_id = 5;
+
+1 row updated.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+SQL> /* Where */
+SQL> Select * from customer where city='NewYork' ;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY
+--------------------------------------------------
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork
+
+
+SQL> alter table customer add(price number(6,2));
+
+Table altered.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+SQL> /*You want to see a list of all products with a price greater than $50.00. Write an SQL */
+SQL> statement using the SELECT command with the WHERE clause to retrieve this
+SP2-0734: unknown command beginning "statement ..." - rest of line ignored.
+SQL> information.
+SP2-0734: unknown command beginning "informatio..." - rest of line ignored.
+SQL> You want to see a list of all products with a price greater than $50.00. Write an SQL
+SP2-0734: unknown command beginning "You want t..." - rest of line ignored.
+SQL> statement using the SELECT command with the WHERE clause to retrieve this
+SP2-0734: unknown command beginning "statement ..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> information.
+SP2-0734: unknown command beginning "informatio..." - rest of line ignored.
+SQL>
+SQL>
+SQL> update customer set price = 34523.45 where customer_id!=null;
+
+0 rows updated.
+
+SQL> desc customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CUSTOMER_ID                               NOT NULL NUMBER
+ NAME                                      NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE                                              VARCHAR2(12)
+ CITY                                               VARCHAR2(50)
+ PRICE                                              NUMBER(6,2)
+
+SQL> select *  from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+
+
+
+SQL> update customer set price = 67453.54 where customer_id = 2;
+update customer set price = 67453.54 where customer_id = 2
+                            *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> update customer set price = 6745.54 where customer_id = 2;
+
+1 row updated.
+
+SQL> update customer set price = 6245.54 where customer_id = 4;
+
+1 row updated.
+
+SQL> update customer set price =46245.56 where customer_id = 5;
+update customer set price =46245.56 where customer_id = 5
+                           *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> update customer set price =6245.56 where customer_id = 5;
+
+1 row updated.
+
+SQL> update customer set price = 4564.52 where price is null;
+
+2 rows updated.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL>    /* $50 = 50 * 87 */
+SQL> select * from customer where price > 4350 ;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL> select * from customer where price >5000;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    akshay534@hotmail.com     7455343453
+Sagar                                                 6745.54
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+
+SQL> /* Bonus */
+SQL> update customer set email = name.concat('@unknownmail.com) where city = 'Sagar' and  phone like '7%';
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> update customer set email = name.concat('@unknownmail.com') where city = 'Sagar' and  phone like '7%';
+update customer set email = name.concat('@unknownmail.com') where city = 'Sagar' and  phone like '7%'
+                            *
+ERROR at line 1:
+ORA-00904: "NAME"."CONCAT": invalid identifier
+
+
+SQL> update customer set email = concat(name,'@unknownmail.com') where city = 'Sagar' and  phone like '7%';
+
+1 row updated.
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    Akshay@unknownmail.com    7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL> commit;
+
+Commit complete.
+
+SQL> commit;
+
+Commit complete.
