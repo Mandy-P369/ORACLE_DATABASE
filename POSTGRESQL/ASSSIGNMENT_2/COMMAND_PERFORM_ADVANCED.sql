@@ -25,9 +25,25 @@ join course c2 on c2.course_id = s2.course_id where e2.student_id=s.student_id
 order by p.prereq_course_id desc)order by p.prereq_course_id desc;
 
 
--- 3.	List students who are enrolled in more than 5 courses this semester.
+-- 3.List students who are enrolled in more than 5 courses this semester.
+Select * from enrollment;
+Select * from course;
+Select * from student;
+Select s.student_id,concat(s.first_name,' ',s.last_name) as student_name,count(e.section_id)as total_courses from student s 
+join enrollment e on e.student_id = s.student_id 
+join section ss on ss.section_id = e.section_id 
+join course c on c.course_id = ss.course_id group by s.student_id
+having count(e.section_id)>5 order by student_name ;  
 
--- 4.	Find students enrolled in courses outside their department.
+-- 4.Find students enrolled in courses outside their department.
+Select * from enrollment order by student_id;
+Select * from course;
+Select * from department;
+Select * from student;
+Select s.student_id ,trim(concat(first_name,' ',last_name)) as student_name from student s 
+join department d on d.dept_id = s.major_dept_id 
+join course c on c.dept_id = d.dept_id  order by student_id asc;
+
 -- 5.	Retrieve students who share the same advisor and are enrolled in at least one common course.
 -- 6.	List students who have enrolled in all courses offered by their department.
 -- 7.	Find students who have multiple advisors in the same semester.
