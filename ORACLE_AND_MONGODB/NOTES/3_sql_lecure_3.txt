@@ -1,0 +1,881 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Thu Nov 6 08:15:03 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: dev
+Enter password:
+Connected.
+SQL> connect
+Enter user-name: om
+Enter password:
+Connected.
+SQL> select * from teachers;
+
+       TCD NAME         DEPT           SALARY DOJ
+---------- ------------ ---------- ---------- ---------
+         1 Akash        CS              20000 20-SEP-20
+         2 Gajendra     CS              18000 05-JUL-21
+         3 Vivek        AI              19000 05-NOV-25
+         4 Nainse       Mech            25000 25-AUG-25
+         5 Mahima       Maths            1000 11-NOV-25
+         6 Deepika      EC               2000 10-FEB-25
+
+6 rows selected.
+
+SQL> connect
+Enter user-name: prince
+Enter password:
+Connected.
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+EMPLOYEES                      TABLE
+CUSTOMERS                      TABLE
+
+SQL> select * from employees;
+
+no rows selected
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> alter table customers add(contact varchar(10));
+
+Table altered.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ       CONTACT
+---------- ---------- ---------- --------- ----------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+ CONTACT                                            VARCHAR2(10)
+
+SQL> alter table customers drop column contact;
+
+Table altered.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> alter table customers modify(name varchar(15));
+
+Table altered.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(15)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> alter table customers modify(name varchar(12));
+
+Table altered.
+
+SQL> alter table customers modify(name varchar(200));
+
+Table altered.
+
+SQL> alter table customers modify(name varchar(2));
+alter table customers modify(name varchar(2))
+                             *
+ERROR at line 1:
+ORA-01441: cannot decrease column length because some value is too big
+
+
+SQL> select * from customers;
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+         1
+Ravi
+       495 10-APR-20
+
+         2
+Sumit
+       715 13-APR-20
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+
+         3
+Ajay
+       165 30-SEP-22
+
+         4
+Vijay
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+       935 15-FEB-23
+
+         5
+Sanjay
+       385 10-APR-20
+
+         6
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+Gourav
+        55 03-NOV-25
+
+         7
+Sourav
+       120 06-NOV-25
+
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+         8
+Raja
+       230 04-OCT-25
+
+         9
+Rani
+       260 16-MAY-23
+
+       CNO
+----------
+NAME
+--------------------------------------------------------------------------------
+    AMOUNT DOJ
+---------- ---------
+
+
+9 rows selected.
+
+SQL> select name from customers;
+
+NAME
+--------------------------------------------------------------------------------
+Ravi
+Sumit
+Ajay
+Vijay
+Sanjay
+Gourav
+Sourav
+Raja
+Rani
+
+9 rows selected.
+
+SQL> alter table customers modify(name varchar(7));
+
+Table altered.
+
+SQL> alter table customers modify(name varchar(6));
+
+Table altered.
+
+SQL> alter table customers modify(name varchar(5);
+alter table customers modify(name varchar(5)
+                                           *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> alter table customers modify(name varchar(5));
+alter table customers modify(name varchar(5))
+                             *
+ERROR at line 1:
+ORA-01441: cannot decrease column length because some value is too big
+
+
+SQL> alter table customers modify(name varchar(12));
+
+Table altered.
+
+SQL> select * from customers;
+
+       CNO NAME             AMOUNT DOJ
+---------- ------------ ---------- ---------
+         1 Ravi                495 10-APR-20
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> alter table customers add(contact varchar(10));
+
+Table altered.
+
+SQL> alter table customers modify(contact number(10));
+
+Table altered.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(12)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+ CONTACT                                            NUMBER(10)
+
+SQL> select * from customers;
+
+       CNO NAME             AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set contact=9983 where cno=1;
+
+1 row updated.
+
+SQL> select * from customers;
+
+       CNO NAME             AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> alter table customers add(contact varchar(10));
+alter table customers add(contact varchar(10))
+                          *
+ERROR at line 1:
+ORA-01430: column being added already exists in table
+
+
+SQL> alter table customers modify(contact varchar(10));
+alter table customers modify(contact varchar(10))
+                             *
+ERROR at line 1:
+ORA-01439: column to be modified must be empty to change datatype
+
+
+SQL> alter table customers rename column name to cname;
+
+Table altered.
+
+SQL> desc cname;
+ERROR:
+ORA-04043: object cname does not exist
+
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ CNAME                                              VARCHAR2(12)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+ CONTACT                                            NUMBER(10)
+
+SQL> alter table customers rename to cust;
+
+Table altered.
+
+SQL> alter table cust rename to customers;
+
+Table altered.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> create table customers2 as select * from customers;
+
+Table created.
+
+SQL> select * from customers2;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> create table customers3 as select * from customers where amount>500;
+
+Table created.
+
+SQL> select * from customers3;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         2 Sumit               715 13-APR-20
+         4 Vijay               935 15-FEB-23
+
+SQL> create table customers4 as select cno,cname from customers where amount>500;
+
+Table created.
+
+SQL> select * from customers4;
+
+       CNO CNAME
+---------- ------------
+         2 Sumit
+         4 Vijay
+
+SQL> create table customers5 as select cno,cname from customers where cno=101;
+
+Table created.
+
+SQL> select * from customers5;
+
+no rows selected
+
+SQL> desc customers5;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ CNAME                                              VARCHAR2(12)
+
+SQL> create table customers6 as select * from customers where 1=2;
+
+Table created.
+
+SQL> desc customers6;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ CNAME                                              VARCHAR2(12)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+ CONTACT                                            NUMBER(10)
+
+SQL> select * from customers6;
+
+no rows selected
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+EMPLOYEES                      TABLE
+CUSTOMERS3                     TABLE
+CUSTOMERS                      TABLE
+CUSTOMERS2                     TABLE
+CUSTOMERS4                     TABLE
+CUSTOMERS5                     TABLE
+CUSTOMERS6                     TABLE
+
+7 rows selected.
+
+SQL> select * from customers6;
+
+no rows selected
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> create table customers7(custno,name) as select cno,cname from customers;
+
+Table created.
+
+SQL> select * from customers7;
+
+    CUSTNO NAME
+---------- ------------
+         1 Ravi
+         2 Sumit
+         3 Ajay
+         4 Vijay
+         5 Sanjay
+         6 Gourav
+         7 Sourav
+         8 Raja
+         9 Rani
+
+9 rows selected.
+
+SQL> create table customers8(custno,name) as select cno,cname,amount from customers;
+create table customers8(custno,name) as select cno,cname,amount from customers
+                        *
+ERROR at line 1:
+ORA-01730: invalid number of column names specified
+
+
+SQL> select * from customers7;
+
+    CUSTNO NAME
+---------- ------------
+         1 Ravi
+         2 Sumit
+         3 Ajay
+         4 Vijay
+         5 Sanjay
+         6 Gourav
+         7 Sourav
+         8 Raja
+         9 Rani
+
+9 rows selected.
+
+SQL> select * from customers6;
+
+no rows selected
+
+SQL> desc customers6;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ CNAME                                              VARCHAR2(12)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+ CONTACT                                            NUMBER(10)
+
+SQL> insert into customers6(select * from customers);
+
+9 rows created.
+
+SQL> select * from customers6;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> create table cust10(cno number,dt date);
+
+Table created.
+
+SQL> insert into cust10(select cno,doj from customers);
+
+9 rows created.
+
+SQL> select * from cust10;
+
+       CNO DT
+---------- ---------
+         1 10-APR-20
+         2 13-APR-20
+         3 30-SEP-22
+         4 15-FEB-23
+         5 10-APR-20
+         6 03-NOV-25
+         7 06-NOV-25
+         8 04-OCT-25
+         9 16-MAY-23
+
+9 rows selected.
+
+SQL> create table products(pno number,price number(7,2);
+create table products(pno number,price number(7,2)
+                                                 *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table products(pno number,price number(7,2));
+
+Table created.
+
+SQL> insert into products values(1,10000);
+
+1 row created.
+
+SQL> insert into products values(1,100000);
+insert into products values(1,100000)
+                              *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> insert into products values(1,10000.54);
+
+1 row created.
+
+SQL> select * from products;
+
+       PNO      PRICE
+---------- ----------
+         1      10000
+         1   10000.54
+
+SQL> create table products2(pno number,price number(9,2);
+create table products2(pno number,price number(9,2)
+                                                  *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table products2(pno number,price number(9,2));
+
+Table created.
+
+SQL> insert into products2 values(101,1000000);
+
+1 row created.
+
+SQL> select * from products2;
+
+       PNO      PRICE
+---------- ----------
+       101    1000000
+
+SQL> insert into products2 values(101,1000000.12);
+
+1 row created.
+
+SQL> select * from products2;
+
+       PNO      PRICE
+---------- ----------
+       101    1000000
+       101 1000000.12
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set contact=8832 where cno=2;
+
+1 row updated.
+
+SQL> alter table customers modify(amount number(5));
+alter table customers modify(amount number(5))
+                             *
+ERROR at line 1:
+ORA-01440: column to be modified must be empty to decrease precision or scale
+
+
+SQL> alter table customers modify(amount number(6,2);
+alter table customers modify(amount number(6,2)
+                                              *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> alter table customers modify(amount number(6,2));
+
+Table altered.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                495 10-APR-20       9983
+         2 Sumit               715 13-APR-20       8832
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              385 10-APR-20
+         6 Gourav               55 03-NOV-25
+         7 Sourav              120 06-NOV-25
+         8 Raja                230 04-OCT-25
+         9 Rani                260 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+500 where cname not in('Ajay','Vijay');
+
+7 rows updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi                995 10-APR-20       9983
+         2 Sumit              1215 13-APR-20       8832
+         3 Ajay                165 30-SEP-22
+         4 Vijay               935 15-FEB-23
+         5 Sanjay              885 10-APR-20
+         6 Gourav              555 03-NOV-25
+         7 Sourav              620 06-NOV-25
+         8 Raja                730 04-OCT-25
+         9 Rani                760 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+500 where cname!='Ajay' and cname!='ijay';
+
+8 rows updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit              1715 13-APR-20       8832
+         3 Ajay                165 30-SEP-22
+         4 Vijay              1435 15-FEB-23
+         5 Sanjay             1385 10-APR-20
+         6 Gourav             1055 03-NOV-25
+         7 Sourav             1120 06-NOV-25
+         8 Raja               1230 04-OCT-25
+         9 Rani               1260 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+(amount*5/100)
+  2  where cname like '%i%' and cname <>'Ravi';
+
+3 rows updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit           1800.75 13-APR-20       8832
+         3 Ajay                165 30-SEP-22
+         4 Vijay           1506.75 15-FEB-23
+         5 Sanjay             1385 10-APR-20
+         6 Gourav             1055 03-NOV-25
+         7 Sourav             1120 06-NOV-25
+         8 Raja               1230 04-OCT-25
+         9 Rani               1323 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+1000 where doj='1-Jan-2022'
+  2  ;
+
+0 rows updated.
+
+SQL> update customers set amount=amount+1000 where doj like '%22';
+
+1 row updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit           1800.75 13-APR-20       8832
+         3 Ajay               1165 30-SEP-22
+         4 Vijay           1506.75 15-FEB-23
+         5 Sanjay             1385 10-APR-20
+         6 Gourav             1055 03-NOV-25
+         7 Sourav             1120 06-NOV-25
+         8 Raja               1230 04-OCT-25
+         9 Rani               1323 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+(amount*5/100) where
+  2  doj>='1-Jan-2022' and doj<='31-Dec-2022';
+
+1 row updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit           1800.75 13-APR-20       8832
+         3 Ajay            1223.25 30-SEP-22
+         4 Vijay           1506.75 15-FEB-23
+         5 Sanjay             1385 10-APR-20
+         6 Gourav             1055 03-NOV-25
+         7 Sourav             1120 06-NOV-25
+         8 Raja               1230 04-OCT-25
+         9 Rani               1323 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set amount=amount+1000 where
+  2  doj between '1-Jan-2022' and '31-Dec-2022';
+
+1 row updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit           1800.75 13-APR-20       8832
+         3 Ajay            2223.25 30-SEP-22
+         4 Vijay           1506.75 15-FEB-23
+         5 Sanjay             1385 10-APR-20
+         6 Gourav             1055 03-NOV-25
+         7 Sourav             1120 06-NOV-25
+         8 Raja               1230 04-OCT-25
+         9 Rani               1323 16-MAY-23
+
+9 rows selected.
+
+SQL> update customers set contact=9883 where contact is null;
+
+7 rows updated.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         1 Ravi               1495 10-APR-20       9983
+         2 Sumit           1800.75 13-APR-20       8832
+         3 Ajay            2223.25 30-SEP-22       9883
+         4 Vijay           1506.75 15-FEB-23       9883
+         5 Sanjay             1385 10-APR-20       9883
+         6 Gourav             1055 03-NOV-25       9883
+         7 Sourav             1120 06-NOV-25       9883
+         8 Raja               1230 04-OCT-25       9883
+         9 Rani               1323 16-MAY-23       9883
+
+9 rows selected.
+
+SQL> select * from customers where doj between '1-Jan-2025' and '31-Dec-2025'
+  2  and amount>1100 and cname like '______'
+  3  ;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT
+---------- ------------ ---------- --------- ----------
+         7 Sourav             1120 06-NOV-25       9883
+
+SQL>

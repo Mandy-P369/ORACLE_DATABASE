@@ -1,0 +1,847 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Fri Oct 31 09:37:39 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create user prince identified by sagar;
+
+User created.
+
+SQL> connect
+Enter user-name: prince
+Enter password:
+ERROR:
+ORA-01045: user PRINCE lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> grant connect,resource to prince;
+SP2-0640: Not connected
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> grant connect,resource to prince;
+
+Grant succeeded.
+
+SQL> connect prince/sagar;
+Connected.
+SQL> show user
+USER is "PRINCE"
+SQL>
+SQL> create table employees(empno number(3),name varchar(10));
+
+Table created.
+
+SQL> insert into employees values(101,'Rajendra');
+
+1 row created.
+
+SQL> insert into employees values(102,'Rahul');
+
+1 row created.
+
+SQL> select * from employees;
+
+     EMPNO NAME
+---------- ----------
+       101 Rajendra
+       102 Rahul
+
+SQL> create table customers
+  2  (cno unmber(3),
+  3  name varchar(10),
+  4  amount number(5,2),
+  5  doj date);
+(cno unmber(3),
+           *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> 2
+  2* (cno unmber(3),
+SQL> c/unmber/number
+  2* (cno number(3),
+SQL> /
+
+Table created.
+
+SQL> select * from customers;
+
+no rows selected
+
+SQL> insert into customers values
+  2  (1,'Krishna',5000,'10-Apr-2020');
+(1,'Krishna',5000,'10-Apr-2020')
+             *
+ERROR at line 2:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> (1,'Krishna',500,'10-Apr-2020');
+(1,'Krishna',500,'10-Apr-2020')
+ *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> insert into customers values
+  2  (1,'Krishna',500,'10-Apr-2020');
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+
+SQL> insert into customers values
+  2  (2,'Surendra',125.50,'20-Apr-2020');
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+
+SQL> insert into customers values
+  2  (3,'Amit',125.23,'14-09-2025');
+(3,'Amit',125.23,'14-09-2025')
+                 *
+ERROR at line 2:
+ORA-01843: not a valid month
+
+
+SQL> insert into customers values
+  2  (3,'Amit',125.23,'10-30-2025');
+(3,'Amit',125.23,'10-30-2025')
+                 *
+ERROR at line 2:
+ORA-01843: not a valid month
+
+
+SQL> insert into customers values
+  2  (3,'Amit',125.23,'04-Nov-2025');
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+
+SQL> insert into customers values
+  2  (4,'Sumt',700.88,sysdate);
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> insert into customers values(5,'Rajiv',300,null);
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+
+SQL> insert into customers values(5,'Rajiv',300);
+insert into customers values(5,'Rajiv',300)
+            *
+ERROR at line 1:
+ORA-00947: not enough values
+
+
+SQL> insert into customers values(6,null,300,sysdate);
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+
+6 rows selected.
+
+SQL> insert into customers(cno,name,doj) values(7,'Rajesh',05-Aug-2023');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> insert into customers(cno,name,doj) values(7,'Rajesh','05-Aug-2023');
+
+1 row created.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL>
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select name,doj,cno from customers;
+
+NAME       DOJ              CNO
+---------- --------- ----------
+Krishna    10-APR-20          1
+Surendra   20-APR-20          2
+Amit       04-NOV-25          3
+Sumt       31-OCT-25          4
+Rajiv                         5
+           31-OCT-25          6
+Rajesh     05-AUG-23          7
+
+7 rows selected.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by name;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         1 Krishna           500 10-APR-20
+         7 Rajesh                05-AUG-23
+         5 Rajiv             300
+         4 Sumt           700.88 31-OCT-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+
+7 rows selected.
+
+SQL> select * from customers order by amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+         5 Rajiv             300
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         1 Krishna           500 10-APR-20
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+
+7 rows selected.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> describe customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> select * from customers order by amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+         5 Rajiv             300
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount,cno;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount,cno,name;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount,cno desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+         5 Rajiv             300
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount desc,cno desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         1 Krishna           500 10-APR-20
+         6                   300 31-OCT-25
+         5 Rajiv             300
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+
+7 rows selected.
+
+SQL> select * from customers order by doj;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,amount desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,name;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,cno;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,cno desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+         5 Rajiv             300
+         1 Krishna           500 10-APR-20
+         4 Sumt           700.88 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers order by amount desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         1 Krishna           500 10-APR-20
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+
+7 rows selected.
+
+SQL> select * from customers order by amount name,amount;
+select * from customers order by amount name,amount
+                                        *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> select * from customers order by name,amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+         1 Krishna           500 10-APR-20
+         7 Rajesh                05-AUG-23
+         5 Rajiv             300
+         4 Sumt           700.88 31-OCT-25
+         2 Surendra        125.5 20-APR-20
+         6                   300 31-OCT-25
+
+7 rows selected.
+
+SQL> select * from customers order by doj;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers order by doj,amount;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         7 Rajesh                05-AUG-23
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         3 Amit           125.23 04-NOV-25
+         5 Rajiv             300
+
+7 rows selected.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers where cno=3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Amit           125.23 04-NOV-25
+
+SQL> select * from customers where cno>3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+SQL> select * from customers where cno<3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+
+SQL> select * from customers where cno<=3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+
+SQL> select * from customers where cno!=3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+6 rows selected.
+
+SQL> select * from customers where cno<>3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+6 rows selected.
+
+SQL> select * from customers where name'Rajiv';
+select * from customers where name'Rajiv'
+                                  *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from customers where name='Rajiv';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         5 Rajiv             300
+
+SQL> SelEct * FroM CusTomers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers where name='rajiv';
+
+no rows selected
+
+SQL> select * from customers where name<'Rajiv';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         3 Amit           125.23 04-NOV-25
+         7 Rajesh                05-AUG-23
+
+SQL> select * from customers where doj=sysdate;
+
+no rows selected
+
+SQL> select * from customers where doj='31-Oct-2025';
+
+no rows selected
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers where doj='31-Oct-2025';
+
+no rows selected
+
+SQL> select * from customers where doj='31-OCT-2025';
+
+no rows selected
+
+SQL> select * from customers where doj='31-OCT-25';
+
+no rows selected
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers where name='Krishna' or name='Surendra';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+
+SQL> select * from customers where name='Krishna' and name='Surendra';
+
+no rows selected
+
+SQL> select * from customers where name='Krishna' ;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+
+SQL> select * from customers where name='Krishna' and amount=5000;
+
+no rows selected
+
+SQL> select * from customers where name='Krishna' and amount=500;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+
+SQL> select * from customers where name='Krishna' and amount=50;
+
+no rows selected
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+7 rows selected.
+
+SQL> select * from customers where name is null;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         6                   300 31-OCT-25
+
+SQL> select * from customers where name = null;
+
+no rows selected
+
+SQL> select * from customers where name is not null;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         5 Rajiv             300
+         7 Rajesh                05-AUG-23
+
+6 rows selected.
+
+SQL> select * from customers where doj is null;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         5 Rajiv             300
+
+SQL> select * from customers where doj is not null;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Krishna           500 10-APR-20
+         2 Surendra        125.5 20-APR-20
+         3 Amit           125.23 04-NOV-25
+         4 Sumt           700.88 31-OCT-25
+         6                   300 31-OCT-25
+         7 Rajesh                05-AUG-23
+
+6 rows selected.
+
+SQL>

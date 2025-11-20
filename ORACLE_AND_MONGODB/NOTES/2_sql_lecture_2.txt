@@ -1,0 +1,711 @@
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Mon Nov 3 09:43:25 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: prince
+Enter password:
+Connected.
+SQL> create user rahul identified by sagar;
+create user rahul identified by sagar
+                                *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> grant connrect,resource to rahul;
+grant connrect,resource to rahul
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+EMPLOYEES                      TABLE
+CUSTOMERS                      TABLE
+
+SQL> select * from employees;
+
+     EMPNO NAME
+---------- ----------
+       101 Rajendra
+       102 Rahul
+
+SQL> select * from customers;
+
+no rows selected
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> insert into customers values(1,'Ravi',5000,'10-Apr-2020');
+insert into customers values(1,'Ravi',5000,'10-Apr-2020')
+                                      *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> insert into customers values(1,'Ravi',500,'10-Apr-2020');
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> set autocommit off;
+SQL> set autocommit on;
+SQL> insert into customers values(2,'Sumit',700,'13-Apr-2020');
+
+1 row created.
+
+Commit complete.
+SQL> insert into customers values(3,'Ajay',200,'30-Sep-2022');
+
+1 row created.
+
+Commit complete.
+SQL> insert into customers values(4,'Vijay',900,'15-Feb-2023');
+
+1 row created.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into customers values(5,'Sanjay',null,'15-Feb-2023');
+
+1 row created.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers order by name;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         1 Ravi              500 10-APR-20
+         5 Sanjay                15-FEB-23
+         2 Sumit             700 13-APR-20
+         4 Vijay             900 15-FEB-23
+
+SQL> select * from customers order by name desc;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         4 Vijay             900 15-FEB-23
+         2 Sumit             700 13-APR-20
+         5 Sanjay                15-FEB-23
+         1 Ravi              500 10-APR-20
+         3 Ajay              200 30-SEP-22
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> select * from customers where name='Ravi';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+
+SQL> select * from customers where name='Ravina';
+
+no rows selected
+
+SQL> select * from customers where cno>=3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where cno<3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers where cno!=3;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where cno=1 or amount>800;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         4 Vijay             900 15-FEB-23
+
+SQL> select * from customers where cno=1 or amount>80 or name='Sanjay';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where cno=1 or amount>800 or name='Sanjay';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where cno=1 and amount>800;
+
+no rows selected
+
+SQL> select * from customers where cno=1 and amount<800;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+
+SQL> select * from customers where amount>500 and amount<800;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers where amount between 500 and 800;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers where amount>=500 and amount<=800;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where doj between '1-Jan-2020' and '31-Dec-2020';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers where name between 'Ajay' and 'Sanjay';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         3 Ajay              200 30-SEP-22
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name between 'Ajay' and 'Su';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         3 Ajay              200 30-SEP-22
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name between 'Ajay' and 'Sumit';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name='Ajay' or name='Vijay' or name='Sanjay';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name in('Ajay','Vijay','Sanjay');
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name in('Ajay','Vijay','sanjay');
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+
+SQL> SeLeCt * FrOM customers where name in('Ajay','Vijay','Sanjay');
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name like 'S%';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         2 Sumit             700 13-APR-20
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name like 's%';
+
+no rows selected
+
+SQL> select * from customers where name like '%S';
+
+no rows selected
+
+SQL> select * from customers where name like '%yy
+  2  ';
+
+no rows selected
+
+SQL> select * from customers where name like '%y'';
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> select * from customers where name like '%y';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where name like '%j%';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> select * from customers where doj like '%FEB%';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                                NUMBER(3)
+ NAME                                               VARCHAR2(10)
+ AMOUNT                                             NUMBER(5,2)
+ DOJ                                                DATE
+
+SQL> insert into customers values(6,'ABC XYZ',100,sysdate);
+
+1 row created.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+         6 ABC XYZ           100 03-NOV-25
+
+6 rows selected.
+
+SQL> select name,instr(name,' ') from customers;
+
+NAME       INSTR(NAME,'')
+---------- --------------
+Ravi                    0
+Sumit                   0
+Ajay                    0
+Vijay                   0
+Sanjay                  0
+ABC XYZ                 4
+
+6 rows selected.
+
+SQL> select * from customers where name ='%y';
+
+no rows selected
+
+SQL> select * from customers where name like '____';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         3 Ajay              200 30-SEP-22
+
+SQL> select * from customers where name like '_____';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         2 Sumit             700 13-APR-20
+         4 Vijay             900 15-FEB-23
+
+SQL> select * from customers where name like '_u___';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers where name like '_u_m%';
+
+no rows selected
+
+SQL> select * from customers where name like '_u_i%';
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         2 Sumit             700 13-APR-20
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+         6 ABC XYZ           100 03-NOV-25
+
+6 rows selected.
+
+SQL> select length(name) from customers;
+
+LENGTH(NAME)
+------------
+           4
+           5
+           4
+           5
+           6
+           7
+
+6 rows selected.
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+         6 ABC XYZ           100 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set name='Gourav' where cno=6;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay                15-FEB-23
+         6 Gourav            100 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set amount=400,doj='10-Apr-2020' where anount is null;
+update customers set amount=400,doj='10-Apr-2020' where anount is null
+                                                        *
+ERROR at line 1:
+ORA-00904: "ANOUNT": invalid identifier
+
+
+SQL> update customers set amount=400,doj='10-Apr-2020' where amount is null;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              500 10-APR-20
+         2 Sumit             700 13-APR-20
+         3 Ajay              200 30-SEP-22
+         4 Vijay             900 15-FEB-23
+         5 Sanjay            400 10-APR-20
+         6 Gourav            100 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set amount=amount-50;
+
+6 rows updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              450 10-APR-20
+         2 Sumit             650 13-APR-20
+         3 Ajay              150 30-SEP-22
+         4 Vijay             850 15-FEB-23
+         5 Sanjay            350 10-APR-20
+         6 Gourav             50 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set amount=amount+(amount*10/100);
+
+6 rows updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set name=Null where name='Ajay';
+
+1 row updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3                   165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+
+6 rows selected.
+
+SQL> update customers set name='Ajay' where cmo=3;
+update customers set name='Ajay' where cmo=3
+                                       *
+ERROR at line 1:
+ORA-00904: "CMO": invalid identifier
+
+
+SQL> update customers set name='Ajay' where cno=3;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+
+6 rows selected.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> insert into customers values(&cno,'&cname',&amount,'&doj');
+Enter value for cno: 7
+Enter value for cname: Sourav
+Enter value for amount: 120
+Enter value for doj: 06-Nov-2025
+old   1: insert into customers values(&cno,'&cname',&amount,'&doj')
+new   1: insert into customers values(7,'Sourav',120,'06-Nov-2025')
+
+1 row created.
+
+Commit complete.
+SQL> /
+Enter value for cno: 8
+Enter value for cname: Raja
+Enter value for amount: 230
+Enter value for doj: 04-Oct-2025
+old   1: insert into customers values(&cno,'&cname',&amount,'&doj')
+new   1: insert into customers values(8,'Raja',230,'04-Oct-2025')
+
+1 row created.
+
+Commit complete.
+SQL> /
+Enter value for cno: 9
+Enter value for cname: Rani
+Enter value for amount: 260
+Enter value for doj: 16-May-2023
+old   1: insert into customers values(&cno,'&cname',&amount,'&doj')
+new   1: insert into customers values(9,'Rani',260,'16-May-2023')
+
+1 row created.
+
+Commit complete.
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> /
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> insert into customers values(&cno,'&cname',&amt,'&doj');
+Enter value for cno: 10
+Enter value for cname: Atul
+Enter value for amt: 370
+Enter value for doj: 22-Aug--2025
+old   1: insert into customers values(&cno,'&cname',&amt,'&doj')
+new   1: insert into customers values(10,'Atul',370,'22-Aug--2025')
+insert into customers values(10,'Atul',370,'22-Aug--2025')
+                                           *
+ERROR at line 1:
+ORA-01841: (full) year must be between -4713 and +9999, and not be 0
+
+
+SQL> select * from customers;
+
+       CNO NAME           AMOUNT DOJ
+---------- ---------- ---------- ---------
+         1 Ravi              495 10-APR-20
+         2 Sumit             715 13-APR-20
+         3 Ajay              165 30-SEP-22
+         4 Vijay             935 15-FEB-23
+         5 Sanjay            385 10-APR-20
+         6 Gourav             55 03-NOV-25
+         7 Sourav            120 06-NOV-25
+         8 Raja              230 04-OCT-25
+         9 Rani              260 16-MAY-23
+
+9 rows selected.
+
+SQL> select * from employees;
+
+     EMPNO NAME
+---------- ----------
+       101 Rajendra
+       102 Rahul
+
+SQL> delete from employees where empno=101;
+
+1 row deleted.
+
+Commit complete.
+SQL> delete from employees;
+
+1 row deleted.
+
+Commit complete.
+SQL> select * from employees;
+
+no rows selected
+
+SQL>
