@@ -1,0 +1,1784 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Nov 20 10:18:38 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: student
+
+Last Successful login time: Fri Nov 14 2025 10:06:36 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select
+  2  * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MEMBER
+TABLE
+
+BIN$fr7T/uoLRWuNVBdP+IrAnA==$0
+TABLE
+
+CUSTOMER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$dkvdbcmfS8+Fcl1/xkJPDA==$0
+TABLE
+
+BIN$wu4cVZGpRTuatElONSXz5g==$0
+TABLE
+
+BIN$fvlW09VnR9KBDezZRbpr1w==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MEMBERS
+TABLE
+
+BOOKS
+TABLE
+
+BORROW_RECORDS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+10 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> create table city
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00906: missing left parenthesis
+
+
+SQL> desc dual ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DUMMY                                              VARCHAR2(1)
+
+SQL> select
+  2
+SQL>
+SQL>
+SQL> * from dual ;
+SP2-0734: unknown command beginning "* from dua..." - rest of line ignored.
+SQL> select * from dual ;
+
+D
+-
+X
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> Select length(sysdate) from dual ;
+
+LENGTH(SYSDATE)
+---------------
+              9
+
+SQL> Select length(108
+  2  *40*34) from dual;
+
+LENGTH(108*40*34)
+-----------------
+                6
+
+SQL> /*PRACTISE*/
+SQL> Select *
+  2  from employees;
+from employees
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist
+
+
+SQL> create table customers (cno number(3) primary key,cname varchar(20
+  2  ) not null);
+
+Table created.
+
+SQL> drop table customers ;
+
+Table dropped.
+
+SQL> create table customers (cno number(3)primary key ,cname varchar(20)not null,amount number(10
+  2  ),contact varchar
+  3
+SQL>
+SQL> (12),dept varchar(20),city varchar(20));
+(12),dept varchar(20),city varchar(20))
+ *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> create table customers (cno number(3)primary key ,cname varchar(20)not null,amount number(10),doj DATE,contact varchar(12),dept varchar(20),city varchar(20));
+
+Table created.
+
+SQL> desc customers ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                       NOT NULL NUMBER(3)
+ CNAME                                     NOT NULL VARCHAR2(20)
+ AMOUNT                                             NUMBER(10)
+ DOJ                                                DATE
+ CONTACT                                            VARCHAR2(12)
+ DEPT                                               VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+
+SQL> insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city');
+Enter value for cno: 1
+Enter value for cname: aayush
+Enter value for amount: 76543
+Enter value for doj: sysdate
+Enter value for contact: 9876543
+Enter value for dept: IT
+Enter value for city: Sagar
+old   1: insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city')
+new   1: insert into customers values (1,'aayush',76543,'sysdate','9876543','IT','Sagar')
+insert into customers values (1,'aayush',76543,'sysdate','9876543','IT','Sagar')
+                                               *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected
+
+
+SQL> insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city');
+Enter value for cno: 1
+Enter value for cname: aayush
+Enter value for amount: 76543
+Enter value for doj: 24-Jan-2024
+Enter value for contact: 765432
+Enter value for dept: IT
+Enter value for city: Sagar
+old   1: insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city')
+new   1: insert into customers values (1,'aayush',76543,'24-Jan-2024','765432','IT','Sagar')
+
+1 row created.
+
+SQL> /
+Enter value for cno: Umesh
+Enter value for cname: /
+Enter value for amount: /
+Enter value for doj: ;
+Enter value for contact: /
+Enter value for dept: .
+Enter value for city: /
+old   1: insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city')
+new   1: insert into customers values (Umesh,'/',/,';','/','.','/')
+insert into customers values (Umesh,'/',/,';','/','.','/')
+                                        *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> /
+Enter value for cno: 2
+Enter value for cname: Umesh
+Enter value for amount: 765433
+Enter value for doj: 23-Feb-2023
+Enter value for contact: 34365646
+Enter value for dept: Finance
+Enter value for city: Damoh
+old   1: insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city')
+new   1: insert into customers values (2,'Umesh',765433,'23-Feb-2023','34365646','Finance','Damoh')
+
+1 row created.
+
+SQL> /
+Enter value for cno: 3
+Enter value for cname: riya
+Enter value for amount: 3564
+Enter value for doj: 21-Mar-2021
+Enter value for contact: 356456
+Enter value for dept: financw
+Enter value for city: Rahatgarh
+old   1: insert into customers values (&cno,'&cname',&amount,'&doj','&contact','&dept','&city')
+new   1: insert into customers values (3,'riya',3564,'21-Mar-2021','356456','financw','Rahatgarh')
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+SQL> Select length
+  2  (cname) from customers;
+
+LENGTH(CNAME)
+-------------
+            6
+            5
+            4
+
+SQL> Select length(cname) from dual;
+Select length(cname) from dual
+              *
+ERROR at line 1:
+ORA-00904: "CNAME": invalid identifier
+
+
+SQL> Select cname , length(cname) from customers;
+
+CNAME                LENGTH(CNAME)
+-------------------- -------------
+aayush                           6
+Umesh                            5
+riya                             4
+
+SQL>    Select initcap(cname) from customers;
+
+INITCAP(CNAME)
+--------------------
+Aayush
+Umesh
+Riya
+
+SQL> Select to_lower(cname) from customers;
+Select to_lower(cname) from customers
+       *
+ERROR at line 1:
+ORA-00904: "TO_LOWER": invalid identifier
+
+
+SQL>    Select  trim('     India    ') from customers;
+
+TRIM(
+-----
+India
+India
+India
+
+SQL> Select trim('    India    ') from dual;
+
+TRIM(
+-----
+India
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CNO                                       NOT NULL NUMBER(3)
+ CNAME                                     NOT NULL VARCHAR2(20)
+ AMOUNT                                             NUMBER(10)
+ DOJ                                                DATE
+ CONTACT                                            VARCHAR2(12)
+ DEPT                                               VARCHAR2(20)
+ CITY                                               VARCHAR2(20)
+
+SQL> insert into customes values (4,'ayush',34567,'21-Apr-2020',325443453,'Sales','Sagar');
+insert into customes values (4,'ayush',34567,'21-Apr-2020',325443453,'Sales','Sagar')
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> insert into customers values (4,'ayush',34567,'21-Apr-2020',325443453,'Sales','Sagar');
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+
+SQL> Select soundex(cname)=soundex('ayush');
+Select soundex(cname)=soundex('ayush')
+                     *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select * from customers soundex(cname)=soundex('ayush')
+  2  ;
+Select * from customers soundex(cname)=soundex('ayush')
+                               *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> Select * from customers where soundex(cname) = soundex('aayush');
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+
+SQL> insert into customers values (5,'Sita',34567,'22-Apr-2010',325443453,'OT','Furfuri');
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+
+SQL> insert into customers values (6,'Seeta',36567,'27-May-2012',325443453,'OT','Furfuri');
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select * from customers where soundex(cname) = soundex('sita');
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+SQL> /*Translate Functions */
+SQL> Select translate('India','i','E');
+Select translate('India','i','E')
+                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select translate('India','i','I') from customers;
+
+TRANS
+-----
+IndIa
+IndIa
+IndIa
+IndIa
+IndIa
+IndIa
+
+6 rows selected.
+
+SQL> Select translate('India','i','I') from dual;
+
+TRANS
+-----
+IndIa
+
+SQL> /*Translate : It replace the character with the given new characters*/
+SQL> Select * from  customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select translate(cname,'a','aa');
+Select translate(cname,'a','aa')
+                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select translate(cname,'a','aa') from customers;
+
+TRANSLATE(CNAME,'A','AA')
+--------------------------------------------------------------------------------
+aayush
+Umesh
+riya
+ayush
+Sita
+Seeta
+
+6 rows selected.
+
+SQL> Select translate(cname,'a','aa') from customers;
+
+TRANSLATE(CNAME,'A','AA')
+--------------------------------------------------------------------------------
+aayush
+Umesh
+riya
+ayush
+Sita
+Seeta
+
+6 rows selected.
+
+SQL> Select translate (cname,'i','ee');
+Select translate (cname,'i','ee')
+                                *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select translate (cname,'i','ee') from customers;
+
+TRANSLATE(CNAME,'I','EE')
+--------------------------------------------------------------------------------
+aayush
+Umesh
+reya
+ayush
+Seta
+Seeta
+
+6 rows selected.
+
+SQL> Select translate('I love my country','y','Y');
+Select translate('I love my country','y','Y')
+                                            *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select translate('I love my country','y','Y') from customers;
+
+TRANSLATE('ILOVEM
+-----------------
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+
+6 rows selected.
+
+SQL> Select swapcase(translate('I love my country','y','Y')) from customers;
+Select swapcase(translate('I love my country','y','Y')) from customers
+       *
+ERROR at line 1:
+ORA-00904: "SWAPCASE": invalid identifier
+
+
+SQL> Select (translate('I love my country','y','Y')) from customers;
+
+(TRANSLATE('ILOVE
+-----------------
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+I love mY countrY
+
+6 rows selected.
+
+SQL> Select translate ('I am a student','am','was') from customers;
+
+TRANSLATE('IAM
+--------------
+I wa w student
+I wa w student
+I wa w student
+I wa w student
+I wa w student
+I wa w student
+
+6 rows selected.
+
+SQL> Select replace ('I am a student','am','was') from customers;
+
+REPLACE('IAMAST
+---------------
+I was a student
+I was a student
+I was a student
+I was a student
+I was a student
+I was a student
+
+6 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT
+---------- ---------- ------------ ---------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> alter table student add surname varchar(20)l
+  2  ;
+alter table student add surname varchar(20)l
+                                           *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table student add surname varchar(20);
+
+Table altered.
+
+SQL> desc student;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ STID                                               NUMBER(3)
+ NAME                                               VARCHAR2(20)
+ EMAIL                                              VARCHAR2(30)
+ CONTACT                                            VARCHAR2(11)
+ FEES                                               NUMBER(7)
+ CONCESSION                                         NUMBER(3)
+ FINALPAYMENT                                       NUMBER(7)
+ DEDUCTIONAMOUNT                                    NUMBER(5)
+ SURNAME                                            VARCHAR2(20)
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> update student set surname = 'pateriya' where soundex(cname) = soundex('Sourav');
+update student set surname = 'pateriya' where soundex(cname) = soundex('Sourav')
+                                                      *
+ERROR at line 1:
+ORA-00904: "CNAME": invalid identifier
+
+
+SQL> update student set surname = 'pateriya' where soundex(name) = soundex('Sourav');
+
+2 rows updated.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> update student set surname = 'Soni' where name like '%a%' and not in('Aayush','ayush');
+update student set surname = 'Soni' where name like '%a%' and not in('Aayush','ayush')
+                                                                  *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> update student set surname = 'Soni' where name like '%a%' and name not like 'S%';
+
+2 rows updated.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750
+
+
+6 rows selected.
+
+SQL> update student set surname = 'Kumar' where surname is null;
+
+2 rows updated.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select name,surname from student;
+
+NAME                 SURNAME
+-------------------- --------------------
+Sourav               pateriya
+Aayush               Soni
+Saurabh              pateriya
+Rahul                Soni
+Sonam                Kumar
+Rohit                Kumar
+
+6 rows selected.
+
+SQL> Select concat(name,surname) from student;
+
+CONCAT(NAME,SURNAME)
+----------------------------------------
+Souravpateriya
+AayushSoni
+Saurabhpateriya
+RahulSoni
+SonamKumar
+RohitKumar
+
+6 rows selected.
+
+SQL> Select name || '_' || surname from student;
+
+NAME||'_'||SURNAME
+-----------------------------------------
+Sourav_pateriya
+Aayush_Soni
+Saurabh_pateriya
+Rahul_Soni
+Sonam_Kumar
+Rohit_Kumar
+
+6 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select (name ||
+  2  '_' || surname) as fullname from student;
+
+FULLNAME
+-----------------------------------------
+Sourav_pateriya
+Aayush_Soni
+Saurabh_pateriya
+Rahul_Soni
+Sonam_Kumar
+Rohit_Kumar
+
+6 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select substr(name || '_' || surname , 4) from student;
+
+SUBSTR(NAME||'_'||SURNAME,4)
+--------------------------------------------------------------------------------
+rav_pateriya
+ush_Soni
+rabh_pateriya
+ul_Soni
+am_Kumar
+it_Kumar
+
+6 rows selected.
+
+SQL> select substr(name || '_' || surname,7) from student;
+
+SUBSTR(NAME||'_'||SURNAME,7)
+--------------------------------------------------------------------------------
+_pateriya
+_Soni
+h_pateriya
+Soni
+Kumar
+Kumar
+
+6 rows selected.
+
+SQL> Select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select name,rpad(city,'-',10) from student;
+Select name,rpad(city,'-',10) from student
+                 *
+ERROR at line 1:
+ORA-00904: "CITY": invalid identifier
+
+
+SQL> Select name,rpad(surname,'-',10) from student;
+Select name,rpad(surname,'-',10) from student
+                         *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> Select name,rpad(surname,10,'-') from student;
+
+NAME                 RPAD(SURNAME,10,'-')
+-------------------- ----------------------------------------
+Sourav               pateriya--
+Aayush               Soni------
+Saurabh              pateriya--
+Rahul                Soni------
+Sonam                Kumar-----
+Rohit                Kumar-----
+
+6 rows selected.
+
+SQL> Select name,lpad(surname,20,'<-') from customer;
+Select name,lpad(surname,20,'<-') from customer
+                 *
+ERROR at line 1:
+ORA-00904: "SURNAME": invalid identifier
+
+
+SQL> Select name,lpad(surname,20,'<-') from student;
+
+NAME
+--------------------
+LPAD(SURNAME,20,'<-')
+--------------------------------------------------------------------------------
+Sourav
+<-<-<-<-<-<-pateriya
+
+Aayush
+<-<-<-<-<-<-<-<-Soni
+
+Saurabh
+<-<-<-<-<-<-pateriya
+
+
+NAME
+--------------------
+LPAD(SURNAME,20,'<-')
+--------------------------------------------------------------------------------
+Rahul
+<-<-<-<-<-<-<-<-Soni
+
+Sonam
+<-<-<-<-<-<-<-<Kumar
+
+Rohit
+<-<-<-<-<-<-<-<Kumar
+
+
+6 rows selected.
+
+SQL> Select name,lpad(surname,10,'<-') from student;
+
+NAME                 LPAD(SURNAME,10,'<-')
+-------------------- ----------------------------------------
+Sourav               <-pateriya
+Aayush               <-<-<-Soni
+Saurabh              <-pateriya
+Rahul                <-<-<-Soni
+Sonam                <-<-<Kumar
+Rohit                <-<-<Kumar
+
+6 rows selected.
+
+SQL> Select name,lpad(surname,16,'<-') from student;
+
+NAME
+--------------------
+LPAD(SURNAME,16,'<-')
+----------------------------------------------------------------
+Sourav
+<-<-<-<-pateriya
+
+Aayush
+<-<-<-<-<-<-Soni
+
+Saurabh
+<-<-<-<-pateriya
+
+
+NAME
+--------------------
+LPAD(SURNAME,16,'<-')
+----------------------------------------------------------------
+Rahul
+<-<-<-<-<-<-Soni
+
+Sonam
+<-<-<-<-<-<Kumar
+
+Rohit
+<-<-<-<-<-<Kumar
+
+
+6 rows selected.
+
+SQL> Select name,lpad(surname,12,'<-') from student;
+
+NAME                 LPAD(SURNAME,12,'<-')
+-------------------- ------------------------------------------------
+Sourav               <-<-pateriya
+Aayush               <-<-<-<-Soni
+Saurabh              <-<-pateriya
+Rahul                <-<-<-<-Soni
+Sonam                <-<-<-<Kumar
+Rohit                <-<-<-<Kumar
+
+6 rows selected.
+
+SQL> Select *
+  2   from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select * frm customers;
+Select * frm customers
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select * frm customer;
+Select * frm customer
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select * from customer;
+
+no rows selected
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL>
+SQL> select * from student;
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       123 Sourav               sourav345@yahoo.com            1234567890
+     67000          5        63650                 pateriya
+
+       122 Aayush               aayush355@yahoo.com            12535345
+     67000          5        64650                 Soni
+
+       432 Saurabh              Rajendra554@gmail.com          3434343434
+     56000          7        53080                 pateriya
+
+
+      STID NAME                 EMAIL                          CONTACT
+---------- -------------------- ------------------------------ -----------
+      FEES CONCESSION FINALPAYMENT DEDUCTIONAMOUNT SURNAME
+---------- ---------- ------------ --------------- --------------------
+       465 Rahul                Rahul45@hotmail.com            5656565656
+     67000          5        64650                 Soni
+
+       432 Sonam                Sonam@bharatmail.com           67678789892
+     56000          7        53080                 Kumar
+
+       765 Rohit                Rohit45@gmail.com              4556545654
+     45000          5        43750                 Kumar
+
+
+6 rows selected.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dd-MM-YYYY');
+Select to_char(doj,'dd-MM-YYYY')
+                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select to_char(doj,'dd-MM-yyyy');
+Select to_char(doj,'dd-MM-yyyy')
+                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select to_char(doj,'dd-MM-yyyy') from customers;
+
+TO_CHAR(DO
+----------
+24-01-2024
+23-02-2023
+21-03-2021
+21-04-2020
+22-04-2010
+27-05-2012
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dd-MMMM-yyyy') from customers;
+
+TO_CHAR(DOJ,
+------------
+24-0101-2024
+23-0202-2023
+21-0303-2021
+21-0404-2020
+22-0404-2010
+27-0505-2012
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dddd-MM-yy') from customers;
+
+TO_CHAR(DO
+----------
+0244-01-24
+0545-02-23
+0801-03-21
+1123-04-20
+1125-04-10
+1481-05-12
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dddddd-MM-yy') from customers;
+
+TO_CHAR(DOJ,
+------------
+024024-01-24
+054054-02-23
+080080-03-21
+112112-04-20
+112112-04-10
+148148-05-12
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dd-Mon-yy') from customers;
+
+TO_CHAR(DOJ,'DD-MO
+------------------
+24-Jan-24
+23-Feb-23
+21-Mar-21
+21-Apr-20
+22-Apr-10
+27-May-12
+
+6 rows selected.
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select to_char(doj,'yyyy-MM-dd');
+Select to_char(doj,'yyyy-MM-dd')
+                               *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select to_char(doj,'yyyy-MM-dd') from customers;
+
+TO_CHAR(DO
+----------
+2024-01-24
+2023-02-23
+2021-03-21
+2020-04-21
+2010-04-22
+2012-05-27
+
+6 rows selected.
+
+SQL> Select to_char(doj,'mon-dd-yyyy') from customers;
+
+TO_CHAR(DOJ,'MON-DD-
+--------------------
+jan-24-2024
+feb-23-2023
+mar-21-2021
+apr-21-2020
+apr-22-2010
+may-27-2012
+
+6 rows selected.
+
+SQL> Select to_char(doj,'dd-mon-yyyy') from customers;
+
+TO_CHAR(DOJ,'DD-MON-
+--------------------
+24-jan-2024
+23-feb-2023
+21-mar-2021
+21-apr-2020
+22-apr-2010
+27-may-2012
+
+6 rows selected.
+
+SQL> Select to_char(doj,'rm-month-year');
+Select to_char(doj,'rm-month-year')
+                                  *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select to_char(doj,'rm-month-year') from customers;
+
+TO_CHAR(DOJ,'RM-MONTH-YEAR')
+--------------------------------------------------------------------------------
+i   -january  -twenty twenty-four
+ii  -february -twenty twenty-three
+iii -march    -twenty twenty-one
+iv  -april    -twenty twenty
+iv  -april    -twenty ten
+v   -may      -twenty twelve
+
+6 rows selected.
+
+SQL> Select to_char(doj,'rm-month-yy') from customers;
+
+TO_CHAR(DOJ,'RM-MONTH-YY')
+--------------------------------------------
+i   -january  -24
+ii  -february -23
+iii -march    -21
+iv  -april    -20
+iv  -april    -10
+v   -may      -12
+
+6 rows selected.
+
+SQL> Select to_char(doj,'ddth-month-year') from customer;
+Select to_char(doj,'ddth-month-year') from customer
+               *
+ERROR at line 1:
+ORA-00904: "DOJ": invalid identifier
+
+
+SQL> Select to_char(doj,'ddth-month-year') from customers;
+
+TO_CHAR(DOJ,'DDTH-MONTH-YEAR')
+--------------------------------------------------------------------------------
+24th-january  -twenty twenty-four
+23rd-february -twenty twenty-three
+21st-march    -twenty twenty-one
+21st-april    -twenty twenty
+22nd-april    -twenty ten
+27th-may      -twenty twelve
+
+6 rows selected.
+
+SQL> Select add_months(doj,15) from customers;
+
+ADD_MONTH
+---------
+24-APR-25
+23-MAY-24
+21-JUN-22
+21-JUL-21
+22-JUL-11
+27-AUG-13
+
+6 rows selected.
+
+SQL> Select doj,add_months(doj,15) from customers;
+
+DOJ       ADD_MONTH
+--------- ---------
+24-JAN-24 24-APR-25
+23-FEB-23 23-MAY-24
+21-MAR-21 21-JUN-22
+21-APR-20 21-JUL-21
+22-APR-10 22-JUL-11
+27-MAY-12 27-AUG-13
+
+6 rows selected.
+
+SQL> Select add_month(doj,15)-doj from customers;
+Select add_month(doj,15)-doj from customers
+       *
+ERROR at line 1:
+ORA-00904: "ADD_MONTH": invalid identifier
+
+
+SQL> Select add_months(doj,15)-doj from customers;
+
+ADD_MONTHS(DOJ,15)-DOJ
+----------------------
+                   456
+                   455
+                   457
+                   456
+                   456
+                   457
+
+6 rows selected.
+
+SQL> Select next_day(doj) from customers;
+Select next_day(doj) from customers
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments
+
+
+SQL> Select next_day(doj,'saturday') from customers;
+
+NEXT_DAY(
+---------
+27-JAN-24
+25-FEB-23
+27-MAR-21
+25-APR-20
+24-APR-10
+02-JUN-12
+
+6 rows selected.
+
+SQL> Select to_char(sysdate,'Month') from customers;
+
+TO_CHAR(SYSDATE,'MONTH')
+------------------------------------
+November
+November
+November
+November
+November
+November
+
+6 rows selected.
+
+SQL> Select to_char(sysdate,'Month') from dual;
+
+TO_CHAR(SYSDATE,'MONTH')
+------------------------------------
+November
+
+SQL> Select sysdate - doj from customers;
+
+SYSDATE-DOJ
+-----------
+ 666.491181
+ 1001.49118
+ 1705.49118
+ 2039.49118
+ 5691.49118
+ 4925.49118
+
+6 rows selected.
+
+SQL> Select sysdate -   to_date('09-jan-2004') from dual;
+
+SYSDATE-TO_DATE('09-JAN-2004')
+------------------------------
+                    7986.49174
+
+SQL> Select sysdate -   to_date('09-jan-2004')/30 from dual;
+Select sysdate -        to_date('09-jan-2004')/30 from dual
+                        *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected NUMBER got DATE
+
+
+SQL> Select (sysdate -  to_date('09-jan-2004'))/30 from dual;
+
+(SYSDATE-TO_DATE('09-JAN-2004'))/30
+-----------------------------------
+                         266.216403
+
+SQL> Select (sysdate -  to_date('09-jan-2004'))/365 from dual;
+
+(SYSDATE-TO_DATE('09-JAN-2004'))/365
+------------------------------------
+                          21.8808012
+
+SQL> Select * from customer;
+
+no rows selected
+
+SQL> Select * from customers;
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         1 aayush                    76543 24-JAN-24 765432
+IT                   Sagar
+
+         2 Umesh                    765433 23-FEB-23 34365646
+Finance              Damoh
+
+         3 riya                       3564 21-MAR-21 356456
+financw              Rahatgarh
+
+
+       CNO CNAME                    AMOUNT DOJ       CONTACT
+---------- -------------------- ---------- --------- ------------
+DEPT                 CITY
+-------------------- --------------------
+         4 ayush                     34567 21-APR-20 325443453
+Sales                Sagar
+
+         5 Sita                      34567 22-APR-10 325443453
+OT                   Furfuri
+
+         6 Seeta                     36567 27-MAY-12 325443453
+OT                   Furfuri
+
+
+6 rows selected.
+
+SQL> Select months_between(sysdate,'doj') from customers;
+Select months_between(sysdate,'doj') from customers
+                              *
+ERROR at line 1:
+ORA-01858: a non-numeric character was found where a numeric was expected
+
+
+SQL> Select months_between(sysdate,doj) from customers;
+
+MONTHS_BETWEEN(SYSDATE,DOJ)
+---------------------------
+                 21.8868825
+                 32.9191405
+                 55.9836567
+                 66.9836567
+                 186.951399
+                 161.790108
+
+6 rows selected.
+
+SQL>
