@@ -1,0 +1,3238 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Fri Nov 28 10:11:35 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: system/pateriya
+Last Successful login time: Thu Nov 27 2025 23:25:15 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> grant connect , resource to system;
+
+Grant succeeded.
+
+SQL> create user user1 identified by pass1;
+create user user1 identified by pass1
+            *
+ERROR at line 1:
+ORA-65096: invalid common user or role name
+
+
+SQL> connect system as sysdba/
+SP2-0306: Invalid option.
+Usage: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM|SYSBACKUP|SYSDG|SYSKM|SYSRAC}] [edition=value]]
+where <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+SQL> connect system/pateriya as sysdba;
+Connected.
+SQL> alter session set "_oracle_script" = true;
+
+Session altered.
+
+SQL> create user user1 identified by pass1 ;
+
+User created.
+
+SQL> connect
+Enter user-name: user1/pass1
+ERROR:
+ORA-01045: user USER1 lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect
+Enter user-name: user1/pass1
+ERROR:
+ORA-01045: user USER1 lacks CREATE SESSION privilege; logon denied
+
+
+SQL> grant create session to user1;
+SP2-0640: Not connected
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant create session to  user1 ;
+
+Grant succeeded.
+
+SQL> grant create table to user1 ;
+
+Grant succeeded.
+
+SQL> grant connect , resource to user1;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab '
+  2
+SQL>
+SQL> Select * from tab ;
+
+no rows selected
+
+SQL> create user user2 identified by pass2 ;
+create user user2 identified by pass2
+            *
+ERROR at line 1:
+ORA-65096: invalid common user or role name
+
+
+SQL> connect system as sysdba;
+Enter password:
+Connected.
+SQL> alter session ser "oracle_script"=true;
+alter session ser "oracle_script"=true
+              *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> alter session set "oracle_script"=true;
+alter session set "oracle_script"=true
+                  *
+ERROR at line 1:
+ORA-02248: invalid option for ALTER SESSION
+
+
+SQL> alter session set "_oracle_script"=true;
+
+Session altered.
+
+SQL> create user user2 identified by pass2 ;
+
+User created.
+
+SQL> grant create session to user2 ;
+
+Grant succeeded.
+
+SQL> grant create table to user2;
+
+Grant succeeded.
+
+SQL> grant connect , resource to user2 ;
+
+Grant succeeded.
+
+SQL> connect ;
+Enter user-name: user2/pass2 ;
+SP2-0306: Invalid option.
+Usage: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM|SYSBACKUP|SYSDG|SYSKM|SYSRAC}] [edition=value]]
+where <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+SQL>
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> connect
+Enter user-name: user1/pass1;
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conenct
+SP2-0042: unknown command "conenct" - rest of line ignored.
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> SHOW USER;
+USER is "SYSTEM"
+SQL> CONNECT
+Enter user-name: user2/pass2
+Connected.
+SQL> show user;
+USER is "USER2"
+SQL> connect user1/pass1
+Connected.
+SQL> show user;
+USER is "USER1"
+SQL> Select * from tab ;
+
+no rows selected
+
+SQL> changing  password for user2;
+SP2-0734: unknown command beginning "changing  ..." - rest of line ignored.
+SQL> password;
+Changing password for USER1
+Old password:
+New password:
+Retype new password:
+ERROR:
+ORA-28008: invalid old password
+
+
+Password unchanged
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from user2;
+Select * from user2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> create table student (sid number primary key ,sname varchar(20),surname varchar(15));
+
+Table created.
+
+SQL> Select * from student;
+
+no rows selected
+
+SQL> insert into student values (1,'aayush','pateriya');
+insert into student values (1,'aayush','pateriya')
+            *
+ERROR at line 1:
+ORA-01950: no privileges on tablespace 'USERS'
+
+
+SQL> grant select to users;
+grant select to users
+      *
+ERROR at line 1:
+ORA-01924: role 'SELECT' not granted or does not exist
+
+
+SQL> grant select table to user2
+  2  ;
+grant select table to user2
+      *
+ERROR at line 1:
+ORA-00990: missing or invalid privilege
+
+
+SQL> Select * from student;
+
+no rows selected
+
+SQL> insert into student values (1,'aayush','pateriya');
+insert into student values (1,'aayush','pateriya')
+            *
+ERROR at line 1:
+ORA-01950: no privileges on tablespace 'USERS'
+
+
+SQL> grant insert table to user1;
+grant insert table to user1
+      *
+ERROR at line 1:
+ORA-00990: missing or invalid privilege
+
+
+SQL> show user;
+USER is "USER1"
+SQL> grant connect ,resource to user1;
+grant connect ,resource to user1
+*
+ERROR at line 1:
+ORA-01932: ADMIN option not granted for role 'CONNECT'
+
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> grant connect ,resource to user1;
+
+Grant succeeded.
+
+SQL> grant connect ,resource to user2;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> conenct
+SP2-0042: unknown command "conenct" - rest of line ignored.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from student;
+
+no rows selected
+
+SQL> insert into student values (1,'aayush','pateriya');
+insert into student values (1,'aayush','pateriya')
+*
+ERROR at line 1:
+ORA-01950: no privileges on tablespace 'USERS'
+
+
+SQL> connect system/pateriya
+Connected.
+SQL> grant all on tablespace to user1;
+grant all on tablespace to user1
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> grant all on users to user1;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> insert into student values (1,'aayush','pateriya');
+insert into student values (1,'aayush','pateriya')
+*
+ERROR at line 1:
+ORA-01950: no privileges on tablespace 'USERS'
+
+
+SQL> connect system/pateriya as sysdba;
+Connected.
+SQL> alter session set quota unlimited on users to user1;
+alter session set quota unlimited on users to user1
+                  *
+ERROR at line 1:
+ORA-02248: invalid option for ALTER SESSION
+
+
+SQL> set quota unlimited on users to user1;
+SP2-0158: unknown SET option "quota"
+SQL> alter user  user1 quota 100M on  users;
+
+User altered.
+
+SQL> alter user user2 quota 100M on user2;
+alter user user2 quota 100M on user2
+*
+ERROR at line 1:
+ORA-00959: tablespace 'USER2' does not exist
+
+
+SQL> alter user user2 quota 100M on users;
+
+User altered.
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from student;
+
+no rows selected
+
+SQL> insert into student values(1,'aayush,'pateriya');
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> insert into student values(1,'aayush','pateriya');
+
+1 row created.
+
+SQL> insert into student values(2,'aayushi','Tiwari');
+
+1 row created.
+
+SQL> insert into student values(2,'aayushka','Rawat');
+insert into student values(2,'aayushka','Rawat')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008502) violated
+
+
+SQL> insert into student values(3,'aayushka','Rawat');
+
+1 row created.
+
+SQL> insert into student values(4,'Vaishnavi','Patel');
+
+1 row created.
+
+SQL> insert into student values(5,'Vaishnav','kurmi');
+
+1 row created.
+
+SQL> Select * from student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect user2/pass2
+Connected.
+SQL> Select * from tab ;
+
+no rows selected
+
+SQL>    create table school (scid number primary key ,sname varchar(20),state varchar(20));
+
+Table created.
+
+SQL> Select * from school
+  2  ;
+
+no rows selected
+
+SQL> insert into school values (1,'RLPS','Lalitpur');
+
+1 row created.
+
+SQL> insert into school values (2,'DPS','Sagar');
+
+1 row created.
+
+SQL> insert into school values (3,'DMA','Sagar');
+
+1 row created.
+
+SQL> insert into school values (4,'D','Sagar');
+
+1 row created.
+
+SQL> insert into school values (4,'DAV','Sehore');
+insert into school values (4,'DAV','Sehore')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER2.SYS_C008503) violated
+
+
+SQL> insert into school values (5,'D','Sagar');
+
+1 row created.
+
+SQL> Select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> Select * from student;
+Select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect user1/pass1;
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+SQL> grant all on student to user2;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> Select * from student;
+Select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user1.student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> Select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> show user;
+USER is "USER2"
+SQL> grant all ,resource to user2;
+grant all ,resource to user2
+      *
+ERROR at line 1:
+ORA-01924: role 'ALL' not granted or does not exist
+
+
+SQL> connect user1/pass1
+Connected.
+SQL> connect user2/pass2
+Connected.
+SQL> connect system/pateriya
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SESSION_EVOLVE$
+TABLE
+
+LOGMNR_GLOBAL$
+TABLE
+
+LOGMNR_GT_TAB_INCLUDE$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_GT_USER_INCLUDE$
+TABLE
+
+LOGMNR_GT_XID_INCLUDE$
+TABLE
+
+LOGMNR_PDB_INFO$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_DID$
+TABLE
+
+LOGMNR_UID$
+TABLE
+
+LOGMNRGGC_GTLO
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRGGC_GTCS
+TABLE
+
+LOGMNRC_DBNAME_UID_MAP
+TABLE
+
+LOGMNR_LOG$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_PROCESSED_LOG$
+TABLE
+
+LOGMNR_SPILL$
+TABLE
+
+LOGMNR_AGE_SPILL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_RESTART_CKPT_TXINFO$
+TABLE
+
+LOGMNR_ERROR$
+TABLE
+
+LOGMNR_RESTART_CKPT$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_FILTER$
+TABLE
+
+LOGMNR_SESSION_ACTIONS$
+TABLE
+
+LOGMNR_PARAMETER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SESSION$
+TABLE
+
+LOGMNR_PROFILE_TABLE_STATS$
+TABLE
+
+LOGMNR_PROFILE_PLSQL_STATS$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRT_MDDL$
+TABLE
+
+REDO_DB
+TABLE
+
+REDO_LOG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$CONNECTIONS
+TABLE
+
+ROLLING$DATABASES
+TABLE
+
+ROLLING$DIRECTIVES
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$EVENTS
+TABLE
+
+ROLLING$PARAMETERS
+TABLE
+
+ROLLING$PLAN
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$STATISTICS
+TABLE
+
+ROLLING$STATUS
+TABLE
+
+SYSCATALOG
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CATALOG
+SYNONYM
+
+TAB
+SYNONYM
+
+COL
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TABQUOTAS
+SYNONYM
+
+SYSFILES
+SYNONYM
+
+PUBLICSYN
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_WORKLOAD
+TABLE
+
+MVIEW$_ADV_BASETABLE
+TABLE
+
+MVIEW$_ADV_SQLDEPEND
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_PRETTY
+TABLE
+
+MVIEW$_ADV_TEMP
+TABLE
+
+MVIEW$_ADV_FILTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_LOG
+TABLE
+
+MVIEW$_ADV_FILTERINSTANCE
+TABLE
+
+MVIEW$_ADV_LEVEL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_ROLLUP
+TABLE
+
+MVIEW$_ADV_AJG
+TABLE
+
+MVIEW$_ADV_FJG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_GC
+TABLE
+
+MVIEW$_ADV_CLIQUE
+TABLE
+
+MVIEW$_ADV_ELIGIBLE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_OUTPUT
+TABLE
+
+MVIEW$_ADV_EXCEPTIONS
+TABLE
+
+MVIEW$_ADV_PARAMETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_INFO
+TABLE
+
+MVIEW$_ADV_JOURNAL
+TABLE
+
+MVIEW$_ADV_PLAN
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_WORKLOAD
+VIEW
+
+MVIEW_FILTER
+VIEW
+
+MVIEW_LOG
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_FILTERINSTANCE
+VIEW
+
+MVIEW_RECOMMENDATIONS
+VIEW
+
+MVIEW_EVALUATIONS
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_EXCEPTIONS
+VIEW
+
+OL$
+TABLE
+
+OL$HINTS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+OL$NODES
+TABLE
+
+AQ$_QUEUE_TABLES
+TABLE
+
+AQ$_KEY_SHARD_MAP
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AQ$_QUEUES
+TABLE
+
+AQ$_SCHEDULES
+TABLE
+
+AQ$_INTERNET_AGENTS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AQ$_INTERNET_AGENT_PRIVS
+TABLE
+
+LOGMNR_DICTSTATE$
+TABLE
+
+LOGMNRC_GTLO
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_GTCS
+TABLE
+
+LOGMNRC_SEQ_GG
+TABLE
+
+LOGMNRC_CON_GG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_CONCOL_GG
+TABLE
+
+LOGMNRC_IND_GG
+TABLE
+
+LOGMNRC_INDCOL_GG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_SHARD_TS
+TABLE
+
+LOGMNRC_TSPART
+TABLE
+
+LOGMNRC_TS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_GSII
+TABLE
+
+LOGMNRC_GSBA
+TABLE
+
+LOGMNRC_USER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SEED$
+TABLE
+
+LOGMNR_DICTIONARY$
+TABLE
+
+LOGMNR_OBJ$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TAB$
+TABLE
+
+LOGMNR_COL$
+TABLE
+
+LOGMNR_ATTRCOL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TS$
+TABLE
+
+LOGMNR_IND$
+TABLE
+
+LOGMNR_USER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TABPART$
+TABLE
+
+LOGMNR_TABSUBPART$
+TABLE
+
+LOGMNR_TABCOMPART$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TYPE$
+TABLE
+
+LOGMNR_COLTYPE$
+TABLE
+
+LOGMNR_ATTRIBUTE$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_LOB$
+TABLE
+
+LOGMNR_CON$
+TABLE
+
+LOGMNR_CONTAINER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_CDEF$
+TABLE
+
+LOGMNR_CCOL$
+TABLE
+
+LOGMNR_ICOL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_LOBFRAG$
+TABLE
+
+LOGMNR_INDPART$
+TABLE
+
+LOGMNR_INDSUBPART$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_INDCOMPART$
+TABLE
+
+LOGMNR_LOGMNR_BUILDLOG
+TABLE
+
+LOGMNR_NTAB$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_OPQTYPE$
+TABLE
+
+LOGMNR_SUBCOLTYPE$
+TABLE
+
+LOGMNR_KOPM$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_PROPS$
+TABLE
+
+LOGMNR_ENC$
+TABLE
+
+LOGMNR_REFCON$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_IDNSEQ$
+TABLE
+
+LOGMNR_PARTOBJ$
+TABLE
+
+LOGMNRP_CTAS_PART_MAP
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SHARD_TS
+TABLE
+
+SCHEDULER_PROGRAM_ARGS
+VIEW
+
+SCHEDULER_JOB_ARGS
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHEDULER_PROGRAM_ARGS_TBL
+TABLE
+
+SCHEDULER_JOB_ARGS_TBL
+TABLE
+
+LOGSTDBY$PARAMETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$EVENTS
+TABLE
+
+LOGSTDBY$APPLY_PROGRESS
+TABLE
+
+LOGSTDBY$APPLY_MILESTONE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$SCN
+TABLE
+
+LOGSTDBY$FLASHBACK_SCN
+TABLE
+
+LOGSTDBY$PLSQL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$SKIP_TRANSACTION
+TABLE
+
+LOGSTDBY$SKIP
+TABLE
+
+LOGSTDBY$SKIP_SUPPORT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$HISTORY
+TABLE
+
+LOGSTDBY$EDS_TABLES
+TABLE
+
+REPL_VALID_COMPAT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+REPL_SUPPORT_MATRIX
+TABLE
+
+PRODUCT_PRIVS
+VIEW
+
+SQLPLUS_PRODUCT_PROFILE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT_USER_PROFILE
+SYNONYM
+
+HELP
+TABLE
+
+CITY
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDEN
+TABLE
+
+RP
+TABLE
+
+CAST_MAS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SUB_CASTE
+TABLE
+
+PROFESSION_MAS
+TABLE
+
+AADHARCARD
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AADHAR
+TABLE
+
+AADHARC
+TABLE
+
+NAUKAR
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TRAIN
+TABLE
+
+EMPLOYEES
+TABLE
+
+EPLOYEES
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+RES
+TABLE
+
+TRAINS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+RESERVE
+TABLE
+
+TRAVEL
+TABLE
+
+STOCK
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BUYER
+TABLE
+
+BUY
+TABLE
+
+KHATA
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+PROVIDER
+TABLE
+
+PROVIDERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+KEEPER
+TABLE
+
+AMOUNT
+TABLE
+
+TOTAL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TEACHERS
+TABLE
+
+UNI_FORM
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCTS
+TABLE
+
+ORDERS
+TABLE
+
+DATA
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENTS
+TABLE
+
+RELMASTER
+TABLE
+
+RELIGION_MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CAST_MASTER
+TABLE
+
+PROFESSINAL_MASTER
+TABLE
+
+SUB_CAST
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PROFESSION_MASTER
+TABLE
+
+PROFILES
+TABLE
+
+HOTEL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BANK
+TABLE
+
+USERS
+TABLE
+
+AYUSH
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TABLES
+TABLE
+
+CALCULATE
+TABLE
+
+PRINCE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TRAINSS
+TABLE
+
+USERS1
+TABLE
+
+VEER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CHILD
+TABLE
+
+TEST
+TABLE
+
+MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SECURITY
+TABLE
+
+VEERPROJECT
+TABLE
+
+RELIGION_MAS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PROFILE_VIEW
+VIEW
+
+VV
+TABLE
+
+COURSE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+JOB
+TABLE
+
+EMPLOYEE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+DEPARTMENT
+TABLE
+
+ATTENDANCE
+TABLE
+
+LEAVE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PAYROLL
+TABLE
+
+MESSAGING
+TABLE
+
+DAPARTMENT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AUTHOR
+TABLE
+
+PRO_VIEW
+VIEW
+
+CASTE_MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+INFORMATION_VIEW
+VIEW
+
+MESSAGE_MASTER
+TABLE
+
+CUSTOMER
+TABLE
+
+
+228 rows selected.
+
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from school ;
+Select * from school
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user1.school;
+Select * from user1.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+SQL> Select * from student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect user2/pass2
+Connected.
+SQL> Select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> Select * from user1.student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant all on school to user2;
+
+Grant succeeded.
+
+SQL> connect user2/pass2;
+Connected.
+SQL> Select * from user2.student;
+Select * from user2.student
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+SQL> grant all on school to user1;
+grant all on school to user1
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> grant all on school to user1;
+grant all on school to user1
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1;
+Connected.
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user1.student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> Select * from school;
+Select * from school
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> show user;
+USER is "USER1"
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant all on school to user1'
+  2  ;
+grant all on school to user1'
+                            *
+ERROR at line 1:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SESSION_EVOLVE$
+TABLE
+
+LOGMNR_GLOBAL$
+TABLE
+
+LOGMNR_GT_TAB_INCLUDE$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_GT_USER_INCLUDE$
+TABLE
+
+LOGMNR_GT_XID_INCLUDE$
+TABLE
+
+LOGMNR_PDB_INFO$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_DID$
+TABLE
+
+LOGMNR_UID$
+TABLE
+
+LOGMNRGGC_GTLO
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRGGC_GTCS
+TABLE
+
+LOGMNRC_DBNAME_UID_MAP
+TABLE
+
+LOGMNR_LOG$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_PROCESSED_LOG$
+TABLE
+
+LOGMNR_SPILL$
+TABLE
+
+LOGMNR_AGE_SPILL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_RESTART_CKPT_TXINFO$
+TABLE
+
+LOGMNR_ERROR$
+TABLE
+
+LOGMNR_RESTART_CKPT$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_FILTER$
+TABLE
+
+LOGMNR_SESSION_ACTIONS$
+TABLE
+
+LOGMNR_PARAMETER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SESSION$
+TABLE
+
+LOGMNR_PROFILE_TABLE_STATS$
+TABLE
+
+LOGMNR_PROFILE_PLSQL_STATS$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRT_MDDL$
+TABLE
+
+REDO_DB
+TABLE
+
+REDO_LOG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$CONNECTIONS
+TABLE
+
+ROLLING$DATABASES
+TABLE
+
+ROLLING$DIRECTIVES
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$EVENTS
+TABLE
+
+ROLLING$PARAMETERS
+TABLE
+
+ROLLING$PLAN
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ROLLING$STATISTICS
+TABLE
+
+ROLLING$STATUS
+TABLE
+
+SYSCATALOG
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CATALOG
+SYNONYM
+
+TAB
+SYNONYM
+
+COL
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TABQUOTAS
+SYNONYM
+
+SYSFILES
+SYNONYM
+
+PUBLICSYN
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_WORKLOAD
+TABLE
+
+MVIEW$_ADV_BASETABLE
+TABLE
+
+MVIEW$_ADV_SQLDEPEND
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_PRETTY
+TABLE
+
+MVIEW$_ADV_TEMP
+TABLE
+
+MVIEW$_ADV_FILTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_LOG
+TABLE
+
+MVIEW$_ADV_FILTERINSTANCE
+TABLE
+
+MVIEW$_ADV_LEVEL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_ROLLUP
+TABLE
+
+MVIEW$_ADV_AJG
+TABLE
+
+MVIEW$_ADV_FJG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_GC
+TABLE
+
+MVIEW$_ADV_CLIQUE
+TABLE
+
+MVIEW$_ADV_ELIGIBLE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_OUTPUT
+TABLE
+
+MVIEW$_ADV_EXCEPTIONS
+TABLE
+
+MVIEW$_ADV_PARAMETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW$_ADV_INFO
+TABLE
+
+MVIEW$_ADV_JOURNAL
+TABLE
+
+MVIEW$_ADV_PLAN
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_WORKLOAD
+VIEW
+
+MVIEW_FILTER
+VIEW
+
+MVIEW_LOG
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_FILTERINSTANCE
+VIEW
+
+MVIEW_RECOMMENDATIONS
+VIEW
+
+MVIEW_EVALUATIONS
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MVIEW_EXCEPTIONS
+VIEW
+
+OL$
+TABLE
+
+OL$HINTS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+OL$NODES
+TABLE
+
+AQ$_QUEUE_TABLES
+TABLE
+
+AQ$_KEY_SHARD_MAP
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AQ$_QUEUES
+TABLE
+
+AQ$_SCHEDULES
+TABLE
+
+AQ$_INTERNET_AGENTS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AQ$_INTERNET_AGENT_PRIVS
+TABLE
+
+LOGMNR_DICTSTATE$
+TABLE
+
+LOGMNRC_GTLO
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_GTCS
+TABLE
+
+LOGMNRC_SEQ_GG
+TABLE
+
+LOGMNRC_CON_GG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_CONCOL_GG
+TABLE
+
+LOGMNRC_IND_GG
+TABLE
+
+LOGMNRC_INDCOL_GG
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_SHARD_TS
+TABLE
+
+LOGMNRC_TSPART
+TABLE
+
+LOGMNRC_TS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNRC_GSII
+TABLE
+
+LOGMNRC_GSBA
+TABLE
+
+LOGMNRC_USER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SEED$
+TABLE
+
+LOGMNR_DICTIONARY$
+TABLE
+
+LOGMNR_OBJ$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TAB$
+TABLE
+
+LOGMNR_COL$
+TABLE
+
+LOGMNR_ATTRCOL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TS$
+TABLE
+
+LOGMNR_IND$
+TABLE
+
+LOGMNR_USER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TABPART$
+TABLE
+
+LOGMNR_TABSUBPART$
+TABLE
+
+LOGMNR_TABCOMPART$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_TYPE$
+TABLE
+
+LOGMNR_COLTYPE$
+TABLE
+
+LOGMNR_ATTRIBUTE$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_LOB$
+TABLE
+
+LOGMNR_CON$
+TABLE
+
+LOGMNR_CONTAINER$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_CDEF$
+TABLE
+
+LOGMNR_CCOL$
+TABLE
+
+LOGMNR_ICOL$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_LOBFRAG$
+TABLE
+
+LOGMNR_INDPART$
+TABLE
+
+LOGMNR_INDSUBPART$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_INDCOMPART$
+TABLE
+
+LOGMNR_LOGMNR_BUILDLOG
+TABLE
+
+LOGMNR_NTAB$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_OPQTYPE$
+TABLE
+
+LOGMNR_SUBCOLTYPE$
+TABLE
+
+LOGMNR_KOPM$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_PROPS$
+TABLE
+
+LOGMNR_ENC$
+TABLE
+
+LOGMNR_REFCON$
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_IDNSEQ$
+TABLE
+
+LOGMNR_PARTOBJ$
+TABLE
+
+LOGMNRP_CTAS_PART_MAP
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGMNR_SHARD_TS
+TABLE
+
+SCHEDULER_PROGRAM_ARGS
+VIEW
+
+SCHEDULER_JOB_ARGS
+VIEW
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHEDULER_PROGRAM_ARGS_TBL
+TABLE
+
+SCHEDULER_JOB_ARGS_TBL
+TABLE
+
+LOGSTDBY$PARAMETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$EVENTS
+TABLE
+
+LOGSTDBY$APPLY_PROGRESS
+TABLE
+
+LOGSTDBY$APPLY_MILESTONE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$SCN
+TABLE
+
+LOGSTDBY$FLASHBACK_SCN
+TABLE
+
+LOGSTDBY$PLSQL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$SKIP_TRANSACTION
+TABLE
+
+LOGSTDBY$SKIP
+TABLE
+
+LOGSTDBY$SKIP_SUPPORT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+LOGSTDBY$HISTORY
+TABLE
+
+LOGSTDBY$EDS_TABLES
+TABLE
+
+REPL_VALID_COMPAT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+REPL_SUPPORT_MATRIX
+TABLE
+
+PRODUCT_PRIVS
+VIEW
+
+SQLPLUS_PRODUCT_PROFILE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT_USER_PROFILE
+SYNONYM
+
+HELP
+TABLE
+
+CITY
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDEN
+TABLE
+
+RP
+TABLE
+
+CAST_MAS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SUB_CASTE
+TABLE
+
+PROFESSION_MAS
+TABLE
+
+AADHARCARD
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AADHAR
+TABLE
+
+AADHARC
+TABLE
+
+NAUKAR
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TRAIN
+TABLE
+
+EMPLOYEES
+TABLE
+
+EPLOYEES
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+RES
+TABLE
+
+TRAINS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+RESERVE
+TABLE
+
+TRAVEL
+TABLE
+
+STOCK
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BUYER
+TABLE
+
+BUY
+TABLE
+
+KHATA
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+PROVIDER
+TABLE
+
+PROVIDERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+KEEPER
+TABLE
+
+AMOUNT
+TABLE
+
+TOTAL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TEACHERS
+TABLE
+
+UNI_FORM
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCTS
+TABLE
+
+ORDERS
+TABLE
+
+DATA
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENTS
+TABLE
+
+RELMASTER
+TABLE
+
+RELIGION_MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CAST_MASTER
+TABLE
+
+PROFESSINAL_MASTER
+TABLE
+
+SUB_CAST
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PROFESSION_MASTER
+TABLE
+
+PROFILES
+TABLE
+
+HOTEL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BANK
+TABLE
+
+USERS
+TABLE
+
+AYUSH
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TABLES
+TABLE
+
+CALCULATE
+TABLE
+
+PRINCE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+TRAINSS
+TABLE
+
+USERS1
+TABLE
+
+VEER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CHILD
+TABLE
+
+TEST
+TABLE
+
+MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SECURITY
+TABLE
+
+VEERPROJECT
+TABLE
+
+RELIGION_MAS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PROFILE_VIEW
+VIEW
+
+VV
+TABLE
+
+COURSE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+JOB
+TABLE
+
+EMPLOYEE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+DEPARTMENT
+TABLE
+
+ATTENDANCE
+TABLE
+
+LEAVE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PAYROLL
+TABLE
+
+MESSAGING
+TABLE
+
+DAPARTMENT
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+AUTHOR
+TABLE
+
+PRO_VIEW
+VIEW
+
+CASTE_MASTER
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+INFORMATION_VIEW
+VIEW
+
+MESSAGE_MASTER
+TABLE
+
+CUSTOMER
+TABLE
+
+
+228 rows selected.
+
+SQL> connect user2.pass2;
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> conenct
+SP2-0042: unknown command "conenct" - rest of line ignored.
+SQL>
+SQL>
+SQL>
+SQL>
+SQL>
+SQL>
+SQL> connect user1/pass1
+Connected.
+SQL> connect user2/pass2;
+Connected.
+SQL> connect system/pateriya
+Connected.
+SQL> connect user1/pass1;
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+
+SQL> conenct user2/pass2;
+SP2-0734: unknown command beginning "conenct us..." - rest of line ignored.
+SQL> connct user2/pass2;
+SP2-0734: unknown command beginning "connct use..." - rest of line ignored.
+SQL> connect user2/pass2;
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> connect system/pateriya
+Connected.
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> connet user2/pass2
+SP2-0734: unknown command beginning "connet use..." - rest of line ignored.
+SQL> connect user2/pass2
+Connected.
+SQL> Select * from user1.student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect user2/pass2
+Connected.
+SQL> Selectr * from tab;
+SP2-0734: unknown command beginning "Selectr * ..." - rest of line ignored.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+SCHOOL
+TABLE
+
+
+SQL> Select * from user1.student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> connect system/pateriya
+Connected.
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1;
+Connected.
+SQL> Select * from user2.school;
+Select * from user2.school
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect user2/pass2;
+Connected.
+SQL> select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> grant all on school to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from user2.school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> Select * from student;
+
+       SID SNAME                SURNAME
+---------- -------------------- ---------------
+         1 aayush               pateriya
+         2 aayushi              Tiwari
+         3 aayushka             Rawat
+         4 Vaishnavi            Patel
+         5 Vaishnav             kurmi
+
+SQL> Select * from user2.school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> drop table user2.school;
+drop table user2.school
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect user2/pass2;
+Connected.
+SQL> Select * from school
+  2  ;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> grant delete on school to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1
+Connected.
+SQL> drop table user2.school;
+drop table user2.school
+                 *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect user2/pass2;
+Connected.
+SQL> Select * from school;
+
+      SCID SNAME                STATE
+---------- -------------------- --------------------
+         1 RLPS                 Lalitpur
+         2 DPS                  Sagar
+         3 DMA                  Sagar
+         4 D                    Sagar
+         5 D                    Sagar
+
+SQL> grant drop on school to user1;
+grant drop on school to user1
+      *
+ERROR at line 1:
+ORA-00990: missing or invalid privilege
+
+
+SQL> grant truncate on school to user1;
+grant truncate on school to user1
+      *
+ERROR at line 1:
+ORA-00990: missing or invalid privilege
+
+
+SQL> grant delete on school to user1;
+
+Grant succeeded.
+
+SQL> drop table school;
+
+Table dropped.
+
+SQL> connect student/bharat;
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+MEMBER
+TABLE
+
+BIN$k7aDXh7MQo+fx6l1tdwiqg==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FACULTY
+TABLE
+
+EMPLOYEES
+TABLE
+
+COLLEGE
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$fr7T/uoLRWuNVBdP+IrAnA==$0
+TABLE
+
+CUSTOMER
+TABLE
+
+BIN$dkvdbcmfS8+Fcl1/xkJPDA==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wu4cVZGpRTuatElONSXz5g==$0
+TABLE
+
+BIN$fvlW09VnR9KBDezZRbpr1w==$0
+TABLE
+
+MEMBERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BOOKS
+TABLE
+
+BORROW_RECORDS
+TABLE
+
+STUDENT
+TABLE
+
+
+15 rows selected.
+
+SQL> connect system/pateriya
+Connected.
+SQL> connect user1/pass1;
+Connected.
+SQL> connect user2/pass2;
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+
+SQL>
