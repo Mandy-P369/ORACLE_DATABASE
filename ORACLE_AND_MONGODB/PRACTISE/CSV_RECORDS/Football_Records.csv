@@ -1,0 +1,11 @@
+team_id,country,continent,fifa_rank,matches_played,wins,draws,losses,goals_scored,goals_conceded
+1,Brazil,South America,3,950,620,180,150,1900,900
+2,Argentina,South America,2,920,580,200,140,1750,850
+3,France,Europe,1,850,520,190,140,1600,780
+4,Germany,Europe,12,1050,600,200,250,1950,1100
+5,Spain,Europe,8,820,480,210,130,1500,720
+6,England,Europe,7,1000,550,220,230,1650,980
+7,Portugal,Europe,6,740,420,200,120,1350,700
+8,Italy,Europe,10,1020,580,230,210,1800,950
+9,Netherlands,Europe,5,780,450,180,150,1400,750
+10,Japan,Asia,18,600,310,150,140,980,650

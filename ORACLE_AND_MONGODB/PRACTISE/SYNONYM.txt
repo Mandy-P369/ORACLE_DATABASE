@@ -1,0 +1,993 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sat Nov 29 16:25:16 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: system/pateriya
+Last Successful login time: Sat Nov 29 2025 10:52:13 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+SQL> /*amking the synonym of table*/
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+7 rows selected.
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant select on foot1 to user1
+  2  ;
+grant select on foot1 to user1
+                *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: use1/pass1
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> grant create synonym to user2;
+grant create synonym to user2
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> grant create synonym to user2
+  2  '
+  3  ;
+'
+*
+ERROR at line 2:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> grant create synonym to user2;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from user1;
+Select * from user1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create synonym foot2 for user2.foot2;
+create synonym foot2 for user2.foot2
+*
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect system/pateroya
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect system/pateriya
+Connected.
+SQL> grant create synonym to user1;
+
+Grant succeeded.
+
+SQL> connect user1/pass1
+Connected.
+SQL> create synonym foot2 for user1.football;
+
+Synonym created.
+
+SQL> Select * from foot2;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+7 rows selected.
+
+SQL> desc foot2;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+
+SQL> insert into foot2 values(8,'Chhetri','40','India','forward',120,200,'Indian club');
+
+1 row created.
+
+SQL> Select * from foot2;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from foot2;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> create synonym foot23 for user2.foot2;
+
+Synonym created.
+
+SQL> Select * from foot23;
+Select * from foot23
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT23
+SYNONYM
+
+
+SQL> Select * from foot23;
+Select * from foot23
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from foot2;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> drop fooot23;
+drop fooot23
+     *
+ERROR at line 1:
+ORA-00950: invalid DROP option
+
+
+SQL> drop  synonym fooot23;
+drop  synonym fooot23
+              *
+ERROR at line 1:
+ORA-01434: private synonym to be dropped does not exist
+
+
+SQL> drop synonym fooot2;
+drop synonym fooot2
+             *
+ERROR at line 1:
+ORA-01434: private synonym to be dropped does not exist
+
+
+SQL> drop synonym foot2;
+
+Synonym dropped.
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> create synonym for user2.football;
+create synonym for user2.football
+               *
+ERROR at line 1:
+ORA-00995: missing or invalid synonym identifier
+
+
+SQL> create synonym foot2 for user2.football;
+
+Synonym created.
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from foot2 ;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT23
+SYNONYM
+
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> drop synonym foot23;
+
+Synonym dropped.
+
+SQL> Select * from foot23;
+Select * from foot23
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> drop synonym foot2;
+
+Synonym dropped.
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+SQL> create synonym foot2 for user2.football;
+
+Synonym created.
+
+SQL> Select * from foot2;\
+  2
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> create synonym foot3 for user2.football;
+
+Synonym created.
+
+SQL> Select * from foot3;
+Select * from foot3
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+
+SQL> ddrop synonym foot2;
+SP2-0734: unknown command beginning "ddrop syno..." - rest of line ignored.
+SQL> drop synonym foot2;
+
+Synonym dropped.
+
+SQL> drop synonym foot23;
+drop synonym foot23
+             *
+ERROR at line 1:
+ORA-01434: private synonym to be dropped does not exist
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT3
+SYNONYM
+
+
+SQL> Select * from foot3;
+Select * from foot3
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT3
+SYNONYM
+
+
+SQL> Select * from synonym;
+Select * from synonym
+              *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create  synonym foot2 for user2.football;
+
+Synonym created.
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> create  synonym foot2 for user1.football;
+create  synonym foot2 for user1.football
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> Select * from user2.foot2;
+Select * from user2.foot2
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user1.foot2;
+Select * from user1.foot2
+                    *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+
+SQL> show user;
+USER is "USER1"
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+
+SQL> connect system/pateriya
+Connected.
+SQL> grant synonym to user2;
+grant synonym to user2
+      *
+ERROR at line 1:
+ORA-01919: role 'SYNONYM' does not exist
+
+
+SQL> grant create synonym to user2;
+
+Grant succeeded.
+
+SQL> connect user2/pass2
+Connected.
+SQL> Select * from tab;\
+  2  Select * from tab;
+Select * from tab;\
+                 *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+
+SQL> create synonym s1 for student;
+
+Synonym created.
+
+SQL> Select * from s1;
+
+      STID STNAME          SURNAME
+---------- --------------- ---------------
+         1 aayush          pateriya
+         2 aman            kaushik
+         3 Akshay          Rajput
+
+SQL> create synonym s2 for s1;
+
+Synonym created.
+
+SQL> Select * from s2;
+
+      STID STNAME          SURNAME
+---------- --------------- ---------------
+         1 aayush          pateriya
+         2 aman            kaushik
+         3 Akshay          Rajput
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+S1
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+S2
+SYNONYM
+
+S
