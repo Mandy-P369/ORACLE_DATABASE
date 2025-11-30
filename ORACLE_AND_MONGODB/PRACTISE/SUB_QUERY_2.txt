@@ -1,0 +1,1119 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Nov 30 13:58:56 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: SYSTEM/PATERIYA
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Enter user-name: system/pateriya
+Last Successful login time: Sat Nov 29 2025 22:27:50 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> grant synonym to user1 ;
+grant synonym to user1
+      *
+ERROR at line 1:
+ORA-01919: role 'SYNONYM' does not exist
+
+
+SQL> grant synonym , resource  to user1 ;
+grant synonym , resource  to user1
+      *
+ERROR at line 1:
+ORA-01919: role 'SYNONYM' does not exist
+
+
+SQL>
+SQL> grant create synonym for user1;
+grant create synonym for user1
+                     *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> grant create synonym to user1;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab'
+  2
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> drop synonym foot2;
+
+Synonym dropped.
+
+SQL> Select * from foot2;
+Select * from foot2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create synonym foot2 for football;
+
+Synonym created.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> create synonym foot23 for foot2;
+
+Synonym created.
+
+SQL> Select * from foot23;'
+  2
+SQL> Select * from foot23;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from football where cname = (Select cname from football where cid = 4);
+Select * from football where cname = (Select cname from football where cid = 4)
+                             *
+ERROR at line 1:
+ORA-00904: "CNAME": invalid identifier
+
+
+SQL> Select * from football where pname = (Select pname from football where cid = 4);
+Select * from football where pname = (Select pname from football where cid = 4)
+                                                                       *
+ERROR at line 1:
+ORA-00904: "CID": invalid identifier
+
+
+SQL> Select * from football where pname = (Select pname from football where pid = 4);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+
+SQL> Select * from football where pid = all(Select pid from football where position = 'forward');
+
+no rows selected
+
+SQL> Select * from football where pid = any(Select pid from football where position = 'forward');
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+6 rows selected.
+
+SQL> Select * from football where pid = any(Select pid from football where position = 'forward');
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+6 rows selected.
+
+SQL> Select * from football where pname like (Select pname from football pname like '%A%'
+  2  ) or age >(Select age from football where position = 'forward
+  3  ');
+Select * from football where pname like (Select pname from football pname like '%A%'
+                                                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> Select * from football where pname like (Select pname from football pname like '%A%') or
+  2  age>(Select age from football where position like position ='forward');
+Select * from football where pname like (Select pname from football pname like '%A%') or
+                                                                          *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> Select * from football where pname like  any(Select pname from football pname like '%A%') or
+  2  age>(Select age from football where position like position ='forward');
+Select * from football where pname like  any(Select pname from football pname like '%A%') or
+                                         *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> Select * from football where pname = any(Select pname from football where age = any(Select * from football where pid in
+  2  (4,7,8,2));
+(4,7,8,2))
+         *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> Select * from football where pname = any(Select pname from football where age >30);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+7 rows selected.
+
+SQL> Select * from football where pname = any(Select pname from football where age >35);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+SQL> Select * from football where pname = any(Select pname from football where age<35);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+SQL> Select * from football where position  like '%M%';
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+SQL> Select count(goals) from football where age<(Select age from football where country like 'B%');
+Select count(goals) from football where age<(Select age from football where country like 'B%')
+                                             *
+ERROR at line 1:
+ORA-01427: single-row subquery returns more than one row
+
+
+SQL> Select count(goals) from football where age< any(Select age from football where country like 'B%');
+
+COUNT(GOALS)
+------------
+           2
+
+SQL> Select sum(goals) from football where age< any(Select age from football where country like 'B%');
+
+SUM(GOALS)
+----------
+       115
+
+SQL> Select * from foot2;'
+  2
+SQL> Select * from foot2;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select sum(goals) from football where age< any(Select age from football where country like 'F%');
+
+SUM(GOALS)
+----------
+
+
+SQL> Select sum(goals) from football where age< any(Select age from football where country like 'B%');
+
+SUM(GOALS)
+----------
+       115
+
+SQL> Select sum(goals) from football where age< any(Select age from football where position like 'F%');
+
+SUM(GOALS)
+----------
+
+
+SQL> Select goals from football where position like 'F%');
+Select goals from football where position like 'F%')
+                                                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> Select goals from football where position like 'F%';
+
+no rows selected
+
+SQL> Select goals from football where position like '%F%';
+
+no rows selected
+
+SQL> Select goals from football where position like '%F%';
+
+no rows selected
+
+SQL> desc football ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+
+SQL> Select goals from football where position = 'forward';
+
+     GOALS
+----------
+       106
+       128
+        79
+        52
+        63
+       120
+
+6 rows selected.
+
+SQL> Select country ,goals from football where position = 'forward';
+
+COUNTRY           GOALS
+------------ ----------
+Argentina           106
+Portugal            128
+Brazil               79
+France               52
+england              63
+India               120
+
+6 rows selected.
+
+SQL> Select sum(goals) from football where country like 'B%';
+
+SUM(GOALS)
+----------
+       105
+
+SQL> Select * from football fetch first 3 rows only ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+SQL> Select * from football order by goals desc fetch first 2 rows only;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+SQL> Select * from football where  age>all(select age from football order by age desc fetch first 3 rows only);
+
+no rows selected
+
+SQL> Select * from football where  age = all(select age from football order by age desc fetch first 3 rows only);
+
+no rows selected
+
+SQL> Select * from football where  age = all(select age from football order by age desc fetch first 3 rows only);
+
+no rows selected
+
+SQL> Select * from football where  age = any(select age from football order by age desc fetch first 3 rows only);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+SQL> Select * from football where  age = all(select max(age) from football order by age desc fetch first 3 rows only);
+Select * from football where  age = all(select max(age) from football order by age desc fetch first 3 rows only)
+                                                                               *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select * from football where  age = any(select max(age) from football order by age desc fetch first 3 rows only);
+Select * from football where  age = any(select max(age) from football order by age desc fetch first 3 rows only)
+                                                                               *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select * from football where  age = any(select max(age) from football  fetch first 3 rows only);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+SQL> Select * from football where pname = all in (Select pname from football where goals>(Select max(goals),min(goals) from football
+  2  );
+Select * from football where pname = all in (Select pname from football where goals>(Select max(goals),min(goals) from football
+                                         *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> Select * from football where pname = all(Select pname from football where goals>(Select max(goals),min(goals) from football );
+Select * from football where pname = all(Select pname from football where goals>(Select max(goals),min(goals) from football )
+                                                                                                                            *
+ERROR at line 1:
+ORA-00907: missing right parenthesis
+
+
+SQL> Select * from football where pname = all(Select pname from football where goals>(Select max(goals),min(goals) from football));
+Select * from football where pname = all(Select pname from football where goals>(Select max(goals),min(goals) from football))
+                                                                                 *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> Select * from football where pname = all(Select pname from football where goals> any(Select max(goals),min(goals) from football));
+Select * from football where pname = all(Select pname from football where goals> any(Select max(goals),min(goals) from football))
+                                                                                     *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> Select * from football where pname = all(Select pname from football where goals>all(Select max(goals),min(goals) from football));
+Select * from football where pname = all(Select pname from football where goals>all(Select max(goals),min(goals) from football))
+                                                                                    *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> Select * from football where pname = all(Select pname from football);
+
+no rows selected
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where ;
+Select * from football where age = (select age from football where goals>(Select * from football where
+                                    *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command
+
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals);
+Select * from football where age = (select age from football where goals>(Select * from football where
+                                    *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command
+
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals));
+Select * from football where age = (select age from football where goals>(Select * from football where
+                                    *
+ERROR at line 1:
+ORA-00921: unexpected end of SQL command
+
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals)));
+goals > (Select (sum(goals)/count(goals)) as meangoals)))
+                                                      *
+ERROR at line 2:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+Select * from football where age = (select age from football where goals>(Select * from football where
+                                                                          *
+ERROR at line 1:
+ORA-00913: too many values
+
+
+SQL> Select * from football where age = (select age from football where goals>(Select * from football where
+  2  Select * from football where age = (select age from football where goals>(Select * from football where
+  3
+SQL> Select * from football where age = (select age from football where goals>all(Select goals from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+
+no rows selected
+
+SQL> Select * from football where age = (select age from football where goals>any(Select goals from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+Select * from football where age = (select age from football where goals>any(Select goals from football where
+                                    *
+ERROR at line 1:
+ORA-01427: single-row subquery returns more than one row
+
+
+SQL> Select * from football where age = (select age from football where goals>all(Select goals from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+
+no rows selected
+
+SQL> Select * from football where age = (select age from football where goals>any(Select goals from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+Select * from football where age = (select age from football where goals>any(Select goals from football where
+                                    *
+ERROR at line 1:
+ORA-01427: single-row subquery returns more than one row
+
+
+SQL> Select * from football where age = (select age from football where goals>all(Select goals from football where
+  2  goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+
+no rows selected
+
+SQL> Select sum(goals)/count(goals) from football ;
+
+SUM(GOALS)/COUNT(GOALS)
+-----------------------
+                  74.75
+
+SQL> Select * from football where goals>all(Select goals from football where
+  2  Select sum(goals)/count(goals) from football ;
+Select sum(goals)/count(goals) from football
+*
+ERROR at line 2:
+ORA-00936: missing expression
+
+
+SQL> goals > (Select (sum(goals)/count(goals)) as meangoals from football )));
+SP2-0734: unknown command beginning "goals > (S..." - rest of line ignored.
+SQL> Select sum(goals)/count(goals) from football ;
+
+SUM(GOALS)/COUNT(GOALS)
+-----------------------
+                  74.75
+
+SQL> Select * from football where goals>any(Select (sum(goals)/count(goals)) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+SQL> Select * from football where goals>=any(Select (sum(goals)/count(goals)) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+SQL> Select * from football where goals<=any(Select (sum(goals)/count(goals)) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+SQL> Select * from football where goals<=any(Select ((goals+1)/2 + goals/2) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+8 rows selected.
+
+SQL> Select * from football where goals<=any(SP2-0042: unknown command "S" - rest of line ignored.
+SQL> Select ((goals+1)/2 + goals/2) from football;
+
+((GOALS+1)/2+GOALS/2)
+---------------------
+                106.5
+                128.5
+                 79.5
+                 52.5
+                 26.5
+                 24.5
+                 63.5
+                120.5
+
+8 rows selected.
+
+SQL> Select sum((goals+1)/2 + goals/2) from football;
+
+SUM((GOALS+1)/2+GOALS/2)
+------------------------
+                     602
+
+SQL> Select * from football where goals<=any(Select ((goals+1)/2 + goals/2) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+8 rows selected.
+
+SQL> Select * from football where goals<any(Select ((goals+1)/2 + goals/2) from football);
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+8 rows selected.
+
+SQL> Select * from football where goals=any(Select ((goals+1)/2 + goals/2) from football);
+
+no rows selected
+
+SQL> Select * from football where goals=all(Select ((goals+1)/2 + goals/2) from football);
+
+no rows selected
+
+SQL> Select * from football where goals=any(Select average((goals+1)/2 + goals/2) from football);
+Select * from football where goals=any(Select average((goals+1)/2 + goals/2) from football)
+                                              *
+ERROR at line 1:
+ORA-00904: "AVERAGE": invalid identifier
+
+
+SQL> Select median(goals) from football;
+
+MEDIAN(GOALS)
+-------------
+           71
+
+SQL> Select * from foootball ;
+Select * from foootball
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select median(matches) from football;
+
+MEDIAN(MATCHES)
+---------------
+          151.5
+
+SQL>
+s
