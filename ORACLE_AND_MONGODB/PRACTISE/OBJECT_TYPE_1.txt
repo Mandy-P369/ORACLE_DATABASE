@@ -1,0 +1,423 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Tue Dec 2 22:49:22 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: system/pateriya
+Last Successful login time: Tue Dec 02 2025 22:44:05 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+ENGINEER
+TABLE
+
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+         2 bharati         patel           bharati45@gmail.com  OT
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> create type ety as  object (city varchar(15),state varchar(15),pin number);/
+  2  /
+
+Warning: Type created with compilation errors.
+
+SQL> create type ety as  object (city varchar(15),state varchar(15),pin number);
+  2  /
+
+Type created.
+
+SQL> Select * from ety;
+Select * from ety
+              *
+ERROR at line 1:
+ORA-04044: procedure, function, package, or type is not allowed here
+
+
+SQL> create table doctors (docid number primary key,name varchar(15),docadd ety);
+
+Table created.
+
+SQL> desc doctors;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DOCID                                     NOT NULL NUMBER
+ NAME                                               VARCHAR2(15)
+ DOCADD                                             ETY
+
+SQL> insert into doctors values (1,'ayush',ety('Sagar','MP',36455564));
+
+1 row created.
+
+SQL> /
+insert into doctors values (1,'ayush',ety('Sagar','MP',36455564))
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER2.SYS_C008509) violated
+
+
+SQL> /
+insert into doctors values (1,'ayush',ety('Sagar','MP',36455564))
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER2.SYS_C008509) violated
+
+
+SQL> insert into doctors values (2,'Veer',ety('Lalitpur','UP',36445645));
+
+1 row created.
+
+SQL> insert into doctors values (3,'Abhay',ety('Hyderabad','Telangana',36434533));
+
+1 row created.
+
+SQL> insert into doctors values (4,'Aman',ety('Surat','Gujrat',36546533));
+
+1 row created.
+
+SQL> insert into doctors values (5,'Aarav',ety('Nasik','Maharashtra',36544563));
+
+1 row created.
+
+SQL> Select * from doctors;
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         1 ayush
+ETY('Sagar', 'MP', 36455564)
+
+         2 Veer
+ETY('Lalitpur', 'UP', 36445645)
+
+         3 Abhay
+ETY('Hyderabad', 'Telangana', 36434533)
+
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         4 Aman
+ETY('Surat', 'Gujrat', 36546533)
+
+         5 Aarav
+ETY('Nasik', 'Maharashtra', 36544563)
+
+
+SQL> Select * from doctors d where d.ety.state  like 'T%';
+Select * from doctors d where d.ety.state  like 'T%'
+                              *
+ERROR at line 1:
+ORA-00904: "D"."ETY"."STATE": invalid identifier
+
+
+SQL> Select * from doctors d where d.docadd.state  like 'T%';
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         3 Abhay
+ETY('Hyderabad', 'Telangana', 36434533)
+
+
+SQL> Select * from doctors d where d.docadd.city = 'Surat';
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         4 Aman
+ETY('Surat', 'Gujrat', 36546533)
+
+
+SQL> Select * from doctors;
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         1 ayush
+ETY('Sagar', 'MP', 36455564)
+
+         2 Veer
+ETY('Lalitpur', 'UP', 36445645)
+
+         3 Abhay
+ETY('Hyderabad', 'Telangana', 36434533)
+
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         4 Aman
+ETY('Surat', 'Gujrat', 36546533)
+
+         5 Aarav
+ETY('Nasik', 'Maharashtra', 36544563)
+
+
+SQL> Select * from doctors where name = 'Ayush';
+
+no rows selected
+
+SQL> Select * from doctors where name = 'ayush';
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         1 ayush
+ETY('Sagar', 'MP', 36455564)
+
+
+SQL> Select * from doctors d where d.docadd.city='Maharashtra';
+
+no rows selected
+
+SQL> Select * from doctors d where d.docadd.state='Maharashtra';
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         5 Aarav
+ETY('Nasik', 'Maharashtra', 36544563)
+
+
+SQL> Select * from doctors ;
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         1 ayush
+ETY('Sagar', 'MP', 36455564)
+
+         2 Veer
+ETY('Lalitpur', 'UP', 36445645)
+
+         3 Abhay
+ETY('Hyderabad', 'Telangana', 36434533)
+
+
+     DOCID NAME
+---------- ---------------
+DOCADD(CITY, STATE, PIN)
+--------------------------------------------------------------------------------
+         4 Aman
+ETY('Surat', 'Gujrat', 36546533)
+
+         5 Aarav
+ETY('Nasik', 'Maharashtra', 36544563)
+
+
+SQL> Select * from user_types;
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+ETY
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+957C479F342147CB8511090925A9EE7B
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+OBJECT
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+         3          0 NO  NO  YES YES YES
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+TYPE_OID
+--------------------------------
+TYPECODE
+--------------------------------------------------------------------------------
+ATTRIBUTES    METHODS PRE INC FIN INS PER
+---------- ---------- --- --- --- --- ---
+SUPERTYPE_OWNER
+--------------------------------------------------------------------------------
+SUPERTYPE_NAME
+--------------------------------------------------------------------------------
+LOCAL_ATTRIBUTES LOCAL_METHODS TYPEID
+---------------- ------------- --------------------------------
+
+
+SQL> Select type_name , attributes  from user_types;
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+ATTRIBUTES
+----------
+ETY
+         3
+
+
+SQL> Select type_name,attributes  from user_types;
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+ATTRIBUTES
+----------
+ETY
+         3
+
+
+SQL> Select type_name , attributes ,type_code from user_types;
+Select type_name , attributes ,type_code from user_types
+                               *
+ERROR at line 1:
+ORA-00904: "TYPE_CODE": invalid identifier
+
+
+SQL> Select type_name , attributes ,typecode from user_types;
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+ATTRIBUTES
+----------
+TYPECODE
+--------------------------------------------------------------------------------
+ETY
+         3
+OBJECT
+
+
+SQL> Select type_name,attributes,typecode from user_types
+  2  ;
+
+TYPE_NAME
+--------------------------------------------------------------------------------
+ATTRIBUTES
+----------
+TYPECODE
+--------------------------------------------------------------------------------
+ETY
+         3
+OBJECT
+
+
+SQL>
