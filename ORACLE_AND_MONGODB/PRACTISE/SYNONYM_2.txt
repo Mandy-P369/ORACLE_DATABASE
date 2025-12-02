@@ -1,0 +1,4749 @@
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT
+SYNONYM
+
+
+7 rows selected.
+
+SQL> Select * from user2.foot;
+Select * from user2.foot
+                    *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> Select * from user2.football.foot;
+Select * from user2.football.foot
+                            *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> revoke all from user2;
+revoke all from user2
+       *
+ERROR at line 1:
+ORA-01924: role 'ALL' not granted or does not exist
+
+
+SQL> revoke all on student from user2;
+revoke all on student from user2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> revoke all on football from user2;
+
+Revoke succeeded.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> show user
+USER is "USER1"
+SQL> connec
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+S1
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+S2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+FOOT4
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT5
+SYNONYM
+
+FOOT
+SYNONYM
+
+S4
+SYNONYM
+
+
+9 rows selected.
+
+SQL> Select * from user1.football;
+Select * from user1.football
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Show user
+USER is "USER2"
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+S1
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+S2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+FOOT4
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT5
+SYNONYM
+
+FOOT
+SYNONYM
+
+S4
+SYNONYM
+
+
+9 rows selected.
+
+SQL> Select * from student;
+
+      STID STNAME          SURNAME
+---------- --------------- ---------------
+         1 aayush          pateriya
+         2 aman            kaushik
+         3 Akshay          Rajput
+
+SQL> show user
+USER is "USER2"
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+STUDENT
+TABLE
+
+S1
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+S2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+FOOT4
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT5
+SYNONYM
+
+FOOT
+SYNONYM
+
+S4
+SYNONYM
+
+
+9 rows selected.
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+S1
+SYNONYM
+
+S2
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT3
+SYNONYM
+
+FOOT4
+SYNONYM
+
+FOOT5
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT
+SYNONYM
+
+S4
+SYNONYM
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+9 rows selected.
+
+SQL> Select * from s2;
+Select * from s2
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> drop synonym s2;
+
+Synonym dropped.
+
+SQL> drop synonym s1;
+
+Synonym dropped.
+
+SQL> drop synonym foot1;
+drop synonym foot1
+             *
+ERROR at line 1:
+ORA-01434: private synonym to be dropped does not exist
+
+
+SQL> show user
+USER is "USER2"
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+FOOT3
+SYNONYM
+
+FOOT4
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT5
+SYNONYM
+
+FOOT
+SYNONYM
+
+S4
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+7 rows selected.
+
+SQL> drop synonym foot3;
+
+Synonym dropped.
+
+SQL> drop synonym foot5;
+
+Synonym dropped.
+
+SQL> drop synonym s4;
+
+Synonym dropped.
+
+SQL> drop synonym foot4;
+
+Synonym dropped.
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+FOOT
+SYNONYM
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+SQL> drop synonym foot
+  2  ;
+
+Synonym dropped.
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+SQL> show user;
+USER is "USER2"
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+EMPLOYEE
+TABLE
+
+FOOTBALL
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT2
+SYNONYM
+
+FOOT3
+SYNONYM
+
+FOOT23
+SYNONYM
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOT
+SYNONYM
+
+
+7 rows selected.
+
+SQL> drop synonym foot;
+
+Synonym dropped.
+
+SQL> drop synonym foot2;
+
+Synonym dropped.
+
+SQL> drop synonym foot23;
+
+Synonym dropped.
+
+SQL> drop synonym foot3;
+
+Synonym dropped.
+
+SQL> drop table employee;
+
+Table dropped.
+
+SQL> Select * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+8 rows selected.
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+
+SQL> create table customers (cid number primary key , cname varchar(15), surname varchar(15),city varchar(15));
+
+Table created.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ SURNAME                                            VARCHAR2(15)
+ CITY                                               VARCHAR2(15)
+
+SQL> alter table customer modify column cid number primary key auto_increment;
+alter table customer modify column cid number primary key auto_increment
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> alter table customer modify column cid number primary key auto_increment;
+alter table customer modify column cid number primary key auto_increment
+                                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> alter table customers modify column cid number primary key auto_increment;
+alter table customers modify column cid number primary key auto_increment
+                                        *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> insert into customers values(1,'aayush','pateriya','Lalitppur');
+
+1 row created.
+
+SQL> insert into customers values(2,'Disha','pateriya','Sagar');
+
+1 row created.
+
+SQL> insert into customers values(3,'Raja','Solanki','SEhore');
+
+1 row created.
+
+SQL> insert into customers values(4,'Rani','Parihar','Tirupati');
+
+1 row created.
+
+SQL> insert into customers values(5,'Pavan','Choudhary','Tiruvalluvar');
+
+1 row created.
+
+SQL> insert into customers values(6,'Rajani','Prasad','Tanjavur');
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         2 Disha           pateriya        Sagar
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+6 rows selected.
+
+SQL> show user;
+USER is "USER1"
+SQL> grant select on customers to user2;
+
+Grant succeeded.
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CUSTOMERS
+TABLE
+
+
+SQL> connect
+Enter user-name: user2
+Enter password:
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+SQL> Select * from user1.customers l
+  2  ;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         2 Disha           pateriya        Sagar
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+6 rows selected.
+
+SQL> Select * from user1.customers ;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         2 Disha           pateriya        Sagar
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+6 rows selected.
+
+SQL> delete from customers where cid = 4;
+delete from customers where cid = 4
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from customers;
+Select * from customers
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> delete from user1.customers where cid = 4;
+delete from user1.customers where cid = 4
+                  *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> connect user1/pass1;
+Connected.
+SQL> grant delete on customers to user2;
+
+Grant succeeded.
+
+SQL> Select * from customersl
+  2  ;
+Select * from customersl
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from customers;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         2 Disha           pateriya        Sagar
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+6 rows selected.
+
+SQL> connect
+Enter user-name: show usert
+SP2-0306: Invalid option.
+Usage: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM|SYSBACKUP|SYSDG|SYSKM|SYSRAC}] [edition=value]]
+where <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+SQL> show user
+USER is "USER1"
+SQL> connect user2/pass2
+Connected.
+SQL> Select * from user1.customers;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         2 Disha           pateriya        Sagar
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+6 rows selected.
+
+SQL> delete from user1.customers where cid = 2;
+
+1 row deleted.
+
+SQL> Select * from user1.customers;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+SQL> truncate from user1.customers where cid = 3;
+truncate from user1.customers where cid = 3
+              *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> truncate * from user1.customers where cid = 3;
+truncate * from user1.customers where cid = 3
+           *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> truncate * from user1.customers where cid = 3;
+truncate * from user1.customers where cid = 3
+           *
+ERROR at line 1:
+ORA-03290: Invalid truncate command - missing CLUSTER or TABLE keyword
+
+
+SQL> Select * from user1.customers;
+
+       CID CNAME           SURNAME         CITY
+---------- --------------- --------------- ---------------
+         1 aayush          pateriya        Lalitppur
+         3 Raja            Solanki         SEhore
+         4 Rani            Parihar         Tirupati
+         5 Pavan           Choudhary       Tiruvalluvar
+         6 Rajani          Prasad          Tanjavur
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+
+SQL> create table engineer (eid number primary key ,ename varchar(15),surname varchar(15),email varchar(20),dept varchar(15));
+
+Table created.
+
+SQL> desc engineer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EID                                       NOT NULL NUMBER
+ ENAME                                              VARCHAR2(15)
+ SURNAME                                            VARCHAR2(15)
+ EMAIL                                              VARCHAR2(20)
+ DEPT                                               VARCHAR2(15)
+
+SQL> Select * from engineer;
+
+no rows selected
+
+SQL> insert into engineer values (1,'aayush','pateriya',l'
+  2  insert into engineer values (1,'aayush','pateriya',l'
+  3
+SQL> insert into engineer values (1,'aayush','pateriya','aayush45@gmail.com','IT');
+
+1 row created.
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+
+SQL> insert into engineer values (12,'bharati','patel','bharati45@gmail.com','OT');
+
+1 row created.
+
+SQL> insert into engineer values (3,'Ram','Mohan','Ram53@gmail.com','finance');
+
+1 row created.
+
+SQL> insert into engineer values (4,'Pavan','Lodhi','Pavanlodhi3@gmail.com','Sales');
+insert into engineer values (4,'Pavan','Lodhi','Pavanlodhi3@gmail.com','Sales')
+                                               *
+ERROR at line 1:
+ORA-12899: value too large for column "USER2"."ENGINEER"."EMAIL" (actual: 21,
+maximum: 20)
+
+
+SQL> insert into engineer values (4,'Pavan','Lodhi','Pavanl3@gmail.com','Sales');
+
+1 row created.
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+        12 bharati         patel           bharati45@gmail.com  OT
+         3 Ram             Mohan           Ram53@gmail.com      finance
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> update engineer set eid = 2 where  eid = 12;
+
+1 row updated.
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+         2 bharati         patel           bharati45@gmail.com  OT
+         3 Ram             Mohan           Ram53@gmail.com      finance
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+         2 bharati         patel           bharati45@gmail.com  OT
+         3 Ram             Mohan           Ram53@gmail.com      finance
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> Select * from engineer;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+         2 bharati         patel           bharati45@gmail.com  OT
+         3 Ram             Mohan           Ram53@gmail.com      finance
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> show user
+USER is "USER2"
+SQL> grant delete on engineer to user1;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from user2.enginner;
+Select * from user2.enginner
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user2.engineer;
+Select * from user2.engineer
+                    *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> delete * from user2.engineer where eid = 3;
+delete * from user2.engineer where eid = 3
+       *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> delete from user2.engineer where eid = 3;
+delete from user2.engineer where eid = 3
+                  *
+ERROR at line 1:
+ORA-01031: insufficient privileges
+
+
+SQL> delete from user1.engineer where eid = 3;
+delete from user1.engineer where eid = 3
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> show user
+USER is "USER1"
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$jM7YTwQQQIaJKpb5FORp1w==$0
+TABLE
+
+BIN$gsrn3igAQuCFN1y8BW+8jg==$0
+TABLE
+
+ENGINEER
+TABLE
+
+
+SQL> grant all on user1;
+grant all on user1
+                 *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> grant all on  engineer on user1;
+grant all on  engineer on user1
+                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> grant all on  engineer to  user1;
+
+Grant succeeded.
+
+SQL> grant all to user1;
+grant all to user1
+      *
+ERROR at line 1:
+ORA-01924: role 'ALL' not granted or does not exist
+
+
+SQL> grant all on  engineer on user1;
+grant all on  engineer on user1
+                       *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> grant all on  engineer to  user1;
+
+Grant succeeded.
+
+SQL> show user
+USER is "USER2"
+SQL> connect
+Enter user-name: user1/pass2
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect
+Enter user-name: user1/pass1
+Connected.
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$wT2WbLgvTQKsxAZxhUZWaQ==$0
+TABLE
+
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+CUSTOMERS
+TABLE
+
+
+SQL> Select * from user1.engineer ;
+Select * from user1.engineer
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from user2.engineer ;
+
+       EID ENAME           SURNAME         EMAIL                DEPT
+---------- --------------- --------------- -------------------- ---------------
+         1 aayush          pateriya        aayush45@gmail.com   IT
+         2 bharati         patel           bharati45@gmail.com  OT
+         3 Ram             Mohan           Ram53@gmail.com      finance
+         4 Pavan           Lodhi           Pavanl3@gmail.com    Sales
+
+SQL> show user;
+USER is "USER1"
+SQL> delete from engineer where eid = 3;
+delete from engineer where eid = 3
+            *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> delete from user2.engineer where eid = 3;
+
+1 row deleted.
+
+SQL> Select * from engineer;
+Select * from engineer
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from engineer;
+Select * from engineer
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+
+SQL> grant all on customer to user2;
+
+Grant succeeded.
+
+SQL> Select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    Akshay@unknownmail.com    7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+
+SQL> show user
+USER is "SYSTEM"
+SQL> grant all on user2;
+grant all on user2
+                 *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> grant all on  customer to user2;
+
+Grant succeeded.
+
+SQL> Select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    Akshay@unknownmail.com    7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL> show user;
+USER is "SYSTEM"
+SQL> select * from customerl;
+select * from customerl
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from customer;
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          2 Akshay                    Akshay@unknownmail.com    7455343453
+Sagar                                                 6745.54
+
+          3 Rajeshwari                rajeshwari65@yahoo.com    67754675
+NewYork                                               4564.52
+
+          4 Disha pateriya            disha56@gmail.com         677456456
+jaipur                                                6245.54
+
+
+CUSTOMER_ID NAME                      EMAIL                     PHONE
+----------- ------------------------- ------------------------- ------------
+CITY                                                    PRICE
+-------------------------------------------------- ----------
+          5 Aastha                    aastha56@gmail.com        677457654
+Malegaon                                              6245.56
+
+          9 TunTunmausi               tuntun5@bharatmail.com    665464545
+                                                      4564.52
+
+
+SQL> Select * from author;
+
+BNAME           TOTALPRICE WRITER                YEAR      PAGES   DISCOUNT
+--------------- ---------- --------------- ---------- ---------- ----------
+    FPRICE
+----------
+ifistay                324 gayle roman           1956        546
+
+
+python                4564 ayush                 2024        354       1506
+      3058
+
+arthshashra            344 chanakya              1567        345
+
+
+
+BNAME           TOTALPRICE WRITER                YEAR      PAGES   DISCOUNT
+--------------- ---------- --------------- ---------- ---------- ----------
+    FPRICE
+----------
+social science         435 chanakya              1344        543
+
+
+social studies        3654 ayushpateriya         2024        435       1206
+      2448
+
+
+SQL> Select * from tab order by columns ;
+Select * from tab order by columns
+                           *
+ERROR at line 1:
+ORA-00904: "COLUMNS": invalid identifier
+
+
+SQL> Select table_name , count(*) as totalcolumns from user_tab_columns
+  2  group by table_name order by total_columns ;
+group by table_name order by total_columns
+                             *
+ERROR at line 2:
+ORA-00904: "TOTAL_COLUMNS": invalid identifier
+
+
+SQL> Select table_name , count(*) as totalcolumns from user_tab_columns
+  2  group by table_name order by totalcolumns ;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+REPL_VALID_COMPAT
+           1
+
+VEER
+           1
+
+RP
+           1
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+AQ$_INTERNET_AGENT_PRIVS
+           2
+
+MVIEW$_ADV_PRETTY
+           2
+
+CITY
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+RELIGION_MAS
+           2
+
+CAST_MAS
+           2
+
+PROFESSION_MAS
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+TRAVEL
+           2
+
+AMOUNT
+           2
+
+TOTAL
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+CASTE_MASTER
+           2
+
+USERS
+           2
+
+USERS1
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+RELMASTER
+           2
+
+RELIGION_MASTER
+           2
+
+CAST_MASTER
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+PROFESSINAL_MASTER
+           2
+
+PROFESSION_MASTER
+           2
+
+VV
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_TEMP
+           3
+
+VEERPROJECT
+           3
+
+AQ$_INTERNET_AGENTS
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+HELP
+           3
+
+SUB_CASTE
+           3
+
+STOCK
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+BUYER
+           3
+
+BUY
+           3
+
+PROVIDER
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+PROVIDERS
+           3
+
+KEEPER
+           3
+
+TEACHERS
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+JOB
+           3
+
+BANK
+           3
+
+AYUSH
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+TABLES
+           3
+
+SECURITY
+           3
+
+SUB_CAST
+           3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRT_MDDL$
+           3
+
+MVIEW$_ADV_ROLLUP
+           4
+
+AQ$_KEY_SHARD_MAP
+           4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+STUDEN
+           4
+
+TRAINS
+           4
+
+RESERVE
+           4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+KHATA
+           4
+
+PRODUCT
+           4
+
+MESSAGE_MASTER
+           4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+DEPARTMENT
+           4
+
+DAPARTMENT
+           4
+
+HOTEL
+           4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+TRAINSS
+           4
+
+DATA
+           4
+
+STUDENTS
+           4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_USER$
+           5
+
+LOGMNR_TABCOMPART$
+           5
+
+LOGMNR_KOPM$
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_PROPS$
+           5
+
+LOGMNR_SHARD_TS
+           5
+
+LOGMNR_ATTRCOL$
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_DBNAME_UID_MAP
+           5
+
+MVIEW$_ADV_BASETABLE
+           5
+
+MVIEW$_ADV_ELIGIBLE
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_PARAMETERS
+           5
+
+COURSE
+           5
+
+STUDENT
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+NAUKAR
+           5
+
+TRAIN
+           5
+
+EMPLOYEES
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+EPLOYEES
+           5
+
+SCHOOL
+           5
+
+PRODUCTS
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+ORDERS
+           5
+
+CALCULATE
+           5
+
+TEST
+           5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+CHILD
+           5
+
+MASTER
+           5
+
+MVIEW_EXCEPTIONS
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_INDPART$
+           6
+
+LOGMNR_INDCOMPART$
+           6
+
+LOGMNR_TABPART$
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_IDNSEQ$
+           6
+
+LOGSTDBY$PLSQL
+           6
+
+MVIEW$_ADV_AJG
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_FJG
+           6
+
+MVIEW$_ADV_GC
+           6
+
+MVIEW$_ADV_EXCEPTIONS
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+AADHARCARD
+           6
+
+AADHAR
+           6
+
+UNI_FORM
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+ATTENDANCE
+           6
+
+LEAVE
+           6
+
+MESSAGING
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+CUSTOMER
+           6
+
+LOGMNR_GT_TAB_INCLUDE$
+           6
+
+LOGMNR_GT_USER_INCLUDE$
+           6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_CON$
+           7
+
+LOGMNR_CCOL$
+           7
+
+LOGMNR_LOBFRAG$
+           7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_INDSUBPART$
+           7
+
+LOGMNR_NTAB$
+           7
+
+LOGMNR_TABSUBPART$
+           7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_LOB$
+           7
+
+MVIEW$_ADV_INFO
+           7
+
+MVIEW$_ADV_JOURNAL
+           7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGSTDBY$FLASHBACK_SCN
+           7
+
+MVIEW$_ADV_LEVEL
+           7
+
+LOGMNR_DID$
+           7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGSTDBY$PARAMETERS
+           7
+
+RES
+           7
+
+PRINCE
+           7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+AUTHOR
+           7
+
+MVIEW_FILTER
+           8
+
+SCHEDULER_JOB_ARGS
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW_EVALUATIONS
+           8
+
+PRODUCT_PRIVS
+           8
+
+LOGMNR_ICOL$
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_IND$
+           8
+
+LOGMNR_REFCON$
+           8
+
+LOGMNRP_CTAS_PART_MAP
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_TS$
+           8
+
+LOGMNRC_CONCOL_GG
+           8
+
+LOGMNR_PARAMETER$
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGSTDBY$SCN
+           8
+
+LOGSTDBY$SKIP_TRANSACTION
+           8
+
+REPL_SUPPORT_MATRIX
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_INDCOL_GG
+           8
+
+LOGMNRC_SHARD_TS
+           8
+
+LOGMNRC_TSPART
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_TS
+           8
+
+MVIEW$_ADV_SQLDEPEND
+           8
+
+MVIEW$_ADV_FILTER
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+AQ$_QUEUE_TABLES
+           8
+
+AQ$_SCHEDULES
+           8
+
+SCHEDULER_JOB_ARGS_TBL
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGSTDBY$APPLY_PROGRESS
+           8
+
+SQLPLUS_PRODUCT_PROFILE
+           8
+
+AADHARC
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+PAYROLL
+           8
+
+OL$NODES
+           8
+
+LOGMNR_GT_XID_INCLUDE$
+           8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW_FILTERINSTANCE
+           9
+
+SCHEDULER_PROGRAM_ARGS
+           9
+
+LOGMNR_ERROR$
+           9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_GSII
+           9
+
+LOGMNRC_USER
+           9
+
+MVIEW$_ADV_FILTERINSTANCE
+           9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_CLIQUE
+           9
+
+SCHEDULER_PROGRAM_ARGS_TBL
+           9
+
+CUSTOMERS
+           9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW_LOG
+          10
+
+LOGMNR_CDEF$
+          10
+
+LOGMNR_SUBCOLTYPE$
+          10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_ENC$
+          10
+
+ROLLING$EVENTS
+          10
+
+LOGSTDBY$SKIP_SUPPORT
+          10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_DICTSTATE$
+          10
+
+LOGMNR_PROCESSED_LOG$
+          11
+
+LOGMNR_AGE_SPILL$
+          11
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_RESTART_CKPT_TXINFO$
+          11
+
+LOGSTDBY$SKIP
+          11
+
+MVIEW$_ADV_LOG
+          11
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_GLOBAL$
+          11
+
+MVIEW_WORKLOAD
+          12
+
+MVIEW_RECOMMENDATIONS
+          12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_CONTAINER$
+          12
+
+LOGMNR_LOGMNR_BUILDLOG
+          12
+
+LOGMNR_OPQTYPE$
+          12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_SESSION_EVOLVE$
+          12
+
+LOGMNR_COLTYPE$
+          13
+
+ROLLING$STATISTICS
+          13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_UID$
+          13
+
+LOGMNR_SPILL$
+          13
+
+LOGSTDBY$HISTORY
+          13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_GSBA
+          13
+
+LOGMNR_PDB_INFO$
+          13
+
+LOGMNR_TAB$
+          14
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_SEQ_GG
+          14
+
+ROLLING$CONNECTIONS
+          14
+
+ROLLING$DIRECTIVES
+          14
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+OL$
+          14
+
+PRO_VIEW
+          15
+
+LOGMNRC_CON_GG
+          15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_PROFILE_PLSQL_STATS$
+          15
+
+ROLLING$PARAMETERS
+          15
+
+LOGMNR_RESTART_CKPT$
+          15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_WORKLOAD
+          15
+
+LOGSTDBY$EVENTS
+          15
+
+EMPLOYEE
+          15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRC_IND_GG
+          16
+
+INFORMATION_VIEW
+          17
+
+LOGMNR_SEED$
+          17
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_OBJ$
+          17
+
+LOGMNR_FILTER$
+          17
+
+LOGSTDBY$EDS_TABLES
+          18
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+AQ$_QUEUES
+          18
+
+PROFILE_VIEW
+          19
+
+ROLLING$DATABASES
+          19
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGSTDBY$APPLY_MILESTONE
+          19
+
+PROFILES
+          19
+
+LOGMNR_COL$
+          20
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_OUTPUT
+          20
+
+OL$HINTS
+          21
+
+ROLLING$STATUS
+          22
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_ATTRIBUTE$
+          24
+
+LOGMNR_TYPE$
+          25
+
+LOGMNR_PROFILE_TABLE_STATS$
+          25
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+ROLLING$PLAN
+          25
+
+LOGMNR_PARTOBJ$
+          26
+
+LOGMNR_SESSION$
+          27
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+MVIEW$_ADV_PLAN
+          27
+
+LOGMNR_DICTIONARY$
+          30
+
+LOGMNR_LOG$
+          31
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNR_SESSION_ACTIONS$
+          34
+
+REDO_DB
+          50
+
+REDO_LOG
+          52
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRGGC_GTLO
+          52
+
+LOGMNRC_GTLO
+          52
+
+LOGMNRC_GTCS
+          54
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+LOGMNRGGC_GTCS
+          54
+
+
+220 rows selected.
+
+SQL> Select table_name , count(*) as totalcolumns from user_tab_columns
+  2  group by table_name order by totalcolumns  fetch first 3 rows only;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+REPL_VALID_COMPAT
+           1
+
+VEER
+           1
+
+RP
+           1
+
+
+SQL> Select table_name,count(*) as totalcolumns from
+  2  user_tab_columns group by table_name order by totalcolumns asc fetch first 10 rows only;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+VEER
+           1
+
+RP
+           1
+
+REPL_VALID_COMPAT
+           1
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+CAST_MAS
+           2
+
+RELIGION_MAS
+           2
+
+CITY
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+PROFESSION_MAS
+           2
+
+MVIEW$_ADV_PRETTY
+           2
+
+AQ$_INTERNET_AGENT_PRIVS
+           2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTALCOLUMNS
+------------
+TRAVEL
+           2
+
+
+10 rows selected.
+
+SQL> user_tab_columns group by table_name where count(total_columns) = 5  order by totalcolumns asc fetch first 10 rows only ;
+SP2-0734: unknown command beginning "user_tab_c..." - rest of line ignored.
+SQL> user_tab_columns group by table_name where count(total_columns) = 5  k
+SP2-0734: unknown command beginning "user_tab_c..." - rest of line ignored.
+SQL> user_tab_columns group by table_name where count(total_columns) = 5  ;
+SP2-0734: unknown command beginning "user_tab_c..." - rest of line ignored.
+SQL> Select table_name,count(*) as totalcolumns from user_tab_columns
+  2  where count(total_columns_ = 5;
+where count(total_columns_ = 5
+      *
+ERROR at line 2:
+ORA-00934: group function is not allowed here
+
+
+SQL> Select table_name,count(*) as totalcolumns from user_tab_columns
+  2  where count(total_columns_ = 5;
+where count(total_columns_ = 5
+      *
+ERROR at line 2:
+ORA-00934: group function is not allowed here
+
+
+SQL> Select * from user_tab_columns where
+  2  count(*) =5 ;
+count(*) =5
+*
+ERROR at line 2:
+ORA-00934: group function is not allowed here
+
+
+SQL> Select * from user_tab_columns where count(*) =5 ;
+Select * from user_tab_columns where count(*) =5
+                                     *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> Select * from user_tab_columns where count(total_columns) =5 ;
+Select * from user_tab_columns where count(total_columns) =5
+                                     *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> user_tab_columns group by table_name where count(total_columns) = 5  order by totalcolumns asc fetch first 10 rows only ;
+SP2-0734: unknown command beginning "user_tab_c..." - rest of line ignored.
+
+SQL> Select count(table_name) from tab;
+Select count(table_name) from tab
+             *
+ERROR at line 1:
+ORA-00904: "TABLE_NAME": invalid identifier
+
+
+SQL> Select count(table_name) from user_tab_columns;
+
+COUNT(TABLE_NAME)
+-----------------
+             2162
+
+SQL> Select table_name,count(*) as total_columns from user_tab_columns order by total_columns group by table_name ;
+Select table_name,count(*) as total_columns from user_tab_columns order by total_columns group by table_name
+                                                                                         *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> Select table_name,count(*) as total_columns from user_tab_columns order by total_columns;
+Select table_name,count(*) as total_columns from user_tab_columns order by total_columns
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select table_name,count(*) as total_columns from user_tab_columns group by table_name order by total_columns;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+REPL_VALID_COMPAT
+            1
+
+VEER
+            1
+
+RP
+            1
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AQ$_INTERNET_AGENT_PRIVS
+            2
+
+MVIEW$_ADV_PRETTY
+            2
+
+CITY
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+RELIGION_MAS
+            2
+
+CAST_MAS
+            2
+
+PROFESSION_MAS
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TRAVEL
+            2
+
+AMOUNT
+            2
+
+TOTAL
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CASTE_MASTER
+            2
+
+USERS
+            2
+
+USERS1
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+RELMASTER
+            2
+
+RELIGION_MASTER
+            2
+
+CAST_MASTER
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PROFESSINAL_MASTER
+            2
+
+PROFESSION_MASTER
+            2
+
+VV
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_TEMP
+            3
+
+VEERPROJECT
+            3
+
+AQ$_INTERNET_AGENTS
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+HELP
+            3
+
+SUB_CASTE
+            3
+
+STOCK
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+BUYER
+            3
+
+BUY
+            3
+
+PROVIDER
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PROVIDERS
+            3
+
+KEEPER
+            3
+
+TEACHERS
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+JOB
+            3
+
+BANK
+            3
+
+AYUSH
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TABLES
+            3
+
+SECURITY
+            3
+
+SUB_CAST
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRT_MDDL$
+            3
+
+MVIEW$_ADV_ROLLUP
+            4
+
+AQ$_KEY_SHARD_MAP
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+STUDEN
+            4
+
+TRAINS
+            4
+
+RESERVE
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+KHATA
+            4
+
+PRODUCT
+            4
+
+MESSAGE_MASTER
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+DEPARTMENT
+            4
+
+DAPARTMENT
+            4
+
+HOTEL
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TRAINSS
+            4
+
+DATA
+            4
+
+STUDENTS
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_USER$
+            5
+
+LOGMNR_TABCOMPART$
+            5
+
+LOGMNR_KOPM$
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_PROPS$
+            5
+
+LOGMNR_SHARD_TS
+            5
+
+LOGMNR_ATTRCOL$
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_DBNAME_UID_MAP
+            5
+
+MVIEW$_ADV_BASETABLE
+            5
+
+MVIEW$_ADV_ELIGIBLE
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_PARAMETERS
+            5
+
+COURSE
+            5
+
+STUDENT
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+NAUKAR
+            5
+
+TRAIN
+            5
+
+EMPLOYEES
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+EPLOYEES
+            5
+
+SCHOOL
+            5
+
+PRODUCTS
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ORDERS
+            5
+
+CALCULATE
+            5
+
+TEST
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CHILD
+            5
+
+MASTER
+            5
+
+MVIEW_EXCEPTIONS
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_INDPART$
+            6
+
+LOGMNR_INDCOMPART$
+            6
+
+LOGMNR_TABPART$
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_IDNSEQ$
+            6
+
+LOGSTDBY$PLSQL
+            6
+
+MVIEW$_ADV_AJG
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_FJG
+            6
+
+MVIEW$_ADV_GC
+            6
+
+MVIEW$_ADV_EXCEPTIONS
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AADHARCARD
+            6
+
+AADHAR
+            6
+
+UNI_FORM
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ATTENDANCE
+            6
+
+LEAVE
+            6
+
+MESSAGING
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CUSTOMER
+            6
+
+LOGMNR_GT_TAB_INCLUDE$
+            6
+
+LOGMNR_GT_USER_INCLUDE$
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_CON$
+            7
+
+LOGMNR_CCOL$
+            7
+
+LOGMNR_LOBFRAG$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_INDSUBPART$
+            7
+
+LOGMNR_NTAB$
+            7
+
+LOGMNR_TABSUBPART$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_LOB$
+            7
+
+MVIEW$_ADV_INFO
+            7
+
+MVIEW$_ADV_JOURNAL
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$FLASHBACK_SCN
+            7
+
+MVIEW$_ADV_LEVEL
+            7
+
+LOGMNR_DID$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$PARAMETERS
+            7
+
+RES
+            7
+
+PRINCE
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AUTHOR
+            7
+
+MVIEW_FILTER
+            8
+
+SCHEDULER_JOB_ARGS
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW_EVALUATIONS
+            8
+
+PRODUCT_PRIVS
+            8
+
+LOGMNR_ICOL$
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_IND$
+            8
+
+LOGMNR_REFCON$
+            8
+
+LOGMNRP_CTAS_PART_MAP
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_TS$
+            8
+
+LOGMNRC_CONCOL_GG
+            8
+
+LOGMNR_PARAMETER$
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$SCN
+            8
+
+LOGSTDBY$SKIP_TRANSACTION
+            8
+
+REPL_SUPPORT_MATRIX
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_INDCOL_GG
+            8
+
+LOGMNRC_SHARD_TS
+            8
+
+LOGMNRC_TSPART
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_TS
+            8
+
+MVIEW$_ADV_SQLDEPEND
+            8
+
+MVIEW$_ADV_FILTER
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AQ$_QUEUE_TABLES
+            8
+
+AQ$_SCHEDULES
+            8
+
+SCHEDULER_JOB_ARGS_TBL
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$APPLY_PROGRESS
+            8
+
+SQLPLUS_PRODUCT_PROFILE
+            8
+
+AADHARC
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PAYROLL
+            8
+
+OL$NODES
+            8
+
+LOGMNR_GT_XID_INCLUDE$
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW_FILTERINSTANCE
+            9
+
+SCHEDULER_PROGRAM_ARGS
+            9
+
+LOGMNR_ERROR$
+            9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_GSII
+            9
+
+LOGMNRC_USER
+            9
+
+MVIEW$_ADV_FILTERINSTANCE
+            9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_CLIQUE
+            9
+
+SCHEDULER_PROGRAM_ARGS_TBL
+            9
+
+CUSTOMERS
+            9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW_LOG
+           10
+
+LOGMNR_CDEF$
+           10
+
+LOGMNR_SUBCOLTYPE$
+           10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_ENC$
+           10
+
+ROLLING$EVENTS
+           10
+
+LOGSTDBY$SKIP_SUPPORT
+           10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_DICTSTATE$
+           10
+
+LOGMNR_PROCESSED_LOG$
+           11
+
+LOGMNR_AGE_SPILL$
+           11
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_RESTART_CKPT_TXINFO$
+           11
+
+LOGSTDBY$SKIP
+           11
+
+MVIEW$_ADV_LOG
+           11
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_GLOBAL$
+           11
+
+MVIEW_WORKLOAD
+           12
+
+MVIEW_RECOMMENDATIONS
+           12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_CONTAINER$
+           12
+
+LOGMNR_LOGMNR_BUILDLOG
+           12
+
+LOGMNR_OPQTYPE$
+           12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_SESSION_EVOLVE$
+           12
+
+LOGMNR_COLTYPE$
+           13
+
+ROLLING$STATISTICS
+           13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_UID$
+           13
+
+LOGMNR_SPILL$
+           13
+
+LOGSTDBY$HISTORY
+           13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_GSBA
+           13
+
+LOGMNR_PDB_INFO$
+           13
+
+LOGMNR_TAB$
+           14
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_SEQ_GG
+           14
+
+ROLLING$CONNECTIONS
+           14
+
+ROLLING$DIRECTIVES
+           14
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+OL$
+           14
+
+PRO_VIEW
+           15
+
+LOGMNRC_CON_GG
+           15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_PROFILE_PLSQL_STATS$
+           15
+
+ROLLING$PARAMETERS
+           15
+
+LOGMNR_RESTART_CKPT$
+           15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_WORKLOAD
+           15
+
+LOGSTDBY$EVENTS
+           15
+
+EMPLOYEE
+           15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_IND_GG
+           16
+
+INFORMATION_VIEW
+           17
+
+LOGMNR_SEED$
+           17
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_OBJ$
+           17
+
+LOGMNR_FILTER$
+           17
+
+LOGSTDBY$EDS_TABLES
+           18
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AQ$_QUEUES
+           18
+
+PROFILE_VIEW
+           19
+
+ROLLING$DATABASES
+           19
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$APPLY_MILESTONE
+           19
+
+PROFILES
+           19
+
+LOGMNR_COL$
+           20
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_OUTPUT
+           20
+
+OL$HINTS
+           21
+
+ROLLING$STATUS
+           22
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_ATTRIBUTE$
+           24
+
+LOGMNR_TYPE$
+           25
+
+LOGMNR_PROFILE_TABLE_STATS$
+           25
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ROLLING$PLAN
+           25
+
+LOGMNR_PARTOBJ$
+           26
+
+LOGMNR_SESSION$
+           27
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_PLAN
+           27
+
+LOGMNR_DICTIONARY$
+           30
+
+LOGMNR_LOG$
+           31
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_SESSION_ACTIONS$
+           34
+
+REDO_DB
+           50
+
+REDO_LOG
+           52
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRGGC_GTLO
+           52
+
+LOGMNRC_GTLO
+           52
+
+LOGMNRC_GTCS
+           54
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRGGC_GTCS
+           54
+
+
+220 rows selected.
+
+SQL> Select * from profiles;
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+         2 aayushpateriya  ayush@gmail.com      gapalganj sagar sagar
+UTTAR PRADESH   aayush
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+         1          1          5        101 Male     <400000         light
+5.8     Single          aayush               aayush
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+
+         3 Mahak Dubey     mahak@gmail.com      Narahat         Lalitpur
+UTTRAKHAND      5676567565
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+         1          1          8        102 Male     <50000          light
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+5.6     Single          mahaka               mahaka
+
+         4 Rahi Richhariya Rahi@gmail.com       malthone        Bhopal
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+MADHYA PRADESH  1234323456
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+         2          1         10        109 Female   <500000         light
+5.8     Single          mahira               asdf
+
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+         1 vee             veer@gmail.com       Sagar MP        Sagar
+UTTAR PRADESH   9770225248
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+         1          2         15        101 Male     <20000          Dark
+5       Single          veersinghlodhi       veersingh
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+
+         5 RadheBhaiya     Radhe@gmail.com      Badaun Satna    Satna
+PUNJAB          4534564567
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+         1          2          2        103 Male     <500000         medium
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+5.8     Single          radhey               Radhey
+
+         6 aman Kaushik    aman@gmail.com       gopalganj             sagar
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+PUNJAB          4534565678
+FFD8FFE000104A46494600010100000100010000FFDB008400080808080908090A0A090D0E0C0E0D
+1311101011131C14161416141C2B1B1F1B1B1F1B2B262E2523252E2644352F2F35444E423E424E5F
+
+      PRCD PRNAME          EMAIL                ADDRESS         CITY
+---------- --------------- -------------------- --------------- ---------------
+STATE           CONTACT
+--------------- ----------
+PROFILEPHOTO
+--------------------------------------------------------------------------------
+  RELIGION       CAST    SUBCAST PROFESSION GENDER   INCOME          COMPLEXI
+---------- ---------- ---------- ---------- -------- --------------- --------
+HEIGHT  MARITAL         USERNAME             PASSWORD
+------- --------------- -------------------- --------------------
+         1          1          5        113 Male     <500000         light
+5.8     Single          amanpanditsaga       pandit
+
+
+6 rows selected.
+
+SQL> Select count(*) from user_tab_columns group by table_name order by  total_columns;
+Select count(*) from user_tab_columns group by table_name order by  total_columns
+                                                                    *
+ERROR at line 1:
+ORA-00904: "TOTAL_COLUMNS": invalid identifier
+
+
+SQL> Select table_name ,count(*) from user_tab_columns group by table_name having count(*) =8;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+MVIEW_FILTER
+         8
+
+SCHEDULER_JOB_ARGS
+         8
+
+MVIEW_EVALUATIONS
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+PRODUCT_PRIVS
+         8
+
+LOGMNR_ICOL$
+         8
+
+LOGMNR_IND$
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+LOGMNR_REFCON$
+         8
+
+LOGMNRP_CTAS_PART_MAP
+         8
+
+LOGMNR_TS$
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+LOGMNRC_CONCOL_GG
+         8
+
+LOGMNR_PARAMETER$
+         8
+
+LOGSTDBY$SCN
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+LOGSTDBY$SKIP_TRANSACTION
+         8
+
+REPL_SUPPORT_MATRIX
+         8
+
+LOGMNRC_INDCOL_GG
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+LOGMNRC_SHARD_TS
+         8
+
+LOGMNRC_TSPART
+         8
+
+LOGMNRC_TS
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+MVIEW$_ADV_SQLDEPEND
+         8
+
+MVIEW$_ADV_FILTER
+         8
+
+AQ$_QUEUE_TABLES
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+AQ$_SCHEDULES
+         8
+
+SCHEDULER_JOB_ARGS_TBL
+         8
+
+LOGSTDBY$APPLY_PROGRESS
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+SQLPLUS_PRODUCT_PROFILE
+         8
+
+AADHARC
+         8
+
+PAYROLL
+         8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+  COUNT(*)
+----------
+OL$NODES
+         8
+
+LOGMNR_GT_XID_INCLUDE$
+         8
+
+
+29 rows selected.
+
+SQL> Select table_name,count(*) as column_count from user_tab_columns group by table_name order by
+  2  column_count having count(*) = 10;
+column_count having count(*) = 10
+             *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended
+
+
+SQL> Select table_name,count(*) as column_count from user_tab_columns group by table_name having
+  2  count(*) =15;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+COLUMN_COUNT
+------------
+PRO_VIEW
+          15
+
+LOGMNRC_CON_GG
+          15
+
+LOGMNR_PROFILE_PLSQL_STATS$
+          15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+COLUMN_COUNT
+------------
+ROLLING$PARAMETERS
+          15
+
+LOGMNR_RESTART_CKPT$
+          15
+
+MVIEW$_ADV_WORKLOAD
+          15
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+COLUMN_COUNT
+------------
+LOGSTDBY$EVENTS
+          15
+
+EMPLOYEE
+          15
+
+
+8 rows selected.
+
+SQL> Select * from employee;
+
+no rows selected
+
+SQL> desc employee;'
+SP2-0565: Illegal identifier.
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPID                                     NOT NULL NUMBER(3)
+ FIRSTNAME                                          VARCHAR2(8)
+ LASTNAME                                           VARCHAR2(8)
+ EMAIL                                              VARCHAR2(15)
+ CONTACT                                            NUMBER(11)
+ GENDER                                             VARCHAR2(8)
+ BIRTH                                              DATE
+ ADDRESS                                            VARCHAR2(15)
+ HIRINGDATE                                         DATE
+ DEPTID                                             NUMBER(3)
+ JOBID                                              NUMBER(3)
+ SALARY                                             VARCHAR2(7)
+ JOBSTATUS                                          VARCHAR2(15)
+ USERNAME                                           VARCHAR2(15)
+ PASSWORD                                           VARCHAR2(15)
+
+SQL> select count(*) from employee;
+
+  COUNT(*)
+----------
+         0
+
+SQL> Select table_name , count(*) as total_columns from user_tab_columns
+  2  having count(*)<15;
+Select table_name , count(*) as total_columns from user_tab_columns
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select table_name , count(*) as total_columns from user_tab_columns
+  2   group by  table_name having count(*)<15;
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW_WORKLOAD
+           12
+
+MVIEW_LOG
+           10
+
+MVIEW_FILTER
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW_FILTERINSTANCE
+            9
+
+SCHEDULER_JOB_ARGS
+            8
+
+MVIEW_RECOMMENDATIONS
+           12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+SCHEDULER_PROGRAM_ARGS
+            9
+
+MVIEW_EVALUATIONS
+            8
+
+MVIEW_EXCEPTIONS
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PRODUCT_PRIVS
+            8
+
+LOGMNR_CON$
+            7
+
+LOGMNR_CONTAINER$
+           12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_CDEF$
+           10
+
+LOGMNR_CCOL$
+            7
+
+LOGMNR_ICOL$
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_LOBFRAG$
+            7
+
+LOGMNR_INDPART$
+            6
+
+LOGMNR_INDSUBPART$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_INDCOMPART$
+            6
+
+LOGMNR_LOGMNR_BUILDLOG
+           12
+
+LOGMNR_NTAB$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_OPQTYPE$
+           12
+
+LOGMNR_SUBCOLTYPE$
+           10
+
+LOGMNR_IND$
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_USER$
+            5
+
+LOGMNR_TABPART$
+            6
+
+LOGMNR_TABSUBPART$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_TABCOMPART$
+            5
+
+LOGMNR_COLTYPE$
+           13
+
+LOGMNR_LOB$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_KOPM$
+            5
+
+LOGMNR_PROPS$
+            5
+
+LOGMNR_ENC$
+           10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_REFCON$
+            8
+
+LOGMNR_IDNSEQ$
+            6
+
+LOGMNRP_CTAS_PART_MAP
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_SHARD_TS
+            5
+
+LOGMNR_TAB$
+           14
+
+LOGMNR_ATTRCOL$
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_TS$
+            8
+
+LOGMNRC_SEQ_GG
+           14
+
+LOGMNRC_CONCOL_GG
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_PARAMETER$
+            8
+
+MVIEW$_ADV_INFO
+            7
+
+MVIEW$_ADV_JOURNAL
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ROLLING$CONNECTIONS
+           14
+
+ROLLING$DIRECTIVES
+           14
+
+ROLLING$EVENTS
+           10
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ROLLING$STATISTICS
+           13
+
+LOGMNR_UID$
+           13
+
+LOGMNRC_DBNAME_UID_MAP
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_PROCESSED_LOG$
+           11
+
+LOGMNR_SPILL$
+           13
+
+LOGMNR_AGE_SPILL$
+           11
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_RESTART_CKPT_TXINFO$
+           11
+
+LOGMNR_ERROR$
+            9
+
+LOGSTDBY$SCN
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$FLASHBACK_SCN
+            7
+
+LOGSTDBY$PLSQL
+            6
+
+LOGSTDBY$SKIP_TRANSACTION
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGSTDBY$SKIP
+           11
+
+LOGSTDBY$SKIP_SUPPORT
+           10
+
+LOGSTDBY$HISTORY
+           13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+REPL_VALID_COMPAT
+            1
+
+REPL_SUPPORT_MATRIX
+            8
+
+AQ$_INTERNET_AGENT_PRIVS
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_INDCOL_GG
+            8
+
+LOGMNRC_SHARD_TS
+            8
+
+LOGMNRC_TSPART
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_TS
+            8
+
+LOGMNRC_GSII
+            9
+
+LOGMNRC_GSBA
+           13
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRC_USER
+            9
+
+MVIEW$_ADV_BASETABLE
+            5
+
+MVIEW$_ADV_SQLDEPEND
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_PRETTY
+            2
+
+MVIEW$_ADV_TEMP
+            3
+
+MVIEW$_ADV_FILTER
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_LOG
+           11
+
+MVIEW$_ADV_FILTERINSTANCE
+            9
+
+MVIEW$_ADV_LEVEL
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_ROLLUP
+            4
+
+MVIEW$_ADV_AJG
+            6
+
+MVIEW$_ADV_FJG
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_GC
+            6
+
+MVIEW$_ADV_CLIQUE
+            9
+
+MVIEW$_ADV_ELIGIBLE
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MVIEW$_ADV_EXCEPTIONS
+            6
+
+MVIEW$_ADV_PARAMETERS
+            5
+
+LOGMNR_SESSION_EVOLVE$
+           12
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_GLOBAL$
+           11
+
+LOGMNR_PDB_INFO$
+           13
+
+LOGMNR_DID$
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AQ$_QUEUE_TABLES
+            8
+
+AQ$_KEY_SHARD_MAP
+            4
+
+AQ$_SCHEDULES
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNR_DICTSTATE$
+           10
+
+VEERPROJECT
+            3
+
+SCHEDULER_PROGRAM_ARGS_TBL
+            9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+SCHEDULER_JOB_ARGS_TBL
+            8
+
+LOGSTDBY$PARAMETERS
+            7
+
+LOGSTDBY$APPLY_PROGRESS
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AQ$_INTERNET_AGENTS
+            3
+
+SQLPLUS_PRODUCT_PROFILE
+            8
+
+HELP
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CITY
+            2
+
+STUDEN
+            4
+
+RELIGION_MAS
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CAST_MAS
+            2
+
+SUB_CASTE
+            3
+
+PROFESSION_MAS
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+COURSE
+            5
+
+STUDENT
+            5
+
+AADHARCARD
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+AADHAR
+            6
+
+AADHARC
+            8
+
+NAUKAR
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TRAIN
+            5
+
+EMPLOYEES
+            5
+
+EPLOYEES
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+SCHOOL
+            5
+
+RES
+            7
+
+TRAINS
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+RESERVE
+            4
+
+TRAVEL
+            2
+
+STOCK
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+BUYER
+            3
+
+BUY
+            3
+
+KHATA
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PRODUCT
+            4
+
+PROVIDER
+            3
+
+PROVIDERS
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+KEEPER
+            3
+
+AMOUNT
+            2
+
+TOTAL
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TEACHERS
+            3
+
+UNI_FORM
+            6
+
+CUSTOMERS
+            9
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PRODUCTS
+            5
+
+ORDERS
+            5
+
+CASTE_MASTER
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MESSAGE_MASTER
+            4
+
+JOB
+            3
+
+DEPARTMENT
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+ATTENDANCE
+            6
+
+LEAVE
+            6
+
+PAYROLL
+            8
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+MESSAGING
+            6
+
+DAPARTMENT
+            4
+
+HOTEL
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+BANK
+            3
+
+USERS
+            2
+
+AYUSH
+            3
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TABLES
+            3
+
+CALCULATE
+            5
+
+PRINCE
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TRAINSS
+            4
+
+VEER
+            1
+
+USERS1
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+TEST
+            5
+
+CHILD
+            5
+
+MASTER
+            5
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+SECURITY
+            3
+
+DATA
+            4
+
+STUDENTS
+            4
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+RELMASTER
+            2
+
+RELIGION_MASTER
+            2
+
+CAST_MASTER
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+PROFESSINAL_MASTER
+            2
+
+SUB_CAST
+            3
+
+PROFESSION_MASTER
+            2
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+RP
+            1
+
+VV
+            2
+
+AUTHOR
+            7
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+CUSTOMER
+            6
+
+LOGMNR_GT_TAB_INCLUDE$
+            6
+
+OL$
+           14
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+OL$NODES
+            8
+
+LOGMNR_GT_XID_INCLUDE$
+            8
+
+LOGMNR_GT_USER_INCLUDE$
+            6
+
+
+TABLE_NAME
+--------------------------------------------------------------------------------
+TOTAL_COLUMNS
+-------------
+LOGMNRT_MDDL$
+            3
+
+
+181 rows selected.
+
+SQL>                                                                                              
