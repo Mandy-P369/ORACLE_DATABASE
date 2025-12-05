@@ -1,0 +1,529 @@
+		PL/SQL
+
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Fri Dec 5 09:43:52 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> edit c:/oracle/prog1.sql
+
+SQL> @ c:/oracle/prog1.sql
+SP2-0640: Not connected
+SQL> connect
+Enter user-name: prince
+Enter password:
+Connected.
+SQL> @ c:/oracle/prog1.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> @ c:/oracle/prog1.sql
+My first PLSQL program
+
+PL/SQL procedure successfully completed.
+
+SQL> start c:/oracle/prog1.sql
+My first PLSQL program
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog1.sql
+
+SQL> ed prog2.sql
+
+SQL> ed c:/oracle/prog2.sql
+
+SQL> @ c:/oracle/prog2.sql
+30
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog2.sql
+
+SQL> @ c:/oracle/prog2.sql
+Sum is 30
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog2.sql
+
+SQL> ed c:/oracle/prog3.sql
+
+SQL> @ c:/oracle/prog3.sql
+Enter value for price: 100
+old   6:        price:=&price;
+new   6:        price:=100;
+Enter value for qty: 6
+old   7:        qty:=&qty;
+new   7:        qty:=6;
+        total=price*qty;
+             *
+ERROR at line 8:
+ORA-06550: line 8, column 7:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 9, column 2:
+PLS-00103: Encountered the symbol "DBMS_OUTPUT"
+ORA-06550: line 9, column 44:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( , * % & - + / at mod remainder rem <an identifier>
+<a double-quoted delimited-identifier> <an exponent (**)> as
+from into || multiset bulk
+
+
+SQL> ed c:/oracle/prog3.sql
+
+SQL> @ c:/oracle/prog3.sql
+Enter value for price: 100
+old   6:        price:=&price;
+new   6:        price:=100;
+Enter value for qty: 5
+old   7:        qty:=&qty;
+new   7:        qty:=5;
+Total is 500
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog3.sql
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+DOCTORS                        TABLE
+PATIENTS                       TABLE
+DEVELOPERS                     TABLE
+EMPLOYEES                      TABLE
+CUSTOMERS3                     TABLE
+CUSTOMERS                      TABLE
+CUSTOMERS2                     TABLE
+CUSTOMERS4                     TABLE
+CUSTOMERS5                     TABLE
+CUSTOMERS6                     TABLE
+CUSTOMERS7                     TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+CUST10                         TABLE
+PRODUCTS                       TABLE
+PRODUCTS2                      TABLE
+ACCOUNTS                       TABLE
+EMP                            TABLE
+TRAINS                         TABLE
+CRICKETERS                     TABLE
+RESERVATION                    TABLE
+WORKERS                        TABLE
+SALARY                         TABLE
+MEMBERS                        TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+BOOKS                          TABLE
+ISSUE                          TABLE
+EMPS                           TABLE
+TEST                           TABLE
+EXAM                           TABLE
+SAMPLE                         TABLE
+EMP1                           TABLE
+SAMPLE2                        TABLE
+PARENT                         TABLE
+CHILD                          TABLE
+EMP2                           TABLE
+
+TNAME                          TABTYPE  CLUSTERID
+------------------------------ ------- ----------
+CITIES                         TABLE
+STOCK                          TABLE
+SALES                          TABLE
+RES2                           TABLE
+FOOTBALL                       TABLE
+
+38 rows selected.
+
+SQL> select * from stock;
+
+    PRODCD NAME       COMPANY
+---------- ---------- ----------
+       101 Monitor    Samsung
+       102 Printer    Epson
+       103 Mouse      Logitech
+       104 Processor  AMD
+
+SQL> insert into stock values(&prodcd,'&pname','&company');
+Enter value for prodcd: 105
+Enter value for pname: Scanner
+Enter value for company: HP
+old   1: insert into stock values(&prodcd,'&pname','&company')
+new   1: insert into stock values(105,'Scanner','HP')
+
+1 row created.
+
+SQL>
+SQL> ed c:/oracle/prog3.sql
+
+SQL> @ c:/oracle/prog3.sql
+Enter value for price: 56
+old   6:        price:=&price;
+new   6:        price:=56;
+Enter value for qty: 6
+old   7:        qty:=&qty;
+new   7:        qty:=6;
+Total is 336
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog3.sql
+
+SQL> @ c:/oracle/prog3.sql
+Enter value for mrp: 200
+old   6:        price:=&MRP;
+new   6:        price:=200;
+Enter value for units: 5
+old   7:        qty:=&units;
+new   7:        qty:=5;
+Total is 1000
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog3.sql
+
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+SP2-0552: Bind variable "DBMS_OUTPUT" not declared.
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+SP2-0552: Bind variable "DBMS_OUTPUT" not declared.
+SQL> ed c:/oracle/prog4.sql
+
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+SP2-0552: Bind variable "DBMS_OUTPUT" not declared.
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+                dbms_output.put_line('You can vote');
+                *
+ERROR at line 6:
+ORA-06550: line 6, column 3:
+PLS-00103: Encountered the symbol "DBMS_OUTPUT" when expecting one of the
+following:
+* & - + / at mod remainder rem then <an exponent (**)> and or
+|| multiset
+The symbol "*" was substituted for "DBMS_OUTPUT" to continue.
+ORA-06550: line 6, column 39:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( * % & - + / at mod remainder rem then <an exponent (**)>
+and or ||
+
+
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+end;
+   *
+ERROR at line 11:
+ORA-06550: line 11, column 4:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+if
+
+
+SQL> ed c:/oracle/prog4.sql
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 20
+old   4:        age:=&age;
+new   4:        age:=20;
+You can vote
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/prog4.sql
+Enter value for age: 12
+old   4:        age:=&age;
+new   4:        age:=12;
+You can not vote
+
+PL/SQL procedure successfully completed.
+
+SQL> 20
+SP2-0226: Invalid line number
+SQL> ed c:/oracle/prog4.sql
+
+SQL> ed c:/oracle/prog4.sql
+
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+SP2-0552: Bind variable "THEN" not declared.
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+SP2-0552: Bind variable "THEN" not declared.
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+        if a==1
+             *
+ERROR at line 5:
+ORA-06550: line 5, column 7:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+( - + all case mod new null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable> any
+avg count current max min prior some sql stddev sum variance
+execute forall merge time timestamp interval date
+<a string literal with character set specification>
+<a number> <a single-quoted SQL string> pipe
+<an alternatively-quoted string literal with character set specification>
+<an alternatively-quoted
+ORA-06550: line 8, column 7:
+PLS-00103: Encountered the symbol "A" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+        elif a=2
+             *
+ERROR at line 8:
+ORA-06550: line 8, column 7:
+PLS-00103: Encountered the symbol "A" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 11, column 7:
+PLS-00103: Encountered the symbol "A" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 17, column 4:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+if
+
+
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+        elif a=3
+             *
+ERROR at line 11:
+ORA-06550: line 11, column 7:
+PLS-00103: Encountered the symbol "A" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 17, column 4:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+if
+
+
+SQL> ed c:/oracle/prog5.sql
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 1
+old   4:        a:=&a;
+new   4:        a:=1;
+Monday
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 3
+old   4:        a:=&a;
+new   4:        a:=3;
+Wednesday
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/prog5.sql
+Enter value for a: 6
+old   4:        a:=&a;
+new   4:        a:=6;
+Sunday
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog5.sql
+
+SQL> select * from stock;
+
+    PRODCD NAME       COMPANY
+---------- ---------- ----------
+       101 Monitor    Samsung
+       102 Printer    Epson
+       103 Mouse      Logitech
+       104 Processor  AMD
+       105 Scanner    HP
+
+SQL> select * from stock where prodcd=101;
+
+    PRODCD NAME       COMPANY
+---------- ---------- ----------
+       101 Monitor    Samsung
+
+SQL> ed c:/oracle/prog6.sql
+
+SQL> @ c:/oracle/prog6.sql
+Enter value for pno: 101
+old   6:        pno=&pno;
+new   6:        pno=101;
+        pno=101;
+           *
+ERROR at line 6:
+ORA-06550: line 6, column 5:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> ed c:/oracle/prog6.sql
+
+SQL> @ c:/oracle/prog6.sql
+Enter value for pno: 101
+old   6:        pno:=&pno;
+new   6:        pno:=101;
+Name Monitor
+Company Samsung
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/prog6.sql
+Enter value for pno: 102
+old   6:        pno:=&pno;
+new   6:        pno:=102;
+Name Printer
+Company Epson
+
+PL/SQL procedure successfully completed.
+
+SQL> 101
+SP2-0226: Invalid line number
+SQL> ed c:/oracle/prog6.sql
+
+SQL> ed c:/oracle/prog6.sql
+
+SQL> select *from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/prog7.sql
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Gwalior
+old   5:        town='&town';
+new   5:        town='Gwalior';
+Enter value for town: d
+old   6:        select cname into nm from customers where city=&town;
+new   6:        select cname into nm from customers where city=d;
+        town='Gwalior';
+            *
+ERROR at line 5:
+ORA-06550: line 5, column 6:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+The symbol ":= was inserted before "=" to continue.
+
+
+SQL> ed c:/oracle/prog7.sql
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Gwalior
+old   5:        town:='&town';
+new   5:        town:='Gwalior';
+Name Gaurav
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog7.sql
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Indore
+old   5:        town:='&town';
+new   5:        town:='Indore';
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 6
+
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Ujjain
+old   5:        town:='&town';
+new   5:        town:='Ujjain';
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 6
+
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Gwalior
+old   5:        town:='&town';
+new   5:        town:='Gwalior';
+Name Gaurav
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog7.sql
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: Indore
+old   5:        town:='&town';
+new   5:        town:='Indore';
+Multiple records found
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/prog7.sql
+Enter value for town: aaa
+old   5:        town:='&town';
+new   5:        town:='aaa';
+No record found
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/prog7.sql
+
+SQL>
