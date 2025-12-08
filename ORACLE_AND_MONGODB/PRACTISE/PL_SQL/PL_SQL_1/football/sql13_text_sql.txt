@@ -1,0 +1,3767 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Dec 8 08:04:07 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: user1/pass1
+Last Successful login time: Sun Dec 07 2025 22:36:53 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+CRICKETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+EMPLOYEES
+TABLE
+
+BIN$hX4/d40ASiCDF+DY0M47Rg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$xuuRaliBRrSt8EDEmxARQA==$0
+TABLE
+
+CUBOID
+TABLE
+
+MATHS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$9St92vSPQDOHwyKfMFa7sQ==$0
+TABLE
+
+BIN$/vd/e984Qx+HjNfDR6/RIw==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+12 rows selected.
+
+SQL> Select *  from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1          1
+         2          2          4          8
+         3          3          9         27
+         4          4         16         64
+         5          5         25        125
+         6          6         36        216
+         7          7         49        343
+         8          8         64        512
+         9          9         81        729
+        10         10        100       1000
+        11         11        121       1331
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144       1728
+        13         13        169       2197
+        14         14        196       2744
+        15         15        225       3375
+        16         16        256       4096
+        17         17        289       4913
+        18         18        324       5832
+        19         19        361       6859
+        20         20        400       8000
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL>
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+                Select name into cname from customers where cid = i;
+                                 *
+ERROR at line 7:
+ORA-06550: line 7, column 20:
+PLS-00201: identifier 'CNAME' must be declared
+ORA-06550: line 7, column 26:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 7, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> desc customers ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 7
+
+
+SQL>
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 6
+
+
+SQL>
+SQL>
+SQL>
+SQL>
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+        name varchar;
+             *
+ERROR at line 2:
+ORA-06550: line 2, column 7:
+PLS-00215: String length constraints must be in range (1 .. 32767)
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> Select * from customers ;
+
+no rows selected
+
+SQL> show user ;
+USER is "USER1"
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> SElect  * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+CRICKETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+EMPLOYEES
+TABLE
+
+BIN$hX4/d40ASiCDF+DY0M47Rg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$xuuRaliBRrSt8EDEmxARQA==$0
+TABLE
+
+CUBOID
+TABLE
+
+MATHS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$9St92vSPQDOHwyKfMFa7sQ==$0
+TABLE
+
+BIN$/vd/e984Qx+HjNfDR6/RIw==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+12 rows selected.
+
+SQL> Select  * from customers ;
+
+no rows selected
+
+SQL> Select * from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1          1
+         2          2          4          8
+         3          3          9         27
+         4          4         16         64
+         5          5         25        125
+         6          6         36        216
+         7          7         49        343
+         8          8         64        512
+         9          9         81        729
+        10         10        100       1000
+        11         11        121       1331
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144       1728
+        13         13        169       2197
+        14         14        196       2744
+        15         15        225       3375
+        16         16        256       4096
+        17         17        289       4913
+        18         18        324       5832
+        19         19        361       6859
+        20         20        400       8000
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: shampoo
+old   7:                customer_name:=&cname;
+new   7:                customer_name:=shampoo;
+Enter value for pname: shampoo
+old   8:                product_name:=&pname;
+new   8:                product_name:=shampoo;
+                customer_name:=shampoo;
+                               *
+ERROR at line 7:
+ORA-06550: line 7, column 18:
+PLS-00201: identifier 'SHAMPOO' must be declared
+ORA-06550: line 7, column 3:
+PL/SQL: Statement ignored
+ORA-06550: line 8, column 17:
+PLS-00201: identifier 'SHAMPOO' must be declared
+ORA-06550: line 8, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:                customer_name:=&cname;
+new   7:                customer_name:=aayush;
+Enter value for pname: oil
+old   8:                product_name:=&pname;
+new   8:                product_name:=oil;
+                customer_name:=aayush;
+                               *
+ERROR at line 7:
+ORA-06550: line 7, column 18:
+PLS-00201: identifier 'AAYUSH' must be declared
+ORA-06550: line 7, column 3:
+PL/SQL: Statement ignored
+ORA-06550: line 8, column 17:
+PLS-00201: identifier 'OIL' must be declared
+ORA-06550: line 8, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql\
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   5:        customer_name:='&cname';
+new   5:        customer_name:='aayush';
+Enter value for pname: oil
+old   6:        product_name:= '&pname';
+new   6:        product_name:= 'oil';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   5:        customer_name:='&cname';
+new   5:        customer_name:='aayush';
+Enter value for pname: shampooo
+old   6:        product_name:= '&pname';
+new   6:        product_name:= 'shampooo';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 9
+
+
+SQL> Selectv * from customers ;
+SP2-0734: unknown command beginning "Selectv * ..." - rest of line ignored.
+SQL> Select * from customers ;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          oil
+         2 aayush          oil
+         3 aayush          oil
+         4 aayush          oil
+         5 aayush          oil
+         6 aayush          oil
+         7 aayush          oil
+         8 aayush          oil
+         9 aayush          oil
+        10 aayush          oil
+
+10 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql\
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='aayush';
+Enter value for pname: oil
+old   8:                product_name:='&pname';
+new   8:                product_name:='oil';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 9
+
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='aayush';
+Enter value for pname: oil
+old   8:                product_name:='&pname';
+new   8:                product_name:='oil';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: anuj
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='anuj';
+Enter value for pname: shampoo
+old   8:                product_name:='&pname';
+new   8:                product_name:='shampoo';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 9
+
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          oil
+         2 aayush          oil
+         3 aayush          oil
+         4 aayush          oil
+         5 aayush          oil
+         6 aayush          oil
+         7 aayush          oil
+         8 aayush          oil
+         9 aayush          oil
+        10 aayush          oil
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL>
+SQL> selece
+SP2-0042: unknown command "selece" - rest of line ignored.
+SQL> Select * from customers ;
+
+no rows selected
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql\
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='aayush';
+Enter value for pname: oil
+old   8:                product_name:='&pname';
+new   8:                product_name:='oil';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname:
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='';
+Enter value for pname: disha
+old   8:                product_name:='&pname';
+new   8:                product_name:='disha';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 9
+
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          oil
+         2 aayush          oil
+         3 aayush          oil
+         4 aayush          oil
+         5 aayush          oil
+         6 aayush          oil
+         7 aayush          oil
+         8 aayush          oil
+         9 aayush          oil
+        10 aayush          oil
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL>  @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:                customer_name:='&cname';
+new   7:                customer_name:='aayush';
+Enter value for pname: oil
+old   8:                product_name:='&pname';
+new   8:                product_name:='oil';
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * From customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          oil
+         2 aayush          oil
+         3 aayush          oil
+         4 aayush          oil
+         5 aayush          oil
+         6 aayush          oil
+         7 aayush          oil
+         8 aayush          oil
+         9 aayush          oil
+        10 aayush          oil
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: aayush
+old   7:         customer_name := '&cname';
+new   7:         customer_name := 'aayush';
+Enter value for pname: oil
+old   8:         product_name  := '&pname';
+new   8:         product_name  := 'oil';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> Select  * from  customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          oil
+         2 aayush          oil
+         3 aayush          oil
+         4 aayush          oil
+         5 aayush          oil
+         6 aayush          oil
+         7 aayush          oil
+         8 aayush          oil
+         9 aayush          oil
+        10 aayush          oil
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> Select * frorm customers;
+Select * frorm customers
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL>  C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: dfgdf
+old   9:         customer_name := '&cname';
+new   9:         customer_name := 'dfgdf';
+Enter value for pname: dfghdf
+old  10:         product_name  := '&pname';
+new  10:         product_name  := 'dfghdf';
+        i: = i+1;
+         *
+ERROR at line 15:
+ORA-06550: line 15, column 3:
+PLS-00103: Encountered the symbol " " when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: dsfg
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'dsfg';
+Enter value for pname: dgd
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'dgd';
+        i: = i+1;
+         *
+ERROR at line 14:
+ORA-06550: line 14, column 3:
+PLS-00103: Encountered the symbol " " when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> delete from customers;
+
+0 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: dgd
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'dgd';
+Enter value for pname: hdf
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'hdf';
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 dgd             hdf
+         2 dgd             hdf
+         3 dgd             hdf
+         4 dgd             hdf
+         5 dgd             hdf
+         6 dgd             hdf
+         7 dgd             hdf
+         8 dgd             hdf
+         9 dgd             hdf
+        10 dgd             hdf
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: sdg
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'sdg';
+Enter value for pname: asdef
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'asdef';
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: jgghjm
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'jgghjm';
+Enter value for pname: asdfddsd
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'asdfddsd';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 11
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: werwe
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'werwe';
+Enter value for pname: jnfhr
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'jnfhr';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 11
+
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 sdg             asdef
+         2 sdg             asdef
+         3 sdg             asdef
+         4 sdg             asdef
+         5 sdg             asdef
+         6 sdg             asdef
+         7 sdg             asdef
+         8 sdg             asdef
+         9 sdg             asdef
+        10 sdg             asdef
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> delete from customers;
+
+0 rows deleted.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: qwert
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'qwert';
+Enter value for pname: oiuytre
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'oiuytre';
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 qwert           oiuytre
+         2 qwert           oiuytre
+         3 qwert           oiuytre
+         4 qwert           oiuytre
+         5 qwert           oiuytre
+         6 qwert           oiuytre
+         7 qwert           oiuytre
+         8 qwert           oiuytre
+         9 qwert           oiuytre
+        10 qwert           oiuytre
+
+10 rows selected.
+
+SQL> delete from customers;s
+  2  delete from customers;
+delete from customers;s
+                     *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: ayush
+old   9:         customer_name := '&cname';
+new   9:         customer_name := 'ayush';
+Enter value for pname: turmuric
+old  10:         product_name  := '&pname';
+new  10:         product_name  := 'turmuric';
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 ayush           turmuric
+         2 ayush           turmuric
+         3 ayush           turmuric
+         4 ayush           turmuric
+         5 ayush           turmuric
+         6 ayush           turmuric
+         7 ayush           turmuric
+         8 ayush           turmuric
+         9 ayush           turmuric
+        10 ayush           turmuric
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+
+SQL>
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+        for i in 1..10;
+                      *
+ERROR at line 5:
+ORA-06550: line 5, column 16:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+, * & - + / at loop mod remainder rem when while
+<an exponent (**)> by || multiset
+ORA-06550: line 10, column 4:
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the
+following:
+end not pragma final instantiable persistable order
+overriding static member constructor map
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                pname = '&product_name';
+new   7:                pname = 'aayush';
+Enter value for customer_name: oil
+old   8:                cname = '&customer_name';
+new   8:                cname = 'oil';
+                pname = 'aayush';
+                      *
+ERROR at line 7:
+ORA-06550: line 7, column 9:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: shampoo
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'shampoo';
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql\
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: shampoo
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'shampoo';
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customer;
+Select * from customer
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: shampoo
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'shampoo';
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: shampooo
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'shampooo';
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+shampooo
+aayush
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: shampoo
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'shampoo';
+        i :=1;
+        *
+ERROR at line 5:
+ORA-06550: line 5, column 2:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 9, column 48:
+PL/SQL: ORA-00984: column not allowed here
+ORA-06550: line 9, column 3:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 13, column 3:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 13, column 3:
+PL/SQL: Statement ignored
+ORA-06550: line 14, column 13:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 14, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   7:                product_name := '&product_name';
+new   7:                product_name := 'aayush';
+Enter value for customer_name: oil
+old   8:                customer_name := '&customer_name';
+new   8:                customer_name := 'oil';
+        i := 1;
+        *
+ERROR at line 5:
+ORA-06550: line 5, column 2:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 9, column 48:
+PL/SQL: ORA-00984: column not allowed here
+ORA-06550: line 9, column 3:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 13, column 3:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 13, column 3:
+PL/SQL: Statement ignored
+ORA-06550: line 14, column 13:
+PLS-00201: identifier 'I' must be declared
+ORA-06550: line 14, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql
+Enter value for product_name: aayush
+old   8:                product_name := '&product_name';
+new   8:                product_name := 'aayush';
+Enter value for customer_name: dalda
+old   9:                customer_name := '&customer_name';
+new   9:                customer_name := 'dalda';
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+dalda
+aayush
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 dalda           aayush
+         2 dalda           aayush
+         3 dalda           aayush
+         4 dalda           aayush
+         5 dalda           aayush
+         6 dalda           aayush
+         7 dalda           aayush
+         8 dalda           aayush
+         9 dalda           aayush
+        10 dalda           aayush
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql1.sql
+It is my first SQL program
+The calculation of these number101
+very good sum obtained
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql2.sql
+Enter value for length: 45
+old   7:        l:=&length
+new   7:        l:=45
+Enter value for breadth: 56
+old   8:        b:=&breadth
+new   8:        b:=56
+Enter value for height: 67
+old   9:        h:=&height
+new   9:        h:=67
+        b number
+        *
+ERROR at line 3:
+ORA-06550: line 3, column 2:
+PLS-00103: Encountered the symbol "B" when expecting one of the following:
+:= . ( @ % ; not null range default character
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql3.sql
+SQL> set serveroutput on l
+SP2-0158: unknown SET option "l"
+SQL> set serveroutput on l;
+SP2-0158: unknown SET option "l"
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql3.sql
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql4.sql
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql5.sql
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql6.sql
+                insert into maths values(mid,a,sq);
+                            *
+ERROR at line 10:
+ORA-06550: line 10, column 15:
+PL/SQL: ORA-00947: not enough values
+ORA-06550: line 10, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+1
+8
+27
+64
+125
+216
+343
+512
+729
+1000
+1331
+1728
+2197
+2744
+3375
+4096
+4913
+5832
+6859
+8000
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql6.sql
+                insert into maths values(mid,a,sq);
+                            *
+ERROR at line 10:
+ORA-06550: line 10, column 15:
+PL/SQL: ORA-00947: not enough values
+ORA-06550: line 10, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+1  1
+2  4
+3  9
+4  16
+5  25
+6  36
+7  49
+8  64
+9  81
+10  100
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+SP2-0310: unable to open file "C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql"
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql10.sql
+Enter value for cname: sfsd
+old   9:         customer_name := '&cname';
+new   9:         customer_name := 'sfsd';
+Enter value for pname: gdfgdg
+old  10:         product_name  := '&pname';
+new  10:         product_name  := 'gdfgdg';
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 sfsd            gdfgdg
+         2 sfsd            gdfgdg
+         3 sfsd            gdfgdg
+         4 sfsd            gdfgdg
+         5 sfsd            gdfgdg
+         6 sfsd            gdfgdg
+         7 sfsd            gdfgdg
+         8 sfsd            gdfgdg
+         9 sfsd            gdfgdg
+        10 sfsd            gdfgdg
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> select * from customers;
+
+no rows selected
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: aayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'aayush';
+Enter value for pname: soap
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soap';
+                dbms_output.put_line('Inserted:' || customer_name , ' ' , || product_name);
+                                                                          *
+ERROR at line 12:
+ORA-06550: line 12, column 61:
+PLS-00103: Encountered the symbol "|" when expecting one of the following:
+( - + case for mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+continue avg count current exists max min prior sql stddev
+sum variance execute forall merge standard time timestamp
+interval date
+<a string literal with character set specification>
+<a number> <a single-quoted SQL string> pipe
+<an alternatively-quoted string literal with character set specification>
+<
+ORA-06550: line 16, column 1:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+; <an identifier> <a double-quoted delimited-identifier>
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: aayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'aayush';
+Enter value for pname: soap
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soap';
+                dbms_output.put_line('Inserted:' || customer_name  ' '  || product_name);
+                                                                   *
+ERROR at line 12:
+ORA-06550: line 12, column 54:
+PLS-00103: Encountered the symbol " " when expecting one of the following:
+. ( ) , * @ % & | = - + < / > at in is mod remainder not null
+rem returning with => .. <an exponent (**)> <> or != or ~= >=
+<= <> and or default like like2 like4 likec as between error
+from using || member empty submultiset lax strict without
+pretty ascii true false absent format allow truncate
+The symbol "(" was substituted for " " to continue.
+ORA-06550: line 12, column 75:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( ) , * % & | = - + < / > at in is mod remainder not null
+rem returning with => .. <an exponent (**)> <> or != or ~= >=
+<= <> and or default like like2 like4 likec as between error
+from using || member empty submultiset lax strict without
+pretty ascii true false absent format allow truncate
+The symbol ")" was substituted for ";" to continue.
+ORA-06550: line 16, column 1:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+; <an identifier> <a double-quoted delimited-identifier>
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: ayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'ayush';
+Enter value for pname: soa
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soa';
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+Inserted: ayush - soa
+
+PL/SQL procedure successfully completed.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: ayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'ayush';
+Enter value for pname: soap
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soap';
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+Inserted: ayush - soap
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 ayush           soap
+         2 ayush           soap
+         3 ayush           soap
+         4 ayush           soap
+         5 ayush           soap
+         6 ayush           soap
+         7 ayush           soap
+         8 ayush           soap
+         9 ayush           soap
+        10 ayush           soap
+
+10 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: aayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'aayush';
+Enter value for pname: soap
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soap';
+declare
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008517) violated
+ORA-06512: at line 10
+
+
+SQL> select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 ayush           soap
+         2 ayush           soap
+         3 ayush           soap
+         4 ayush           soap
+         5 ayush           soap
+         6 ayush           soap
+         7 ayush           soap
+         8 ayush           soap
+         9 ayush           soap
+        10 ayush           soap
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: aayush
+old   8:                customer_name := '&cname';
+new   8:                customer_name := 'aayush';
+Enter value for pname: soap]
+old   9:                product_name := '&pname';
+new   9:                product_name := 'soap]';
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+Inserted: aayush - soap]
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          soap]
+         2 aayush          soap]
+         3 aayush          soap]
+         4 aayush          soap]
+         5 aayush          soap]
+         6 aayush          soap]
+         7 aayush          soap]
+         8 aayush          soap]
+         9 aayush          soap]
+        10 aayush          soap]
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+Enter value for cname: aayush
+old   8:         customer_name := '&cname';
+new   8:         customer_name := 'aayush';
+Enter value for pname: product1
+old   9:         product_name  := '&pname';
+new   9:         product_name  := 'product1';
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+Inserted: aayush - product1
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 aayush          product1
+         2 aayush          product1
+         3 aayush          product1
+         4 aayush          product1
+         5 aayush          product1
+         6 aayush          product1
+         7 aayush          product1
+         8 aayush          product1
+         9 aayush          product1
+        10 aayush          product1
+
+10 rows selected.
+
+SQL> delete from customers;
+
+10 rows deleted.
+
+SQL> select * from customers;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql11.sql;
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> show user;
+USER is "USER1"
+SQL> select * from customers;
+
+no rows selected
+
+SQL> connect
+Enter user-name: system/pateriya'
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> system/pateriya'
+SP2-0734: unknown command beginning "system/pat..." - rest of line ignored.
+SQL> connect
+Enter user-name: connect
+Enter password:
+ERROR:
+ORA-01017: invalid username/password; logon denied
+
+
+SQL> connect
+Enter user-name: system/pateriya
+Connected.
+SQL> Select * from customers;
+
+    CUS_ID FIRST_NA LAST_NAM EMAIL      ADDRESS    CITY    ST ZIP_CODE
+---------- -------- -------- ---------- ---------- ------- -- ----------
+COUNTRY
+--------
+       101 Ayush    pandit   ayush01@   gopalganj  sagar   MP A100
+India
+
+       102 Veer     Thakur   Veeru02@   gopalganj  sagar   MP B100
+India
+
+       103 Deepak   Shukla   Deepu03@   Tehsil     sagar   MP C100
+India
+
+
+    CUS_ID FIRST_NA LAST_NAM EMAIL      ADDRESS    CITY    ST ZIP_CODE
+---------- -------- -------- ---------- ---------- ------- -- ----------
+COUNTRY
+--------
+       104 Simmi    pandey   Simmi03@   Tili       sagar   UP D100
+India
+
+
+SQL> Select * from football ;
+Select * from football
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: user2/pass2
+Connected.
+SQL> Select * from football;
+Select * from football
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+ENGINEER
+TABLE
+
+DOCTORS
+TABLE
+
+
+SQL> connect user1/pass1
+Connected.
+SQL> Select * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+CRICKETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+EMPLOYEES
+TABLE
+
+BIN$hX4/d40ASiCDF+DY0M47Rg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$xuuRaliBRrSt8EDEmxARQA==$0
+TABLE
+
+CUBOID
+TABLE
+
+MATHS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$9St92vSPQDOHwyKfMFa7sQ==$0
+TABLE
+
+BIN$/vd/e984Qx+HjNfDR6/RIw==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+12 rows selected.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+9 rows selected.
+
+SQL> insert into football values (9,'Mohammad Salah',31,'Egypt','Forward',150,200,'Liverpool');
+insert into football values (9,'Mohammad Salah',31,'Egypt','Forward',150,200,'Liverpool')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008506) violated
+
+
+SQL> insert into football values (10,'Mohammad Salah',31,'Egypt','Forward',150,200,'Liverpool');
+
+1 row created.
+
+SQL> insert into football values (11, 'Robert Lewandowski', 35, 'Poland', 'Forward', 220, 310, 'Barcelona');
+
+1 row created.
+
+SQL> insert into football values (12, 'Kevin De Bruyne', 32, 'Belgium', 'Midfield', 60, 250, 'Manchester City');
+
+1 row created.
+
+SQL> insert into football values (13, 'Virgil van Dijk', 32, 'Netherlands', 'Defender', 15, 180, 'Liverpool');
+
+1 row created.
+
+SQL> insert into football values (14, 'Sadio Mane', 31, 'Senegal', 'Forward', 130, 220, 'Bayern Munich');
+
+1 row created.
+
+SQL> insert into football values (15, 'Erling Haaland', 23, 'Norway', 'Forward', 120, 150, 'Manchester City');
+
+1 row created.
+
+SQL> insert into football values (16, 'Karim Benzema', 35, 'France', 'Forward', 200, 340, 'Al-Ittihad');
+
+1 row created.
+
+SQL> insert into football values (17, 'Toni Kroos', 34, 'Germany', 'Midfield', 40, 320, 'Real Madrid');
+
+1 row created.
+
+SQL> insert into football values (18, 'Casemiro', 31, 'Brazil', 'Midfield', 30, 310, 'Manchester United');
+insert into football values (18, 'Casemiro', 31, 'Brazil', 'Midfield', 30, 310, 'Manchester United')
+                                                                                *
+ERROR at line 1:
+ORA-12899: value too large for column "USER1"."FOOTBALL"."CLUB" (actual: 17,
+maximum: 15)
+
+
+SQL> insert into football values (18, 'Casemiro', 31, 'Brazil', 'Midfield', 30, 310, 'Manchester United');
+insert into football values (18, 'Casemiro', 31, 'Brazil', 'Midfield', 30, 310, 'Manchester United')
+                                                                                *
+ERROR at line 1:
+ORA-12899: value too large for column "USER1"."FOOTBALL"."CLUB" (actual: 17,
+maximum: 15)
+
+
+SQL> insert into football values (18, 'Casemiro', 31, 'Brazil', 'Midfield', 30, 310, 'Manchester');
+
+1 row created.
+
+SQL> insert into football values (19, 'Raheem Sterling', 29, 'England', 'Forward', 110, 270, 'Chelsea');
+
+1 row created.
+
+SQL> insert into football values (20, 'Paulo Dybala', 30, 'Argentina', 'Forward', 90, 200, 'Roma');
+
+1 row created.
+
+SQL> Select * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> Select * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> Select count(*) from football;
+
+  COUNT(*)
+----------
+        20
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> desc football ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+
+SQL> Select * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> desc footbball;
+ERROR:
+ORA-04043: object footbball does not exist
+
+
+SQL> desc football;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pid: 4
+old   6:        pid := &pid;
+new   6:        pid := 4;
+        pid := 4;
+        *
+ERROR at line 6:
+ORA-06550: line 6, column 2:
+PLS-00201: identifier 'PID' must be declared
+ORA-06550: line 6, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 8, column 23:
+PLS-00201: identifier 'PNAME' must be declared
+ORA-06550: line 8, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 4
+old   6:        pno := &pno;
+new   6:        pno := 4;
+        dbms_output.put_line(pname);
+                             *
+ERROR at line 8:
+ORA-06550: line 8, column 23:
+PLS-00201: identifier 'PNAME' must be declared
+ORA-06550: line 8, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 4
+old   6:        pno := &pno;
+new   6:        pno := 4;
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 5
+old   6:        pno := &pno;
+new   6:        pno := 5;
+De bryian
+33
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 6
+old   8:        pno := &pno;
+new   8:        pno := 6;
+begin
+*
+ERROR at line 7:
+ORA-06550: line 7, column 1:
+PLS-00103: Encountered the symbol "BEGIN" when expecting one of the following:
+:= ( ; not null range default character
+The symbol ";" was substituted for "BEGIN" to continue.
+ORA-06550: line 15, column 18:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+The symbol ":= was inserted before "=" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 6
+old   8:        pno := &pno;
+new   8:        pno := 6;
+        score_per_match := matchess/goalss;
+        *
+ERROR at line 15:
+ORA-06550: line 15, column 2:
+PLS-00201: identifier 'SCORE_PER_MATCH' must be declared
+ORA-06550: line 15, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 16, column 23:
+PLS-00201: identifier 'SCORE_PRE_MATCH' must be declared
+ORA-06550: line 16, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 5
+old   9:        pno := &pno;
+new   9:        pno := 5;
+        dbms_output.put_line(score_pre_match);
+                             *
+ERROR at line 17:
+ORA-06550: line 17, column 23:
+PLS-00201: identifier 'SCORE_PRE_MATCH' must be declared
+ORA-06550: line 17, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 5
+old   9:        pno := &pno;
+new   9:        pno := 5;
+De bryian
+33
+26
+100
+3.84615384615384615384615384615384615385
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 7
+old   9:        pno := &pno;
+new   9:        pno := 7;
+Harry kane
+31
+63
+89
+1.41269841269841269841269841269841269841
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+Enter value for pno: 1
+old   9:        pno := &pno;
+new   9:        pno := 1;
+lionel messi
+36
+106
+180
+1.69811320754716981132075471698113207547
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql12.sql;
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13\.sql;
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> desc football ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pid: 5
+old   5:        pid := &pid;
+new   5:        pid := 5;
+        dbms_output.put_line(age || footdata.age);
+                             *
+ERROR at line 8:
+ORA-06550: line 8, column 23:
+PLS-00201: identifier 'AGE' must be declared
+ORA-06550: line 8, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 9, column 23:
+PLS-00201: identifier 'GOALS' must be declared
+ORA-06550: line 9, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 10, column 23:
+PLS-00548: invalid use of operator.
+ORA-06550: line 10, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pid: 56
+old   5:        pid := &pid;
+new   5:        pid := 56;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 6
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pid: 5
+old   5:        pid := &pid;
+new   5:        pid := 5;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 6
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 4
+old   5:        pno := &pno;
+new   5:        pno := 4;
+nameKylian mbappe
+age26
+goals52
+matches80
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 7
+old   5:        pno := &pno;
+new   5:        pno := 7;
+nameHarry kane
+age31
+goals63
+matches89
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   5:        pno := &pno;
+new   5:        pno := 5;
+nameDe bryian
+age33
+goals26
+matches100
+
+PL/SQL procedure successfully completed.
+
+SQL> procedure
+SP2-0042: unknown command "procedure" - rest of line ignored.
+SQL> pro
+
+SQL> select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB
+---------- ---------------
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   6:        pno := &pno;
+new   6:        pno := 5;
+nameDe bryian
+age33
+goals26
+matches100
+.26
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 54
+old   7:        pno := &pno;
+new   7:        pno := 54;
+        accuracy = score_per_match*100;
+                 *
+ERROR at line 17:
+ORA-06550: line 17, column 11:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+The symbol ":= was inserted before "=" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   7:        pno := &pno;
+new   7:        pno := 5;
+nameDe bryian
+age33
+goals26
+matches100
+score per match.26
+accuracy26
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL>
+SQL> alter table football add grade varchar(3);\
+  2  ;
+alter table football add grade varchar(3);\
+                                         *
+ERROR at line 1:
+ORA-01735: invalid ALTER TABLE option
+
+
+SQL> alter table football add grade varchar(3);
+
+Table altered.
+
+SQL> desc football;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+ GRADE                                              VARCHAR2(3)
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   7:        pno := &pno;
+new   7:        pno := 5;
+                dbms_output.put_line(pname);
+                *
+ERROR at line 21:
+ORA-06550: line 21, column 3:
+PLS-00103: Encountered the symbol "DBMS_OUTPUT" when expecting one of the
+following:
+. ( , * @ % & - + / at loop mod remainder rem when while
+<an exponent (**)> by || multiset
+The symbol "." was substituted for "DBMS_OUTPUT" to continue.
+ORA-06550: line 21, column 30:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( , * % & - + / at loop mod remainder rem when while
+<an exponent (**)> by || multiset
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   7:        pno := &pno;
+new   7:        pno := 5;
+                dbms_output.put_line(pname);
+                *
+ERROR at line 21:
+ORA-06550: line 21, column 3:
+PLS-00103: Encountered the symbol "DBMS_OUTPUT" when expecting one of the
+following:
+, * & - + / at loop mod remainder rem when while
+<an exponent (**)> by || multiset
+The symbol "," was substituted for "DBMS_OUTPUT" to continue.
+ORA-06550: line 21, column 30:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( , * % & = - + < / > at in is loop mod remainder not rem
+when while .. <an exponent (**)> <> or != or ~= >= <= <> and
+or like like2 like4 likec between || multiset member
+submultiset
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> Select *  from football where (goals/matches)>3;
+
+no rows selected
+
+SQL> Select *  from football where (goals/matches)>2;
+
+no rows selected
+
+SQL> Select *  from football where (goals/matches)>1;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+
+SQL> Select *  from football where (goals/matches)>0;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> Select *  from football where (goals/matches)>0.25;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+15 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>10;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+18 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>20;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+16 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>30;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+14 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>40;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+14 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>50;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+
+12 rows selected.
+
+SQL> Select *  from football where (goals/matches)*100>60;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+8 rows selected.
+
+SQL> desc football ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ PID                                       NOT NULL NUMBER
+ PNAME                                              VARCHAR2(20)
+ AGE                                                NUMBER
+ COUNTRY                                            VARCHAR2(12)
+ POSITION                                           VARCHAR2(8)
+ GOALS                                              NUMBER(4)
+ MATCHES                                            NUMBER
+ CLUB                                               VARCHAR2(15)
+ GRADE                                              VARCHAR2(3)
+
+SQL> update football set grade ='A' where (goals/matches)*100>80;
+
+1 row updated.
+
+SQL> Select * from football;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati    A
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> Select pname,goals,matches,grade from football;
+
+PNAME                     GOALS    MATCHES GRA
+-------------------- ---------- ---------- ---
+Halland                     200        173 A
+lionel messi                106        180
+Christiano Ronaldo          128        205
+Neymar-jr                    79        128
+Kylian mbappe                52         80
+De bryian                    26        100
+Luka modric                  24        175
+Harry kane                   63         89
+Chhetri                     120        200
+Mohammad Salah              150        200
+Robert Lewandowski          220        310
+
+PNAME                     GOALS    MATCHES GRA
+-------------------- ---------- ---------- ---
+Kevin De Bruyne              60        250
+Virgil van Dijk              15        180
+Sadio Mane                  130        220
+Erling Haaland              120        150
+Karim Benzema               200        340
+Toni Kroos                   40        320
+Casemiro                     30        310
+Raheem Sterling             110        270
+Paulo Dybala                 90        200
+
+20 rows selected.
+
+SQL> Select goals,matches,goals/matches from football ;
+
+     GOALS    MATCHES GOALS/MATCHES
+---------- ---------- -------------
+       200        173    1.15606936
+       106        180    .588888889
+       128        205    .624390244
+        79        128      .6171875
+        52         80           .65
+        26        100           .26
+        24        175    .137142857
+        63         89    .707865169
+       120        200            .6
+       150        200           .75
+       220        310    .709677419
+
+     GOALS    MATCHES GOALS/MATCHES
+---------- ---------- -------------
+        60        250           .24
+        15        180    .083333333
+       130        220    .590909091
+       120        150            .8
+       200        340    .588235294
+        40        320          .125
+        30        310    .096774194
+       110        270    .407407407
+        90        200           .45
+
+20 rows selected.
+
+SQL> Select goals,matches,goals/matches,(goals/matches)*100 from football ;
+
+     GOALS    MATCHES GOALS/MATCHES (GOALS/MATCHES)*100
+---------- ---------- ------------- -------------------
+       200        173    1.15606936          115.606936
+       106        180    .588888889          58.8888889
+       128        205    .624390244          62.4390244
+        79        128      .6171875            61.71875
+        52         80           .65                  65
+        26        100           .26                  26
+        24        175    .137142857          13.7142857
+        63         89    .707865169          70.7865169
+       120        200            .6                  60
+       150        200           .75                  75
+       220        310    .709677419          70.9677419
+
+     GOALS    MATCHES GOALS/MATCHES (GOALS/MATCHES)*100
+---------- ---------- ------------- -------------------
+        60        250           .24                  24
+        15        180    .083333333          8.33333333
+       130        220    .590909091          59.0909091
+       120        150            .8                  80
+       200        340    .588235294          58.8235294
+        40        320          .125                12.5
+        30        310    .096774194          9.67741935
+       110        270    .407407407          40.7407407
+        90        200           .45                  45
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> Select goals/matches,(goals/matches)*100 as accuracy from football where accuracy>=0 and accuracy<=20;
+Select goals/matches,(goals/matches)*100 as accuracy from football where accuracy>=0 and accuracy<=20
+                                                                                         *
+ERROR at line 1:
+ORA-00904: "ACCURACY": invalid identifier
+
+
+SQL> Select goals/matches,(goals/matches)*100 as accuracy from football where SP2-0042: unknown command "S" - rest of line ignored.
+SQL> Select goals/matches,(goals/matches)*100 as accuracy from football where accuracy>=0 and accuracy<=20;
+Select goals/matches,(goals/matches)*100 as accuracy from football where accuracy>=0 and accuracy<=20
+                                                                                         *
+ERROR at line 1:
+ORA-00904: "ACCURACY": invalid identifier
+
+
+SQL> Select goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=0 and (goals/matches)*100<=20;
+
+GOALS/MATCHES   ACCURACY
+------------- ----------
+   .137142857 13.7142857
+   .083333333 8.33333333
+         .125       12.5
+   .096774194 9.67741935
+
+SQL> Select pname,goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=0 and (goals/matches)*100<=20;
+
+PNAME                GOALS/MATCHES   ACCURACY
+-------------------- ------------- ----------
+Luka modric             .137142857 13.7142857
+Virgil van Dijk         .083333333 8.33333333
+Toni Kroos                    .125       12.5
+Casemiro                .096774194 9.67741935
+
+SQL> Select pname,goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=20 and (goals/matches)*100<=40;
+
+PNAME                GOALS/MATCHES   ACCURACY
+-------------------- ------------- ----------
+De bryian                      .26         26
+Kevin De Bruyne                .24         24
+
+SQL> Select pname,goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=40 and (goals/matches)*100<=60;
+
+PNAME                GOALS/MATCHES   ACCURACY
+-------------------- ------------- ----------
+lionel messi            .588888889 58.8888889
+Chhetri                         .6         60
+Sadio Mane              .590909091 59.0909091
+Karim Benzema           .588235294 58.8235294
+Raheem Sterling         .407407407 40.7407407
+Paulo Dybala                   .45         45
+
+6 rows selected.
+
+SQL> Select pname,goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=60 and (goals/matches)*100<=80;
+
+PNAME                GOALS/MATCHES   ACCURACY
+-------------------- ------------- ----------
+Christiano Ronaldo      .624390244 62.4390244
+Neymar-jr                 .6171875   61.71875
+Kylian mbappe                  .65         65
+Harry kane              .707865169 70.7865169
+Chhetri                         .6         60
+Mohammad Salah                 .75         75
+Robert Lewandowski      .709677419 70.9677419
+Erling Haaland                  .8         80
+
+8 rows selected.
+
+SQL> Select pname,goals/matches,(goals/matches)*100 as accuracy from football where (goals/matches)*100>=80 and (goals/matches)*100<=100;
+
+PNAME                GOALS/MATCHES   ACCURACY
+-------------------- ------------- ----------
+Erling Haaland                  .8         80
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 4
+old   7:        pno := &pno;
+new   7:        pno := 4;
+                grade := 'A';
+                *
+ERROR at line 34:
+ORA-06550: line 34, column 3:
+PLS-00103: Encountered the symbol "GRADE" when expecting one of the following:
+* & - + / at mod remainder rem then <an exponent (**)> and or
+|| multiset
+The symbol "then" was substituted for "GRADE" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   8:        pno := &pno;
+new   8:        pno := 5;
+                grade := 'A';
+                *
+ERROR at line 35:
+ORA-06550: line 35, column 3:
+PLS-00103: Encountered the symbol "GRADE" when expecting one of the following:
+* & - + / at mod remainder rem then <an exponent (**)> and or
+|| multiset
+The symbol "then" was substituted for "GRADE" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   8:        pno := &pno;
+new   8:        pno := 5;
+                update footbball set grade ='E' where accuracy>=0 and accuracy<=20 ;
+                       *
+ERROR at line 24:
+ORA-06550: line 24, column 10:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 24, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 5
+old   8:        pno := &pno;
+new   8:        pno := 5;
+nameDe bryian
+age33
+goals26
+matches100
+score per match.26
+accuracy26
+D
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 1
+old   8:        pno := &pno;
+new   8:        pno := 1;
+namelionel messi
+age36
+goals106
+matches180
+score per match.5888888888888888888888888888888888888889
+accuracy58.88888888888888888888888888888888888889
+C
+
+PL/SQL procedure successfully completed.
+
+SQL> 4
+  4*    score_per_match number;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 7
+old   8:        pno := &pno;
+new   8:        pno := 7;
+nameHarry kane
+age31
+goals63
+matches89
+score per match.7078651685393258426966292134831460674157
+accuracy70.78651685393258426966292134831460674157
+B
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
+Enter value for pno: 10
+old   8:        pno := &pno;
+new   8:        pno := 10;
+nameMohammad Salah
+age31
+goals150
+matches200
+score per match.75
+accuracy75
+B
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql13.sql;
