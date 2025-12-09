@@ -1,0 +1,413 @@
+declare
+	cid customers.cno%type;
+	name customers.cname%type;
+	cursor c1 is select cno,cname from customers where dept=20;
+begin
+	open c1;
+	loop
+		fetch c1 into cid,name;
+		exit when c1%notfound;
+		dbms_output.put_line(cid || '  ' || name);
+	end loop;
+	dbms_output.put_line('No. of records ' || c1%rowcount);
+	close c1;
+end;
+/
+
+----------------------------------
+
+declare
+	cursor c1 is select * from customers;
+	custdata customers%rowtype;
+begin	
+	open c1;
+	loop
+		fetch c1 into custdata;
+		exit when c1%notfound;
+		dbms_output.put_line(custdata.cno);
+		dbms_output.put_line(custdata.cname);
+		dbms_output.put_line(custdata.dept);
+	end loop;
+	close c1;
+
+end;
+/
+-----------------------------------
+declare
+	cursor c1 is select city,count(*) from customers group by city;
+	cityname customers.city%type;
+	cnt number;
+begin
+	open c1;
+	loop
+		fetch c1 into cityname,cnt;
+		exit when c1%notfound;
+		dbms_output.put_line('City ' || cityname || ' exists '  || cnt || ' times');
+	end loop;
+	close c1;
+end;
+/
+-----------------------------------
+declare
+	amt1 number:=0;
+	amt2 number:=0;
+	amt3 number:=0;
+	amt4 number:=0;
+	cursor c1 is select * from customers;
+	custdata customers%rowtype;
+begin
+	open c1;
+		loop
+			fetch c1 into custdata;
+			exit when c1%notfound;
+			if custdata.dept=10
+			then
+				amt1:=amt1+custdata.amount;
+			elsif custdata.dept=20
+			then
+				amt2:=amt2+custdata.amount;
+			elsif custdata.dept=30
+			then
+				amt3:=amt3+custdata.amount;
+			elsif custdata.dept=40
+			then
+				amt4:=amt4+custdata.amount;
+			end if;
+		end loop;
+		dbms_output.put_line('-------------------');
+		dbms_output.put_line('Dept ' || amt1);
+		dbms_output.put_line('Dept ' || amt2);
+		dbms_output.put_line('Dept ' || amt3);
+		dbms_output.put_line('Dept ' || amt4);
+		dbms_output.put_line('-------------------');
+	close c1;
+end;
+/
+-------------------------------------------
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Tue Dec 9 08:42:56 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connnect
+SP2-0042: unknown command "connnect" - rest of line ignored.
+SQL> connect
+Enter user-name: prince/sagar
+Connected.
+SQL> ed c:/oracle/cur1.sql
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/loop7.sql
+
+SQL> ed c:/oracle/loop8.sql
+
+SQL> ed c:/oracle/loop6.sql
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> select cno,cname from customers;
+
+       CNO CNAME
+---------- ------------
+         1 Ravi
+         2 Sumit
+         3 Ajay
+         4 Vijay
+         5 Sanjay
+         6 Gourav
+         7 Sourav
+         8 Raja
+         9 Rani
+        10 Gaurav
+
+10 rows selected.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> set serveroutput on
+SQL> @ c:/oracle/cur1.sql
+        cid customers.cno%type;;
+                               *
+ERROR at line 2:
+ORA-06550: line 2, column 25:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+begin function package pragma procedure subtype type use
+<an identifier> <a double-quoted delimited-identifier> form
+current cursor
+
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+1
+Ravi
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+1
+Ravi
+2
+Sumit
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+1
+Ravi
+2
+Sumit
+3
+Ajay
+4
+Vijay
+5
+Sanjay
+6
+Gourav
+7
+Sourav
+8
+Raja
+9
+Rani
+10
+Gaurav
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+1  Ravi
+2  Sumit
+3  Ajay
+4  Vijay
+5  Sanjay
+6  Gourav
+7  Sourav
+8  Raja
+9  Rani
+10  Gaurav
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+1  Ravi
+2  Sumit
+3  Ajay
+4  Vijay
+5  Sanjay
+6  Gourav
+7  Sourav
+8  Raja
+9  Rani
+10  Gaurav
+No. of records 10
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> @ c:/oracle/cur1.sql
+2  Sumit
+6  Gourav
+8  Raja
+No. of records 3
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/cur1.sql
+
+SQL> ed c:/oracle/cur2.sql
+
+SQL> @ c:/oracle/cur2.sql
+1
+Ravi
+10
+2
+Sumit
+20
+3
+Ajay
+10
+4
+Vijay
+30
+5
+Sanjay
+10
+6
+Gourav
+20
+7
+Sourav
+10
+8
+Raja
+20
+9
+Rani
+30
+10
+Gaurav
+40
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur2.sql
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> ed c:/oracle/cur2.sql
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> @ c:/oracle/cur3.sql
+                exit when c1%notfound;
+                *
+ERROR at line 8:
+ORA-06550: line 8, column 3:
+PLS-00103: Encountered the symbol "EXIT" when expecting one of the following:
+. ( , % ; limit
+
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> @ c:/oracle/cur3.sql
+                select custdata.city, count(*) as total from customers group by custdata.city;
+                *
+ERROR at line 9:
+ORA-06550: line 9, column 3:
+PLS-00428: an INTO clause is expected in this SELECT statement
+ORA-06550: line 11, column 24:
+PLS-00201: identifier 'TOTAL' must be declared
+ORA-06550: line 11, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> select city,count(*) from customers group by city;
+
+CITY         COUNT(*)
+---------- ----------
+Bhopal              2
+Gwalior             1
+Sagar               4
+Indore              3
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> @ c:/oracle/cur3.sql
+City Bhopal exists 2 times
+City Gwalior exists 1 times
+City Sagar exists 4 times
+City Indore exists 3 times
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur3.sql
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/cur4.sql
+
+SQL> @ c:/oracle/cur4.sql
+-------------------
+Dept 1165
+Dept 1000
+Dept 1195
+Dept 300
+-------------------
+
+PL/SQL procedure successfully completed.
+
+SQL> select dept,sum(amount) from customers group by dept;
+
+      DEPT SUM(AMOUNT)
+---------- -----------
+        30        1195
+        20        1000
+        40         300
+        10        1165
+
+SQL> ed c:/oracle/cur4.sql
+====================================================
