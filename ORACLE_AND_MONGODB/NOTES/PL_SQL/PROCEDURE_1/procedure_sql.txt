@@ -1,0 +1,456 @@
+		Procedure / PL / SQL
+
+
+====================================================================
+
+SQL*Plus: Release 10.2.0.1.0 - Production on Sat Dec 13 08:48:12 2025
+
+Copyright (c) 1982, 2005, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: prince
+Enter password:
+Connected.
+SQL> create table attendance(id number, month number,days number);
+
+Table created.
+
+SQL> insert into attendance values(1,12,20);
+
+1 row created.
+
+SQL> insert into attendance values(2,12,23);
+
+1 row created.
+
+SQL> insert into attendance values(3,12,3);
+
+1 row created.
+
+SQL> insert into attendance values(4,12,29);
+
+1 row created.
+
+SQL> insert into attendance values(5,11,18);
+
+1 row created.
+
+SQL> insert into attendance values(6,11,24);
+
+1 row created.
+
+SQL> commit;
+
+Commit complete.
+
+SQL> set serveroutput on
+SQL> select * from attendance;
+
+        ID      MONTH       DAYS
+---------- ---------- ----------
+         1         12         20
+         2         12         23
+         3         12          3
+         4         12         29
+         5         11         18
+         6         11         24
+
+6 rows selected.
+
+SQL> ed c:/oracle/cur12.sql
+
+SQL> @ c:/oracle/cur12.sql
+Id 4
+Month 12
+Days 29
+------------------------
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur12.sql
+
+SQL> @ c:/oracle/cur12.sql
+Id 1
+Month 12
+Days 20
+------------------------
+Id 2
+Month 12
+Days 23
+------------------------
+Id 4
+Month 12
+Days 29
+------------------------
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur12.sql
+
+SQL> ed c:/oracle/cur13.sql
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/cur13.sql
+
+SQL> @ c:/oracle/cur13.sql
+Name  Ravi
+Amount 495
+--------------------------------
+Name  Sumit
+Amount 715
+--------------------------------
+Name  Ajay
+Amount 165
+--------------------------------
+Name  Vijay
+Amount 935
+--------------------------------
+Name  Sanjay
+Amount 385
+--------------------------------
+Name  Gourav
+Amount 55
+--------------------------------
+Name  Sourav
+Amount 120
+--------------------------------
+Name  Raja
+Amount 230
+--------------------------------
+Name  Rani
+Amount 260
+--------------------------------
+Name  Gaurav
+Amount 300
+--------------------------------
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/cur13.sql
+
+SQL> ed c:/oracle/cur13.sql
+
+SQL> ed c:/oracle/proc1.sql
+
+SQL> @ c:/oracle/proc1.sql
+
+Procedure created.
+
+SQL> ed c:/oracle/proc1.sql
+
+SQL> exec p1;
+This is a procedure. Similar to functions
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/proc1.sql
+
+SQL> exec p1;
+This is a procedure. Similar to functions
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/proc1.sql
+create procedure p1
+                 *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> ed c:/oracle/proc1.sql
+
+SQL> @ c:/oracle/proc1.sql
+
+Procedure created.
+
+SQL> exec p1
+This is a procedure. Similar to functions in other languages
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/proc1.sql
+
+SQL> ed c:/oracle/callproc1.sql
+
+SQL> @ c:/oracle/callproc1.sql
+This is a procedure. Similar to functions in other languages
+
+PL/SQL procedure successfully completed.
+
+SQL> exec p1;
+This is a procedure. Similar to functions in other languages
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/callproc1.sql
+
+SQL> ed c:/oracle/proc2.sql
+
+SQL> @ c:/oracle/proc2.sql
+
+Procedure created.
+
+SQL> exec p2(4);
+Square is 16
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/proc2.sql
+
+SQL> @ c:/oracle/proc2.sql
+
+Procedure created.
+
+SQL> exec p2(4);
+Square is 16
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/proc2.sql
+
+SQL> ed c:/oracle/callproc2.sql
+
+SQL> @ c:/oracle/callproc2.sql
+Enter value for num: 8
+old   4:        num:=&num;
+new   4:        num:=8;
+Square is 64
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/callproc2.sql
+
+SQL> ed c:/oracle/proc2.sql
+
+SQL> ed c:/oracle/callproc1.sql
+
+SQL> ed c:/oracle/callproc2.sql
+
+SQL> ed c:/oracle/proc2.sql
+
+SQL> ed c:/oracle/callproc2.sql
+
+SQL> ed c:/oracle/proc3.sql
+
+SQL> @ c:/oracle/proc3.sql
+
+Procedure created.
+
+SQL> ed c:/oracle/proc3.sql
+
+SQL> @ c:/oracle/proc3.sql
+
+Procedure created.
+
+SQL> exec p3(10,20);
+BEGIN p3(10,20); END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'P3'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> exec p3(10,20,50);
+BEGIN p3(10,20,50); END;
+
+               *
+ERROR at line 1:
+ORA-06550: line 1, column 16:
+PLS-00363: expression '50' cannot be used as an assignment target
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> @ c:/oracle/proc3call.sql
+SP2-0310: unable to open file "c:/oracle/proc3call.sql"
+SQL> ed c:/oracle/proc3call.sql
+
+SQL> @ c:/oracle/proc3call.sql
+Enter value for x: 10
+old   6:        x:=&x;
+new   6:        x:=10;
+Enter value for y: 20
+old   7:        y:=&y;
+new   7:        y:=20;
+Sum is 30
+
+PL/SQL procedure successfully completed.
+
+SQL> ed c:/oracle/proc3call.sql
+
+SQL> ed c:/oracle/proc3.sql
+
+SQL> ed c:/oracle/proc3call.sql
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> ed c:/oracle/proc4.sql
+
+SQL> select cname,min(doj) from customers where dept=10 group by doj;
+select cname,min(doj) from customers where dept=10 group by doj
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> select cname,min(doj) from customers where dept=10 group by cname;
+
+CNAME        MIN(DOJ)
+------------ ---------
+Ajay         30-SEP-22
+Sourav       06-NOV-25
+Ravi         10-APR-20
+Sanjay       10-APR-20
+
+SQL> ed c:/oracle/proc4.sql
+
+SQL> select min(doj) from customers where dept=10;
+
+MIN(DOJ)
+---------
+10-APR-20
+
+SQL> ed c:/oracle/proc4.sql
+
+SQL>
+SQL> @ c:/oracle/proc4.sql
+
+Procedure created.
+
+SQL> ed c:/oracle/proc4call.sql
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 10
+old   5:        dno:=&dno;
+new   5:        dno:=10;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at "PRINCE.P4", line 7
+ORA-06512: at line 6
+
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 20
+old   5:        dno:=&dno;
+new   5:        dno:=20;
+Sumit
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 30
+old   5:        dno:=&dno;
+new   5:        dno:=30;
+Vijay
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customers;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         1 Ravi                495 10-APR-20       9983         10 Indore
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         3 Ajay                165 30-SEP-22                    10 Sagar
+         4 Vijay               935 15-FEB-23                    30 Indore
+         5 Sanjay              385 10-APR-20                    10 Indore
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         7 Sourav              120 06-NOV-25                    10 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+         9 Rani                260 16-MAY-23                    30 Bhopal
+        10 Gaurav              300 15-NOV-25       3394         40 Gwalior
+
+10 rows selected.
+
+SQL> select * from customers where dept=20;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         2 Sumit               715 13-APR-20       8832         20 Sagar
+         6 Gourav               55 03-NOV-25                    20 Sagar
+         8 Raja                230 04-OCT-25                    20 Bhopal
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 30
+old   5:        dno:=&dno;
+new   5:        dno:=30;
+Vijay
+
+PL/SQL procedure successfully completed.
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 20
+old   5:        dno:=&dno;
+new   5:        dno:=20;
+Sumit
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customers where dept=30;
+
+       CNO CNAME            AMOUNT DOJ          CONTACT       DEPT CITY
+---------- ------------ ---------- --------- ---------- ---------- ----------
+         4 Vijay               935 15-FEB-23                    30 Indore
+         9 Rani                260 16-MAY-23                    30 Bhopal
+
+SQL> @ c:/oracle/proc4call.sql
+Enter value for dno: 10
+old   5:        dno:=&dno;
+new   5:        dno:=10;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at "PRINCE.P4", line 7
+ORA-06512: at line 6
+
+
+SQL> ed c:/oracle/proc4.sql
+
+SQL> select min(doj)  from customers where dept=20;
+
+MIN(DOJ)
+---------
+13-APR-20
+
+SQL> ed c:/oracle/proc4.sql
+
+SQL> ed c:/oracle/proc4call.sql
+
+SQL>
