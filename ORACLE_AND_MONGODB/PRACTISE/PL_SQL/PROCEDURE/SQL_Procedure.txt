@@ -1,0 +1,950 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Dec 14 10:25:03 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: user1/pass1
+Last Successful login time: Sun Dec 14 2025 10:23:34 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for amount: 4
+old   4:        amount := &amount;
+new   4:        amount := 4;
+        p4(amount);
+        *
+ERROR at line 5:
+ORA-06550: line 5, column 2:
+PLS-00905: object USER1.P4 is invalid
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Procedure created.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for amount: 1200
+old   4:        amount := &amount;
+new   4:        amount := 1200;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at "USER1.P4", line 5
+ORA-06512: at line 5
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> exec p4 ;
+BEGIN p4 ; END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'P4'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p1.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Procedure created.
+
+SQL> exec p4 ;
+BEGIN p4 ; END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'P4'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> SElect * from tab;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+CRICKETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+BIN$sw8ZZD1JS+CwDjBI7yZ91Q==$0
+TABLE
+
+EMPLOYEES
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+STUDENT
+TABLE
+
+ORDERS
+TABLE
+
+BIN$hX4/d40ASiCDF+DY0M47Rg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$xuuRaliBRrSt8EDEmxARQA==$0
+TABLE
+
+CUBOID
+TABLE
+
+MATHS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$9St92vSPQDOHwyKfMFa7sQ==$0
+TABLE
+
+BIN$/vd/e984Qx+HjNfDR6/RIw==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+15 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> 2 C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+SQL>  C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+  2* C:
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Procedure created.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for amounts: 1200
+old   4:        amounts := &amounts;
+new   4:        amounts := 1200;
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at "USER1.P4", line 5
+ORA-06512: at line 5
+
+
+SQL> Select * from orders where amount>1200;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         1         101 12-JAN-24       1500
+         2         102 05-FEB-24       2200
+         3         103 18-MAR-24       4500
+         4         101 20-APR-24       3200
+         6         105 11-JUN-24       5600
+         7         102 14-JUL-24       2700
+        10         108 03-OCT-24       3900
+        11         109 10-OCT-24       1800
+        12         110 15-NOV-24       2500
+        13         103 28-NOV-24       4700
+        14         105 01-DEC-24       5100
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+        15         110 10-DEC-24       1400
+
+12 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Procedure created.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for amounts: 1200
+old   4:        amounts := &amounts;
+new   4:        amounts := 1200;
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at "USER1.P4", line 5
+ORA-06512: at line 5
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL>  C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for amounts: 1200
+old   4:        amounts:=&amounts ;
+new   4:        amounts:=1200 ;
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at "USER1.P4", line 5
+ORA-06512: at line 5
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> Select * from orders;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         1         101 12-JAN-24       1500
+         2         102 05-FEB-24       2200
+         3         103 18-MAR-24       4500
+         4         101 20-APR-24       3200
+         5         104 02-MAY-24        800
+         6         105 11-JUN-24       5600
+         7         102 14-JUL-24       2700
+         8         106 09-AUG-24       1200
+         9         107 25-SEP-24        900
+        10         108 03-OCT-24       3900
+        11         109 10-OCT-24       1800
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+        12         110 15-NOV-24       2500
+        13         103 28-NOV-24       4700
+        14         105 01-DEC-24       5100
+        15         110 10-DEC-24       1400
+
+15 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+create or replace procedure(amounts number)
+                           *
+ERROR at line 1:
+ORA-04050: invalid or missing procedure, function, or package name
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> show errors;
+Errors for PROCEDURE P4:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+6/2      PL/SQL: Statement ignored
+6/14     PLS-00862: The type of the iterand is not compatible with an
+         iteration control.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> exec p4 ;
+BEGIN p4 ; END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00905: object USER1.P4 is invalid
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+
+SQL>  C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call4.sql
+Enter value for num: 1300
+old   4:        num :=&num;
+new   4:        num :=1300;
+        p4(num);
+        *
+ERROR at line 5:
+ORA-06550: line 5, column 2:
+PLS-00905: object USER1.P4 is invalid
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+create or replace p4(amounts in number)
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SP2-0042: unknown command "end" - rest of line ignored.
+create or replace p4(amounts in number)
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL>  C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+SP2-0023: String not found.
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+create or replace precedure  p4(amounts in number)
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SP2-0042: unknown command "end" - rest of line ignored.
+create or replace precedure  p4(amounts in number)
+                  *
+ERROR at line 1:
+ORA-00922: missing or invalid option
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> select * from orders;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         1         101 12-JAN-24       1500
+         2         102 05-FEB-24       2200
+         3         103 18-MAR-24       4500
+         4         101 20-APR-24       3200
+         5         104 02-MAY-24        800
+         6         105 11-JUN-24       5600
+         7         102 14-JUL-24       2700
+         8         106 09-AUG-24       1200
+         9         107 25-SEP-24        900
+        10         108 03-OCT-24       3900
+        11         109 10-OCT-24       1800
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+        12         110 15-NOV-24       2500
+        13         103 28-NOV-24       4700
+        14         105 01-DEC-24       5100
+        15         110 10-DEC-24       1400
+
+15 rows selected.
+
+SQL> Select * from orders where amount>1200;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         1         101 12-JAN-24       1500
+         2         102 05-FEB-24       2200
+         3         103 18-MAR-24       4500
+         4         101 20-APR-24       3200
+         6         105 11-JUN-24       5600
+         7         102 14-JUL-24       2700
+        10         108 03-OCT-24       3900
+        11         109 10-OCT-24       1800
+        12         110 15-NOV-24       2500
+        13         103 28-NOV-24       4700
+        14         105 01-DEC-24       5100
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+        15         110 10-DEC-24       1400
+
+12 rows selected.
+
+SQL> Select * from orders where amount<1200;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         5         104 02-MAY-24        800
+         9         107 25-SEP-24        900
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> Select customer_id , amount from orders where amount>2300 and rownum=1;
+
+CUSTOMER_ID     AMOUNT
+----------- ----------
+        103       4500
+
+SQL> Select customer_id , amount from orders where amount>2300 and rownum=2;
+
+no rows selected
+
+SQL> Select customer_id , amount from orders where amount>2300 and rownum=0;
+
+no rows selected
+
+SQL> Select customer_id , amount from orders where amount>2300 and rownum=1;
+
+CUSTOMER_ID     AMOUNT
+----------- ----------
+        103       4500
+
+SQL> Select customer_id , amount from orders where amount>2300 ;
+
+CUSTOMER_ID     AMOUNT
+----------- ----------
+        103       4500
+        101       3200
+        105       5600
+        102       2700
+        108       3900
+        110       2500
+        103       4700
+        105       5100
+
+8 rows selected.
+
+SQL> Select customer_id , amount from orders where amount>2300 fetch first 5 rows only;
+
+CUSTOMER_ID     AMOUNT
+----------- ----------
+        103       4500
+        101       3200
+        105       5600
+        102       2700
+        108       3900
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql
+
+SQL> Select * from orders;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+         1         101 12-JAN-24       1500
+         2         102 05-FEB-24       2200
+         3         103 18-MAR-24       4500
+         4         101 20-APR-24       3200
+         5         104 02-MAY-24        800
+         6         105 11-JUN-24       5600
+         7         102 14-JUL-24       2700
+         8         106 09-AUG-24       1200
+         9         107 25-SEP-24        900
+        10         108 03-OCT-24       3900
+        11         109 10-OCT-24       1800
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT
+---------- ----------- --------- ----------
+        12         110 15-NOV-24       2500
+        13         103 28-NOV-24       4700
+        14         105 01-DEC-24       5100
+        15         110 10-DEC-24       1400
+
+15 rows selected.
+
+SQL> alter  table orders add name varchar(15);
+
+Table altered.
+
+SQL> desc orders;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ORDER_ID                                  NOT NULL NUMBER
+ CUSTOMER_ID                                        NUMBER
+ ORDER_DATE                                         DATE
+ AMOUNT                                             NUMBER
+ NAME                                               VARCHAR2(15)
+
+SQL> update orders set name='aayush' where customer_id = 101;
+
+2 rows updated.
+
+SQL> update orders set name='palak' where customer_id = 102;
+
+2 rows updated.
+
+SQL> update orders set name='disha' where customer_id = 103;
+
+2 rows updated.
+
+SQL> update orders set name='Shubham' where customer_id = 104;
+
+1 row updated.
+
+SQL> update orders set name='Simran' where customer_id = 105;
+
+2 rows updated.
+
+SQL> update orders set name='Rohan' where customer_id = 106;
+
+1 row updated.
+
+SQL> update orders set name='Rohini' where customer_id = 107;
+
+1 row updated.
+
+SQL> update orders set name='Aryan' where customer_id = 108;
+
+1 row updated.
+
+SQL> update orders set name='Prince' where customer_id = 109;
+
+1 row updated.
+
+SQL> update orders set name='Princy' where customer_id = 110;
+
+2 rows updated.
+
+SQL> update orders set name='Sapna' where customer_id = 111;
+
+0 rows updated.
+
+SQL> Select * from orders;
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT NAME
+---------- ----------- --------- ---------- ---------------
+         1         101 12-JAN-24       1500 aayush
+         2         102 05-FEB-24       2200 palak
+         3         103 18-MAR-24       4500 disha
+         4         101 20-APR-24       3200 aayush
+         5         104 02-MAY-24        800 Shubham
+         6         105 11-JUN-24       5600 Simran
+         7         102 14-JUL-24       2700 palak
+         8         106 09-AUG-24       1200 Rohan
+         9         107 25-SEP-24        900 Rohini
+        10         108 03-OCT-24       3900 Aryan
+        11         109 10-OCT-24       1800 Prince
+
+  ORDER_ID CUSTOMER_ID ORDER_DAT     AMOUNT NAME
+---------- ----------- --------- ---------- ---------------
+        12         110 15-NOV-24       2500 Princy
+        13         103 28-NOV-24       4700 disha
+        14         105 01-DEC-24       5100 Simran
+        15         110 10-DEC-24       1400 Princy
+
+15 rows selected.
+
+SQL> Select name,count(customer_id),sum(amount) from orders group by  name;
+
+NAME            COUNT(CUSTOMER_ID) SUM(AMOUNT)
+--------------- ------------------ -----------
+aayush                           2        4700
+palak                            2        4900
+disha                            2        9200
+Shubham                          1         800
+Simran                           2       10700
+Rohan                            1        1200
+Rohini                           1         900
+Aryan                            1        3900
+Prince                           1        1800
+Princy                           2        3900
+
+10 rows selected.
+
+SQL> create table as ( Select name,count(customer_id),sum(amount) from orders group by  name);
+create table as ( Select name,count(customer_id),sum(amount) from orders group by  name)
+             *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> create table is ( Select name,count(customer_id),sum(amount) from orders group by  name);
+create table is ( Select name,count(customer_id),sum(amount) from orders group by  name)
+             *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> create table orders_amount as ( Select name,count(customer_id),sum(amount) from orders group by  name);
+create table orders_amount as ( Select name,count(customer_id),sum(amount) from orders group by  name)
+                                            *
+ERROR at line 1:
+ORA-00998: must name this expression with a column alias
+
+
+SQL> create table orders_amount as ( Select orders.name,count(orders.customer_id),sum(orders.amount) from orders group by name);
+create table orders_amount as ( Select orders.name,count(orders.customer_id),sum(orders.amount) from orders group by name)
+                                                   *
+ERROR at line 1:
+ORA-00998: must name this expression with a column alias
+
+
+SQL> create table orders_amount as  Select orders.name,count(orders.customer_id),sum(orders.amount) from orders group by name;
+create table orders_amount as  Select orders.name,count(orders.customer_id),sum(orders.amount) from orders group by name
+                                                  *
+ERROR at line 1:
+ORA-00998: must name this expression with a column alias
+
+
+SQL> CREATE TABLE orders_amount AS
+  2  SELECT
+  3      name,
+  4      COUNT(customer_id) AS total_customers,
+  5      SUM(amount) AS total_amount
+  6  FROM orders
+  7  GROUP BY name;
+
+Table created.
+
+SQL> DESC ORDERS_AMOUNT;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(15)
+ TOTAL_CUSTOMERS                                    NUMBER
+ TOTAL_AMOUNT                                       NUMBER
+
+SQL> select * from orders_amount;
+
+NAME            TOTAL_CUSTOMERS TOTAL_AMOUNT
+--------------- --------------- ------------
+aayush                        2         4700
+palak                         2         4900
+disha                         2         9200
+Shubham                       1          800
+Simran                        2        10700
+Rohan                         1         1200
+Rohini                        1          900
+Aryan                         1         3900
+Prince                        1         1800
+Princy                        2         3900
+
+10 rows selected.
+
+SQL> select sum(total_amount) from orders_amount;
+
+SUM(TOTAL_AMOUNT)
+-----------------
+            42000
+
+SQL> Select name , total_amount , (total_amount/sum(total_amount))*100 from orders_amount;
+Select name , total_amount , (total_amount/sum(total_amount))*100 from orders_amount
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select name,total_amount , (total_amount/sum(total_amount))*100 from orders_amount;
+Select name,total_amount , (total_amount/sum(total_amount))*100 from orders_amount
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> Select name,total_amount , (total_amount/sum(total_amount))*100 AS percentage from orders_amount;
+Select name,total_amount , (total_amount/sum(total_amount))*100 AS percentage from orders_amount
+       *
+ERROR at line 1:
+ORA-00937: not a single-group group function
+
+
+SQL> SELECT
+  2      name,
+  3      total_amount,
+  4      ( total_amount / SUM(total_amount) OVER () ) * 100 AS percentage
+  5  FROM orders_amount;
+
+NAME            TOTAL_AMOUNT PERCENTAGE
+--------------- ------------ ----------
+aayush                  4700 11.1904762
+palak                   4900 11.6666667
+disha                   9200 21.9047619
+Shubham                  800  1.9047619
+Simran                 10700 25.4761905
+Rohan                   1200 2.85714286
+Rohini                   900 2.14285714
+Aryan                   3900 9.28571429
+Prince                  1800 4.28571429
+Princy                  3900 9.28571429
+
+10 rows selected.
+
+SQL> SELECT
+  2      name,
+  3      total_amount,\
+  4
+SQL>
+SQL> SELECT
+  2      name,
+  3      total_amount,
+  4      total_amount,
+  5
+SQL>
+SQL> select sum(percentage) from orders_amount;
+select sum(percentage) from orders_amount
+           *
+ERROR at line 1:
+ORA-00904: "PERCENTAGE": invalid identifier
+
+
+SQL> alter table orders_count add percentage numberl
+  2  '
+  3
+SQL>
+SQL> alter table orders_count add percentage number;
+alter table orders_count add percentage number
+*
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> alter table orders_amount add percentage number;
+
+Table altered.
+
+SQL> desc orders_amount;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ NAME                                               VARCHAR2(15)
+ TOTAL_CUSTOMERS                                    NUMBER
+ TOTAL_AMOUNT                                       NUMBER
+ PERCENTAGE                                         NUMBER
+
+SQL> Select * from orders_amount;
+
+NAME            TOTAL_CUSTOMERS TOTAL_AMOUNT PERCENTAGE
+--------------- --------------- ------------ ----------
+aayush                        2         4700
+palak                         2         4900
+disha                         2         9200
+Shubham                       1          800
+Simran                        2        10700
+Rohan                         1         1200
+Rohini                        1          900
+Aryan                         1         3900
+Prince                        1         1800
+Princy                        2         3900
+
+10 rows selected.
+
+SQL> update orders_amount set percentage = ((total_amount)/sum(total_amount) over ())*100 from orders_amount;
+update orders_amount set percentage = ((total_amount)/sum(total_amount) over ())*100 from orders_amount
+                                                      *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> UPDATE orders_amount oa
+  2  SET percentage =
+  3      ( oa.total_amount /
+  4        (SELECT SUM(total_amount) FROM orders_amount)
+  5      ) * 100;
+
+10 rows updated.
+
+SQL> Select * from orders_amount ;
+
+NAME            TOTAL_CUSTOMERS TOTAL_AMOUNT PERCENTAGE
+--------------- --------------- ------------ ----------
+aayush                        2         4700 11.1904762
+palak                         2         4900 11.6666667
+disha                         2         9200 21.9047619
+Shubham                       1          800  1.9047619
+Simran                        2        10700 25.4761905
+Rohan                         1         1200 2.85714286
+Rohini                        1          900 2.14285714
+Aryan                         1         3900 9.28571429
+Prince                        1         1800 4.28571429
+Princy                        2         3900 9.28571429
+
+10 rows selected.
+
+SQL> select sum(percentage) from orders_amount;
+
+SUM(PERCENTAGE)
+---------------
+            100
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p4.sql;
+
+SQL> Select round(percentage) from orders_amount;
+
+ROUND(PERCENTAGE)
+-----------------
+               11
+               12
+               22
+                2
+               25
+                3
+                2
+                9
+                4
+                9
+
+10 rows selected.
+
+SQL> alter table orders_amount add round_percentage number;
+
+Table altered.
+
+SQL> update orders_amount set round_percentage = round(percentage) ;
+
+10 rows updated.
+
+SQL> Select * from orders_amount;
+
+NAME            TOTAL_CUSTOMERS TOTAL_AMOUNT PERCENTAGE ROUND_PERCENTAGE
+--------------- --------------- ------------ ---------- ----------------
+aayush                        2         4700 11.1904762               11
+palak                         2         4900 11.6666667               12
+disha                         2         9200 21.9047619               22
+Shubham                       1          800  1.9047619                2
+Simran                        2        10700 25.4761905               25
+Rohan                         1         1200 2.85714286                3
+Rohini                        1          900 2.14285714                2
+Aryan                         1         3900 9.28571429                9
+Prince                        1         1800 4.28571429                4
+Princy                        2         3900 9.28571429                9
+
+10 rows selected.
+
+SQL> Select sum(amount_percentagge) from orders_amount;
+Select sum(amount_percentagge) from orders_amount
+           *
+ERROR at line 1:
+ORA-00904: "AMOUNT_PERCENTAGGE": invalid identifier
+
+
+SQL> Select sum(round_percentagge) from orders_amount;
+Select sum(round_percentagge) from orders_amount
+           *
+ERROR at line 1:
+ORA-00904: "ROUND_PERCENTAGGE": invalid identifier
+
+
+SQL> Select sum(round_percentage) from orders_amount;
+
+SUM(ROUND_PERCENTAGE)
+---------------------
+                   99
+
+SQL> Select * from orders_amount;
+
+NAME            TOTAL_CUSTOMERS TOTAL_AMOUNT PERCENTAGE ROUND_PERCENTAGE
+--------------- --------------- ------------ ---------- ----------------
+aayush                        2         4700 11.1904762               11
+palak                         2         4900 11.6666667               12
+disha                         2         9200 21.9047619               22
+Shubham                       1          800  1.9047619                2
+Simran                        2        10700 25.4761905               25
+Rohan                         1         1200 2.85714286                3
+Rohini                        1          900 2.14285714                2
+Aryan                         1         3900 9.28571429                9
+Prince                        1         1800 4.28571429                4
+Princy                        2         3900 9.28571429                9
+
+10 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call6
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\call7.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p7.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p7.sql;
+
+Warning: Procedure created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PROCEDURE\p7.sql
+
+SQL>

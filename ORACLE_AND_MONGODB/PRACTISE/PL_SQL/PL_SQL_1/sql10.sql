@@ -9,7 +9,7 @@ begin
         customer_name := '&cname';
         product_name  := '&pname';
 
-        insert into customers (cid, cname, pname) values (i, customer_name, product_name);
+        insert into customers(cid, cname, pname) values (i, customer_name, product_name);
 	i := i + 1;
     end loop;
 end;
