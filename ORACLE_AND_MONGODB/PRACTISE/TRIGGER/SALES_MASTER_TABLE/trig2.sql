@@ -1,0 +1,1 @@
+create or replace trigger trig1 instead of insert

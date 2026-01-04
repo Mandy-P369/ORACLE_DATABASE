@@ -22,6 +22,5 @@ INSERT INTO employeepay VALUES (119, 'Rohan',  26500, 5800, 32300, SYSDATE);
 INSERT INTO employeepay VALUES (120, 'Isha',   27500, 6100, 33600, SYSDATE);
 
 COMMIT;
-
 end;
 /
