@@ -1,0 +1,578 @@
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Dec 7 22:36:49 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: user1/pass1
+Last Successful login time: Sun Dec 07 2025 22:20:42 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> Select * from cuboid ;
+
+no rows selected
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+
+SQL> show user;
+USER is "USER1"
+SQL> Select * from tab ;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+FOOTBALL
+TABLE
+
+BIN$xHIN97OCSWCi6vlqAiSrrw==$0
+TABLE
+
+CRICKETERS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+PRODUCT
+TABLE
+
+EMPLOYEES
+TABLE
+
+BIN$hX4/d40ASiCDF+DY0M47Rg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$xuuRaliBRrSt8EDEmxARQA==$0
+TABLE
+
+CUBOID
+TABLE
+
+MATHS
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE        CLUSTERID
+------------- ----------
+BIN$9St92vSPQDOHwyKfMFa7sQ==$0
+TABLE
+
+BIN$/vd/e984Qx+HjNfDR6/RIw==$0
+TABLE
+
+CUSTOMERS
+TABLE
+
+
+12 rows selected.
+
+SQL> Select * from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1
+         2          2          4
+         3          3          9
+         4          4         16
+         5          5         25
+         6          6         36
+         7          7         49
+         8          8         64
+         9          9         81
+        10         10        100
+        11         11        121
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144
+        13         13        169
+        14         14        196
+        15         15        225
+        16         16        256
+        17         17        289
+        18         18        324
+        19         19        361
+        20         20        400
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+                dbms_output.put(n , ' ' );
+                *
+ERROR at line 9:
+ORA-06550: line 9, column 3:
+PLS-00306: wrong number or types of arguments in call to 'PUT'
+ORA-06550: line 9, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+1  1
+2  4
+3  9
+4  16
+5  25
+6  36
+7  49
+8  64
+9  81
+10  100
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql8.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 7
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 7
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+                cb:=a*a*a;
+                *
+ERROR at line 7:
+ORA-06550: line 7, column 3:
+PLS-00103: Encountered the symbol "CB" when expecting one of the following:
+, * & - + / at loop mod remainder rem when while
+<an exponent (**)> by || multiset
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+                a:+=1;
+                 *
+ERROR at line 9:
+ORA-06550: line 9, column 4:
+PLS-00103: Encountered the symbol ":" when expecting one of the following:
+:= . ( @ % ;
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1
+         2          2          4
+         3          3          9
+         4          4         16
+         5          5         25
+         6          6         36
+         7          7         49
+         8          8         64
+         9          9         81
+        10         10        100
+        11         11        121
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144
+        13         13        169
+        14         14        196
+        15         15        225
+        16         16        256
+        17         17        289
+        18         18        324
+        19         19        361
+        20         20        400
+
+20 rows selected.
+
+SQL> desc maths;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ MID                                       NOT NULL NUMBER
+ NUM                                                NUMBER
+ SQUARE                                             NUMBER
+ CUBE                                               NUMBER
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+                dbms_output.put_line(cube);
+                                     *
+ERROR at line 10:
+ORA-06550: line 10, column 24:
+PLS-00306: wrong number or types of arguments in call to 'CUBE'
+ORA-06550: line 10, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1
+         2          2          4
+         3          3          9
+         4          4         16
+         5          5         25
+         6          6         36
+         7          7         49
+         8          8         64
+         9          9         81
+        10         10        100
+        11         11        121
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144
+        13         13        169
+        14         14        196
+        15         15        225
+        16         16        256
+        17         17        289
+        18         18        324
+        19         19        361
+        20         20        400
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+1
+8
+27
+64
+125
+216
+343
+512
+729
+1000
+1331
+1728
+2197
+2744
+3375
+4096
+4913
+5832
+6859
+8000
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> Select * from maths;
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+         1          1          1          1
+         2          2          4          8
+         3          3          9         27
+         4          4         16         64
+         5          5         25        125
+         6          6         36        216
+         7          7         49        343
+         8          8         64        512
+         9          9         81        729
+        10         10        100       1000
+        11         11        121       1331
+
+       MID        NUM     SQUARE       CUBE
+---------- ---------- ---------- ----------
+        12         12        144       1728
+        13         13        169       2197
+        14         14        196       2744
+        15         15        225       3375
+        16         16        256       4096
+        17         17        289       4913
+        18         18        324       5832
+        19         19        361       6859
+        20         20        400       8000
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+                select cname into name from customers where cno = mid ;
+                                  *
+ERROR at line 7:
+ORA-06550: line 7, column 21:
+PLS-00201: identifier 'NAME' must be declared
+ORA-06550: line 7, column 26:
+PL/SQL: ORA-00904: : invalid identifier
+ORA-06550: line 7, column 3:
+PL/SQL: SQL Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> Select * from customers;
+
+no rows selected
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+
+SQL> alter table customers add pname varchar(15);
+
+Table altered.
+
+SQL> desc customers;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER
+ CNAME                                              VARCHAR2(15)
+ PNAME                                              VARCHAR2(15)
+
+SQL> insert into customers values(1,'Ayush','Shampoo');
+
+1 row created.
+
+SQL> insert into customers values(2,'Disha','Bread');
+
+1 row created.
+
+SQL> insert into customers values(3,'Krishna','Oil');
+
+1 row created.
+
+SQL> insert into customers values(4,'Vaishnavi','agarbatti');
+
+1 row created.
+
+SQL> insert into customers values(5,'Muskan','Laptop Sticker');
+
+1 row created.
+
+SQL> insert into customers values(6,'Himanshu','Pendrive');
+
+1 row created.
+
+SQL> insert into customers values(7,'Sakshi','Memory Card');
+
+1 row created.
+
+SQL> insert into customers values(8,'Vinod','Lamp');
+
+1 row created.
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 Ayush           Shampoo
+         2 Disha           Bread
+         3 Krishna         Oil
+         4 Vaishnavi       agarbatti
+         5 Muskan          Laptop Sticker
+         6 Himanshu        Pendrive
+         7 Sakshi          Memory Card
+         8 Vinod           Lamp
+
+8 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+declare
+*
+ERROR at line 1:
+ORA-01403: no data found
+ORA-06512: at line 8
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+                dbms_output.put_line(cname);
+                                     *
+ERROR at line 9:
+ORA-06550: line 9, column 24:
+PLS-00201: identifier 'CNAME' must be declared
+ORA-06550: line 9, column 3:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql7.sql
+1
+8
+27
+64
+125
+216
+343
+512
+729
+1000
+1331
+1728
+2197
+2744
+3375
+4096
+4913
+5832
+6859
+8000
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+Ayush
+Shampoo
+Disha
+Bread
+Krishna
+Oil
+Vaishnavi
+agarbatti
+Muskan
+Laptop Sticker
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> Select * from customers;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 Ayush           Shampoo
+         2 Disha           Bread
+         3 Krishna         Oil
+         4 Vaishnavi       agarbatti
+         5 Muskan          Laptop Sticker
+         6 Himanshu        Pendrive
+         7 Sakshi          Memory Card
+         8 Vinod           Lamp
+
+8 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+Muskan
+Laptop Sticker
+Vaishnavi
+agarbatti
+Krishna
+Oil
+Disha
+Bread
+Ayush
+Shampoo
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+Muskan        Laptop Sticker
+Vaishnavi        agarbatti
+Krishna        Oil
+Disha        Bread
+Ayush        Shampoo
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from customers ;
+
+       CID CNAME           PNAME
+---------- --------------- ---------------
+         1 Ayush           Shampoo
+         2 Disha           Bread
+         3 Krishna         Oil
+         4 Vaishnavi       agarbatti
+         5 Muskan          Laptop Sticker
+         6 Himanshu        Pendrive
+         7 Sakshi          Memory Card
+         8 Vinod           Lamp
+
+8 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\PL_SQL\PL_SQL_1\sql9.sql
+Muskan        Laptop Sticker
+Vaishnavi        agarbatti
+Krishna        Oil
+Disha        Bread
+Ayush        Shampoo
+
+PL/SQL procedure successfully completed.
+
+SQL>
