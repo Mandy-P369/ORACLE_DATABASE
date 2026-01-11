@@ -1,0 +1,831 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Mon Dec 22 23:16:55 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: user1/pass1
+Last Successful login time: Sat Dec 20 2025 16:13:53 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select
+  2  * from football ;
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         9 Halland                      28 France       forward         200
+       173 Baal Bharati
+
+         1 lionel messi                 36 Argentina    forward         106
+       180 Inter miami
+
+         2 Christiano Ronaldo           39 Portugal     forward         128
+       205 Al-Nasar
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         3 Neymar-jr                    33 Brazil       forward          79
+       128 al-Hilal
+
+         4 Kylian mbappe                26 France       forward          52
+        80 Real-madrid
+
+         5 De bryian                    33 Belgium      Midfield         26
+       100 Manchester city
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+         6 Luka modric                  39 Croatia      midfield         24
+       175 Real madrid
+
+         7 Harry kane                   31 england      forward          63
+        89 Bayern munish
+
+         8 Chhetri                      40 India        forward         120
+       200 Indian club
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        10 Mohammad Salah               31 Egypt        Forward         150
+       200 Liverpool
+
+        11 Robert Lewandowski           35 Poland       Forward         220
+       310 Barcelona
+
+        12 Kevin De Bruyne              32 Belgium      Midfield         60
+       250 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        13 Virgil van Dijk              32 Netherlands  Defender         15
+       180 Liverpool
+
+        14 Sadio Mane                   31 Senegal      Forward         130
+       220 Bayern Munich
+
+        15 Erling Haaland               23 Norway       Forward         120
+       150 Manchester City
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        16 Karim Benzema                35 France       Forward         200
+       340 Al-Ittihad
+
+        17 Toni Kroos                   34 Germany      Midfield         40
+       320 Real Madrid
+
+        18 Casemiro                     31 Brazil       Midfield         30
+       310 Manchester
+
+
+       PID PNAME                       AGE COUNTRY      POSITION      GOALS
+---------- -------------------- ---------- ------------ -------- ----------
+   MATCHES CLUB            GRA
+---------- --------------- ---
+        19 Raheem Sterling              29 England      Forward         110
+       270 Chelsea
+
+        20 Paulo Dybala                 30 Argentina    Forward          90
+       200 Roma
+
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> CREATE TABLE Sales_Worksheet (
+  2      sale_id INT PRIMARY KEY,
+  3      product_name VARCHAR(50),
+  4      quantity INT,
+  5      price_per_unit DECIMAL(8,2),
+  6      discount_percent DECIMAL(5,2),
+  7      gst_percent DECIMAL(5,2)
+  8  );
+
+Table created.
+
+SQL> desc sales_worksheet;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SALE_ID                                   NOT NULL NUMBER(38)
+ PRODUCT_NAME                                       VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PRICE_PER_UNIT                                     NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> alter table sales_worksheet;
+alter table sales_worksheet
+                          *
+ERROR at line 1:
+ORA-02210: no options specified for ALTER TABLE
+
+
+SQL> alter table sales_worksheet rename table to sales ;
+alter table sales_worksheet rename table to sales
+                                   *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table sales_worksheet rename sales_worksheet to sales ;
+alter table sales_worksheet rename sales_worksheet to sales
+                                   *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table sales_worksheet rename to sales;
+
+Table altered.
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SALE_ID                                   NOT NULL NUMBER(38)
+ PRODUCT_NAME                                       VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PRICE_PER_UNIT                                     NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> Select * from sales ;
+
+no rows selected
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+insert into sales values(1, 'Notebook', 10, 50, 10, 18),
+                                                       *
+ERROR at line 2:
+ORA-06550: line 2, column 56:
+PL/SQL: ORA-00933: SQL command not properly ended
+ORA-06550: line 2, column 1:
+PL/SQL: SQL Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+(1, 'Notebook', 10, 50, 10, 18),
+                               *
+ERROR at line 3:
+ORA-06550: line 3, column 32:
+PL/SQL: ORA-00933: SQL command not properly ended
+ORA-06550: line 2, column 1:
+PL/SQL: SQL Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\salesinsert.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> Select * from sales ;
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+         1 Notebook                                                   10
+            50               10          18
+
+         2 Pen                                                        20
+            15                5          18
+
+         3 Bag                                                         2
+          1200               15          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+         4 Calculator                                                  1
+           800               12          18
+
+         5 Water Bottle                                                3
+           300                8          18
+
+         6 Pencil Box                                                  4
+           150                5          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+         7 Geometry Box                                                2
+           220               10          18
+
+         8 Register                                                    6
+           120                7          18
+
+         9 Laptop Stand                                                1
+          1500               18          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        10 Mouse                                                       2
+           600               10          18
+
+        11 Keyboard                                                    1
+          1200               12          18
+
+        12 USB Drive                                                   5
+           700               15          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        13 Headphones                                                  1
+          2500               20          18
+
+        14 Charger                                                     2
+           900               10          18
+
+        15 Power Bank                                                  1
+          1800               15          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        16 Tablet Cover                                                3
+           650                8          18
+
+        17 Desk Lamp                                                   1
+          1400               12          18
+
+        18 Whiteboard                                                  1
+          2200               18          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        19 Marker Set                                                  2
+           350                5          18
+
+        20 Office Chair                                                1
+          7500               20          18
+
+
+20 rows selected.
+
+SQL> Select * from sales where quantity=1;
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+         4 Calculator                                                  1
+           800               12          18
+
+         9 Laptop Stand                                                1
+          1500               18          18
+
+        11 Keyboard                                                    1
+          1200               12          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        13 Headphones                                                  1
+          2500               20          18
+
+        15 Power Bank                                                  1
+          1800               15          18
+
+        17 Desk Lamp                                                   1
+          1400               12          18
+
+
+   SALE_ID PRODUCT_NAME                                         QUANTITY
+---------- -------------------------------------------------- ----------
+PRICE_PER_UNIT DISCOUNT_PERCENT GST_PERCENT
+-------------- ---------------- -----------
+        18 Whiteboard                                                  1
+          2200               18          18
+
+        20 Office Chair                                                1
+          7500               20          18
+
+
+8 rows selected.
+
+SQL> Select count(*) from sales where quantity=1;
+
+  COUNT(*)
+----------
+         8
+
+SQL> Select max(discount) from sales ;
+Select max(discount) from sales
+           *
+ERROR at line 1:
+ORA-00904: "DISCOUNT": invalid identifier
+
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SALE_ID                                   NOT NULL NUMBER(38)
+ PRODUCT_NAME                                       VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PRICE_PER_UNIT                                     NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> alter table sales rename sales_id to sid;
+alter table sales rename sales_id to sid
+                         *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table sales rename column sales_id to sid;
+alter table sales rename column sales_id to sid
+                                *
+ERROR at line 1:
+ORA-00904: "SALES_ID": invalid identifier
+
+
+SQL> alter table sales rename sale_id to sid;
+alter table sales rename sale_id to sid
+                         *
+ERROR at line 1:
+ORA-14155: missing PARTITION, PARTITIONS, SUBPARTITION, or SUBPARTITIONS
+keyword
+
+
+SQL> alter table sales rename column to sale_id to sid ;
+alter table sales rename column to sale_id to sid
+                                *
+ERROR at line 1:
+ORA-00904: : invalid identifier
+
+
+SQL> alter table sales rename column sale_id to sid ;
+
+Table altered.
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(38)
+ PRODUCT_NAME                                       VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PRICE_PER_UNIT                                     NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> alter table sales rename column product_name to pname ;
+
+Table altered.
+
+SQL> alter table sales rename column price_per_unit to ppunit;
+
+Table altered.
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(38)
+ PNAME                                              VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PPUNIT                                             NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> Select * from sales ;
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+         1 Notebook                                                   10
+        50               10          18
+
+         2 Pen                                                        20
+        15                5          18
+
+         3 Bag                                                         2
+      1200               15          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+         4 Calculator                                                  1
+       800               12          18
+
+         5 Water Bottle                                                3
+       300                8          18
+
+         6 Pencil Box                                                  4
+       150                5          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+         7 Geometry Box                                                2
+       220               10          18
+
+         8 Register                                                    6
+       120                7          18
+
+         9 Laptop Stand                                                1
+      1500               18          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+        10 Mouse                                                       2
+       600               10          18
+
+        11 Keyboard                                                    1
+      1200               12          18
+
+        12 USB Drive                                                   5
+       700               15          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+        13 Headphones                                                  1
+      2500               20          18
+
+        14 Charger                                                     2
+       900               10          18
+
+        15 Power Bank                                                  1
+      1800               15          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+        16 Tablet Cover                                                3
+       650                8          18
+
+        17 Desk Lamp                                                   1
+      1400               12          18
+
+        18 Whiteboard                                                  1
+      2200               18          18
+
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+        19 Marker Set                                                  2
+       350                5          18
+
+        20 Office Chair                                                1
+      7500               20          18
+
+
+20 rows selected.
+
+SQL> Select * from sales where pname like '%A%';
+
+no rows selected
+
+SQL> Select * from sales where pname like '%p%';
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+         9 Laptop Stand                                                1
+      1500               18          18
+
+        13 Headphones                                                  1
+      2500               20          18
+
+        17 Desk Lamp                                                   1
+      1400               12          18
+
+
+SQL> Select * from sales where pname like 'p%';
+
+no rows selected
+
+SQL> Select * from sales where pname like 'P%';
+
+       SID PNAME                                                QUANTITY
+---------- -------------------------------------------------- ----------
+    PPUNIT DISCOUNT_PERCENT GST_PERCENT
+---------- ---------------- -----------
+         2 Pen                                                        20
+        15                5          18
+
+         6 Pencil Box                                                  4
+       150                5          18
+
+        15 Power Bank                                                  1
+      1800               15          18
+
+
+SQL> edit \C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(38)
+ PNAME                                              VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PPUNIT                                             NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+declare or replace function func1(sno number)return number
+        *
+ERROR at line 1:
+ORA-06550: line 1, column 9:
+PLS-00103: Encountered the symbol "OR" when expecting one of the following:
+begin function pragma procedure subtype type <an identifier>
+<a double-quoted delimited-identifier> current cursor delete
+exists prior
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+Warning: Function created with compilation errors.
+
+SQL> select * from func1(5);
+select * from func1(5)
+              *
+ERROR at line 1:
+ORA-06575: Package or function FUNC1 is in an invalid state
+
+
+SQL> Select func1(5) from sales ;
+Select func1(5) from sales
+       *
+ERROR at line 1:
+ORA-06575: Package or function FUNC1 is in an invalid state
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+Warning: Function created with compilation errors.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+Warning: Function created with compilation errors.
+
+SQL> desc sales ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SID                                       NOT NULL NUMBER(38)
+ PNAME                                              VARCHAR2(50)
+ QUANTITY                                           NUMBER(38)
+ PPUNIT                                             NUMBER(8,2)
+ DISCOUNT_PERCENT                                   NUMBER(5,2)
+ GST_PERCENT                                        NUMBER(5,2)
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+Function created.
+
+SQL> Select func1(5) from dual;
+
+  FUNC1(5)
+----------
+       900
+
+SQL> Select quantity*ppunit from sales ;
+
+QUANTITY*PPUNIT
+---------------
+            500
+            300
+           2400
+            800
+            900
+            600
+            440
+            720
+           1500
+           1200
+           1200
+
+QUANTITY*PPUNIT
+---------------
+           3500
+           2500
+           1800
+           1800
+           1950
+           1400
+           2200
+            700
+           7500
+
+20 rows selected.
+
+SQL> Select sum(quantity*ppunit) from sales ;
+
+SUM(QUANTITY*PPUNIT)
+--------------------
+               33910
+
+SQL> select func1(12) from dual;
+
+ FUNC1(12)
+----------
+      3500
+
+SQL> Select func1(12)+func1(15) from dual;
+
+FUNC1(12)+FUNC1(15)
+-------------------
+               5300
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 3
+old   5:        sid := &sid;
+new   5:        sid := 3;
+        result = func1(sid);
+               *
+ERROR at line 6:
+ORA-06550: line 6, column 9:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 6, column 21:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( ) , * % & - + / at mod remainder rem <an exponent (**)>
+and or as || multiset
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 3
+old   6:        sid := &sid;
+new   6:        sid := 3;
+        result = func1(sid);
+               *
+ERROR at line 7:
+ORA-06550: line 7, column 9:
+PLS-00103: Encountered the symbol "=" when expecting one of the following:
+:= . ( @ % ;
+ORA-06550: line 7, column 21:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+. ( ) , * % & - + / at mod remainder rem <an exponent (**)>
+and or as || multiset
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 4
+old   6:        sid := &sid;
+new   6:        sid := 4;
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 6
+old   6:        sid := &sid;
+new   6:        sid := 6;
+Pencil Box
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 5
+old   6:        sid := &sid;
+new   6:        sid := 5;
+Water Bottle
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 4
+old   6:        sid := &sid;
+new   6:        sid := 4;
+Calculator
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 3
+old   6:        sid := &sid;
+new   6:        sid := 3;
+Bag
+
+PL/SQL procedure successfully completed.
+
+SQL> 4
+  4*    name varchar(20);
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 15
+old   6:        sid := &sid;
+new   6:        sid := 15;
+        dbms_output.put_line("The name of the product is " || name || ", Amount is :" || result);
+                              *
+ERROR at line 9:
+ORA-06550: line 9, column 24:
+PLS-00201: identifier 'The name of the product is ' must be declared
+ORA-06550: line 9, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 3
+old   6:        sid := &sid;
+new   6:        sid := 3;
+The name of the product is Bag, Amount is :2400
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 14
+old   6:        sid := &sid;
+new   6:        sid := 14;
+declare
+*
+ERROR at line 1:
+ORA-01422: exact fetch returns more than requested number of rows
+ORA-06512: at line 8
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\FUNCTIONS\func1call.sql
+Enter value for sid: 16
+old   6:        sid := &sid;
+new   6:        sid := 16;
+The name of the product is Tablet Cover, Amount is :1950
+
+PL/SQL procedure successfully completed.

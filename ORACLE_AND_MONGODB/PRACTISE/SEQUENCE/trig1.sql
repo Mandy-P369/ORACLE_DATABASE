@@ -9,6 +9,5 @@ begin
 		:new.age:=cnt;
 		delete from oldconnection where age=cnt;
 	end if ;
-
 end;
 /

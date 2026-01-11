@@ -1,0 +1,3647 @@
+SQL*Plus: Release 21.0.0.0.0 - Production on Sun Dec 28 13:07:04 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: user1/pass1
+Last Successful login time: Sun Dec 28 2025 12:27:59 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+
+49 rows selected.
+
+SQL> insert into sales2 values(null,null,null,null,null,null);
+insert into sales2 values(null,null,null,null,null,null)
+            *
+ERROR at line 1:
+ORA-04098: trigger 'USER1.TRIG5' is invalid and failed re-validation
+
+
+SQL> update sales2 set ppunit = 59 where finalamount = 0;
+update sales2 set ppunit = 59 where finalamount = 0
+       *
+ERROR at line 1:
+ORA-04098: trigger 'USER1.TRIG5' is invalid and failed re-validation
+
+
+SQL> update sales2 set ppunit = 59 where finalamount is null;
+update sales2 set ppunit = 59 where finalamount is null
+       *
+ERROR at line 1:
+ORA-04098: trigger 'USER1.TRIG5' is invalid and failed re-validation
+
+
+SQL> edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> update sales2 set ppunit=59 where finalamount is null ;
+update sales2 set ppunit=59 where finalamount is null
+       *
+ERROR at line 1:
+ORA-04098: trigger 'USER1.TRIG5' is invalid and failed re-validation
+
+
+SQL> drop trigger trig5 ;
+
+Trigger dropped.
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> update sales2 set ppunit = 59 where finalamount = 0;
+
+17 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                59         10        500          5           0
+Pen                     59         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              59          1        800          5           0
+Water Bottle            59          3        900          5           0
+Pencil Box              59          5        600          5           0
+Geometry Box            59          2        440          5           0
+Register                59          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                   59          2       1200          5           0
+Keyboard                59          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set              59          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 59         10        230          5           0
+Product25               59         23       1035          5           0
+Product26               59          5        105          5           0
+Product27               59          5        105          5           0
+Product28               59          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               59          4        268          5           0
+Product32               59          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+
+49 rows selected.
+
+SQL> select * from sales2 where finalamount is null;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product39               87         32       2784
+Product40               87         32       2784
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         20       1000
+
+11 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * From sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+
+49 rows selected.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+
+49 rows selected.
+
+SQL> insert into sales2 values ('Cellphone',21,32,null,7,null);
+
+1 row created.
+
+SQL> Select *  from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone               21         32        672          7    737.4528
+
+50 rows selected.
+
+SQL> update sales2 set ppunit = 7500 where pname='cellphone';
+
+0 rows updated.
+
+SQL> update sales2 set ppunit = 7500 where pname='ellphone';
+
+0 rows updated.
+
+SQL> update sales2 set ppunit = 7500 where pname='Cellphone';
+
+1 row updated.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+
+50 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> insert into sales2 values ('Cellphone',21,32,null,7,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+Cellphone               21         32        672          7    737.4528
+
+51 rows selected.
+
+SQL> insert into sales2 values ('Cellphone',21,32,null,null,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+
+52 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> insert into sales2 values ('Cellphone',21,32,null,7,null);
+
+1 row created.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+Cellphone               21         32        672          7    737.4528
+
+53 rows selected.
+
+SQL> insert into sales2 values ('Cellphone',21,32,null,null,null);
+
+1 row created.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+
+54 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Warning: Trigger created with compilation errors.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> set serverout  on ;
+SQL> SElect * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone             7500         32        672          7    737.4528
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+Cellphone               21         32        672          7    737.4528
+Cellphone               21         32        672
+
+54 rows selected.
+
+SQL> update sales2 set ppunit = 8 where pname = 'Cellphone' having count(*)-1;
+update sales2 set ppunit = 8 where pname = 'Cellphone' having count(*)-1
+                                                       *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> update sales2 set ppunit = 8 where pname = 'Cellphone';
+
+5 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+
+54 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+create or replace trigger trig3 before insert or update on ppunit,quantity,iamt,finalamount  on sales2 for each row
+                                                                 *
+ERROR at line 1:
+ORA-04079: invalid trigger specification
+
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> rollback ;
+
+Rollback complete.
+
+SQL> select * from sales2 l
+  2  ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+
+54 rows selected.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+
+54 rows selected.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+
+54 rows selected.
+
+SQL> update sales2 set ppunit = 67  where pname ='Cellphone';
+
+5 rows updated.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144
+
+54 rows selected.
+
+SQL> update sales2 set finalamount = 3000 where pname ='Cellphone';
+
+5 rows updated.
+
+SQL> Select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144
+Cellphone               67         32       2144          7   2352.8256
+Cellphone               67         32       2144
+
+54 rows selected.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+Cellphone                8         32        672          7    737.4528
+Cellphone                8         32        672
+
+54 rows selected.
+
+SQL> update sales2 set finalamount = 3000 where pname ='Cellphone';
+
+5 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+
+54 rows selected.
+
+SQL> update sales2 set finalamount = 3000 where pname='Cellphone';
+
+5 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+
+54 rows selected.
+
+SQL> update sales2 set finalamount = 3000 where pname ='Product41';
+
+1 row updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+
+54 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+Trigger created.
+
+SQL> update sales2 set iamt = 264 where pname ='Cellphone';
+
+5 rows updated.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+Cellphone                8         32        256          7    280.9344
+Cellphone                8         32        256
+
+54 rows selected.
+
+SQL> update sales2 set quantity = 264 where pname ='Cellphone';
+
+5 rows updated.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone                8        264       2112          7   2317.7088
+Cellphone                8        264       2112          7   2317.7088
+Cellphone                8        264       2112
+Cellphone                8        264       2112          7   2317.7088
+Cellphone                8        264       2112
+
+54 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig4.sql
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+create or replace trigger trig5 before insert or update on sales2 for rach row
+                                                                      *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Warning: Trigger created with compilation errors.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> show errors;
+Errors for TRIGGER TRIG5:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+5/5      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;\
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL>
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Warning: Trigger created with compilation errors.
+
+SQL>  show errors;
+Errors for TRIGGER TRIG5:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+5/5      PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Trigger created.
+
+SQL> update sales2 set ppunit=100 where pname='Cellphone';
+
+5 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+
+54 rows selected.
+
+SQL> insert into sales2 values(null,89,98,null,10,null);
+
+1 row created.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               89         98       8722         10    9262.764
+
+55 rows selected.
+
+SQL> update sales2 set discount = 12 where rowid=(select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               89         98       8722         12        8722
+
+55 rows selected.
+
+SQL> select * from user1 ;
+select * from user1
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from sale2 ;
+select * from sale2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               89         98       8722         12        8722
+
+55 rows selected.
+
+SQL> update sales2 set ppunit = 45 where rowid (select max(rowid) from sales2);
+update sales2 set ppunit = 45 where rowid (select max(rowid) from sales2)
+                                           *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> update sales2 set ppunit = 45 where rowid =(select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> Select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               45         98       4410         12    4579.344
+
+55 rows selected.
+
+SQL> update sales2 set ppunit = 67 where rowid = (Select max(rowid)-1 from sales);
+update sales2 set ppunit = 67 where rowid = (Select max(rowid)-1 from sales)
+                                                    *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected NUMBER got ROWID
+
+
+SQL> update sales2 set ppunit = 67 where rowid = (Select max(rowid) from sales);
+update sales2 set ppunit = 67 where rowid = (Select max(rowid) from sales)
+       *
+ERROR at line 1:
+ORA-01410: invalid ROWID
+
+
+SQL> update sales2 set ppunit = 67 where rowid = (Select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook                50         10        500          5           0
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+55 rows selected.
+
+SQL> update sales2 set ppunit = 100 where round(rowid) = (Select (max(rowid)+min(rowid))/2 from sales2);
+update sales2 set ppunit = 100 where round(rowid) = (Select (max(rowid)+min(rowid))/2 from sales2)
+                                                             *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected NUMBER got ROWID
+
+
+SQL> update sales2 set ppunit = 100 where round(rowid)=34'
+  2  ';
+update sales2 set ppunit = 100 where round(rowid)=34'
+                                                    *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> update sales2 set ppunit = 100 where round(rowid)=34;
+update sales2 set ppunit = 100 where round(rowid)=34
+                                           *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected NUMBER got ROWID
+
+
+SQL> update sales2 set ppunit = 100 where rowid=34;
+update sales2 set ppunit = 100 where rowid=34
+                                          *
+ERROR at line 1:
+ORA-00932: inconsistent datatypes: expected ROWID got NUMBER
+
+
+SQL> update sales2 set ppunit = 100 where rowid=(Select min(rowid) from sales2);;
+update sales2 set ppunit = 100 where rowid=(Select min(rowid) from sales2);
+                                                                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> update sales2 set ppunit = 100 where rowid=(Select min(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+55 rows selected.
+
+SQL> drop table sales ;
+
+Table dropped.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+55 rows selected.
+
+SQL> create table sales as( select * from sales2 order by rowid asc fetch first 10 rows only);
+
+Table created.
+
+SQL> select * from sales ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+
+10 rows selected.
+
+SQL> create table sales3 as (Select * from sales2);
+
+Table created.
+
+SQL> select * from sales3 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+55 rows selected.
+
+SQL> drop table sales2 ;
+
+Table dropped.
+
+SQL> select * from sales2 ;
+select * from sales2
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table sales2 as(Select * from sales);
+
+Table created.
+
+SQL> drop table sales;
+
+Table dropped.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+
+10 rows selected.
+
+SQL> update sales2 set discount = 7 where ppunit >=100;
+
+8 rows updated.
+
+SQL> update sales2 set discount = 7 where ppunit <=100;
+
+3 rows updated.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+
+10 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Trigger created.
+
+SQL> update sales2 set discount = 7 where ppunit <=100;
+
+3 rows updated.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+
+10 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Warning: Trigger created with compilation errors.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]
+SP2-0310: unable to open file "C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]"
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Warning: Trigger created with compilation errors.
+
+SQL> show errors;
+Errors for TRIGGER TRIG3:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+21/2     PLS-00103: Encountered the symbol "" when expecting one of the
+         following:
+         := . ( @ % ;
+         The symbol ";" was substituted for "" to continue.
+
+27/20    PLS-00103: Encountered the symbol "=" when expecting one of the
+         following:
+         := . ( @ % ; indicator
+         The symbol ":= was inserted before "=" to continue.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;\
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]
+SP2-0310: unable to open file "C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]"
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Warning: Trigger created with compilation errors.
+
+SQL> show errors;
+Errors for TRIGGER TRIG3:
+
+LINE/COL ERROR
+-------- -----------------------------------------------------------------
+29/4     PLS-00103: Encountered the symbol ";" when expecting one of the
+         following:
+         if
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]
+SP2-0310: unable to open file "C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]"
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]
+SP2-0310: unable to open file "C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;]"
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Trigger created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+
+10 rows selected.
+
+SQL> insert into sales2 values(null,56,65,null,35,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+11 rows selected.
+
+SQL> update sales2 set finalamount  ;
+update sales2 set finalamount
+                              *
+ERROR at line 1:
+ORA-00927: missing equal sign
+
+
+SQL> update sales2 set finalamount=true  ;
+update sales2 set finalamount=true
+                              *
+ERROR at line 1:
+ORA-00904: "TRUE": invalid identifier
+
+
+SQL> insert into sales2 values(null,34,65,null,35,null);
+
+1 row created.
+
+SQL> insert into sales2 values(null,34,65,null,78,null);
+
+1 row created.
+
+SQL> insert into sales2 values(null,34,65,0,78,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+
+14 rows selected.
+
+SQL> insert into sales2 values(null,34,54,0,78,null);
+
+1 row created.
+
+SQL> insert into sales2 values(null,34,54,0,12,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+
+16 rows selected.
+
+SQL> insert into sales3 select * from sales2 s where not exists (select 1 from sales3  t where t.pname = s.pname);
+
+6 rows created.
+
+SQL> select * from sales3 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product11               56         65       3640         35     2791.88
+Product13               34         65       2210         78     573.716
+Product16               34         54       1836         12   1906.5024
+Product12               34         65       2210         35     1695.07
+
+61 rows selected.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+
+16 rows selected.
+
+SQL> insert into sales2 values(NewRecord1,312,123,null,10,null);
+insert into sales2 values(NewRecord1,312,123,null,10,null)
+                          *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into sales2 values('NewRecord1',312,123,null,10,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+
+17 rows selected.
+
+SQL> insert into sales2 values('NewRecord2',567,153,null,20,null);
+
+1 row created.
+
+SQL> insert into sales2 values('NewRecord3',566,654,null,24,null);
+
+1 row created.
+
+SQL> insert into sales2 values('NewRecord3',786,663,null,24,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         24  331963.075
+NewRecord3             786        663     521118         24  467338.622
+
+20 rows selected.
+
+SQL> insert into sales3 s  select * from sales2 where not exists (Select 1 from sales3  t where t.pname = s.pname);
+insert into sales3 s  select * from sales2 where not exists (Select 1 from sales3  t where t.pname = s.pname)
+                                                                                                     *
+ERROR at line 1:
+ORA-00904: "S"."PNAME": invalid identifier
+
+
+SQL> insert into sales3   select * from sales2 s where not exists (Select 1 from sales3 t   where t.pname = s.pname);
+
+4 rows created.
+
+SQL> select * from sales3 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          5        1121
+Pen                     15         20        300          5           0
+Bag                   1200          2       2400         10      2548.8
+Calculator              29          1        800          5           0
+Water Bottle           300          3        900          5           0
+Pencil Box             150          5        600          5           0
+Geometry Box           220          2        440          5           0
+Register               120          6        720          5           0
+Laptop Stand          1500          1       1500         10        1593
+Mouse                  600          2       1200          5           0
+Keyboard              1200          1       1200          5           0
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+USB Drive              700          5       3500         12      3634.4
+Headphones            2500          1       2500         10        2655
+Charger                900          2       1800         10      1911.6
+Power Bank            1800          1       1800         10      1911.6
+Tablet Cover           650          3       1950         10      2070.9
+Desk Lamp             1400          1       1400         10      1486.8
+Whiteboard            2200          1       2200         10      2336.4
+Marker Set             350          2        700          5           0
+Office Chair          7500          1       7500         19      7168.5
+Table                 1100          3       3300         12     3426.72
+Chair                 1300          5       5200         15      5215.6
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Book                   300          5       1500         10        1593
+Adapter                 34         10        230          5           0
+Product25               45         23       1035          5           0
+Product26               29          5        105          5           0
+Product27               29          5        105          5           0
+Product28               29          5        105          5           0
+Product29               34         54       1836         10    1949.832
+Product30               21         45       2520         10     2676.24
+Product31               67          4        268          5           0
+Product32               67          4        268          5           0
+Product33               65         65       4225         15    4237.675
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product34               32         78       2496         10    2650.752
+Product35               87         32       2784
+Product36               87         32
+Product37               87         32
+Product38               87         32       2784          7   3055.1616
+Product39               87         32       2784
+Product40               87         32       2784
+Product41               98         12       1176          8   1276.6656
+Product42               98         12       1176
+Product43               98         12       1176
+Product44               98         12       1176          3
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product45                9         12        108
+Towel                   21         21       1638
+Towel                   21         21       1638          5    1836.198
+Towel                   21         20       1000
+Towel                   21         20       1000          5        1121
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Cellphone              100        264      26400          7    28971.36
+Cellphone              100        264      26400
+Product55               67         98       6566         12   6818.1344
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product11               56         65       3640         35     2791.88
+Product13               34         65       2210         78     573.716
+Product16               34         54       1836         12   1906.5024
+Product12               34         65       2210         35     1695.07
+NewRecord2             567        153      86751         20   81892.944
+NewRecord1             312        123      38376         10   40755.312
+NewRecord3             566        654     370164         24  331963.075
+NewRecord3             786        663     521118         24  467338.622
+
+65 rows selected.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         24  331963.075
+NewRecord3             786        663     521118         24  467338.622
+
+20 rows selected.
+
+SQL> update sales2 set discount = 21 where pname ='
+  2  NewRecord3';
+
+0 rows updated.
+
+SQL> update sales2 set discount = 21 where pname ='NewRecord3';
+
+2 rows updated.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3             786        663     521118         21  467338.622
+
+20 rows selected.
+
+SQL> select discount from sales2 ;
+
+  DISCOUNT
+----------
+         7
+         7
+         7
+         7
+         7
+         7
+         7
+         7
+         7
+         7
+        35
+
+  DISCOUNT
+----------
+        35
+        78
+        78
+        78
+        12
+        10
+        20
+        21
+        21
+
+20 rows selected.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3             786        663     521118         21  467338.622
+
+20 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL>
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Trigger created.
+
+SQL> update sales2 set finalamount = 5000000 where rowid = (Select max(rowid) from sales2);
+update sales2 set finalamount = 5000000 where rowid = (Select max(rowid) from sales2)
+       *
+ERROR at line 1:
+ORA-06502: PL/SQL: numeric or value error: number precision too large
+ORA-06512: at "USER1.TRIG5", line 4
+ORA-04088: error during execution of trigger 'USER1.TRIG5'
+
+
+SQL> update sales2 set finalamount = 50000 where rowid = (Select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 where rowid=(Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+NewRecord3        35308.22        663 23409349.9         21  21822195.9
+
+SQL> insert into sales2 values(null,50,100,null,10,null):
+  2  ;
+insert into sales2 values(null,50,100,null,10,null):
+                                                   *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended
+
+
+SQL> insert into sales2 values(null,50,100,null,10,null);
+
+1 row created.
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3        35308.22        663 23409349.9         21  21822195.9
+Product21               50        100       5000         10        5310
+
+21 rows selected.
+
+SQL> update sales2 set finalamount = 5500 where rowid = (Select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 where rowid=(Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product21          4196.88        100     419688         10  445708.656
+
+SQL> select max(rowid) from sales2 ;
+
+MAX(ROWID)
+------------------
+AAAVOQAAHAAABfPAAK
+
+SQL> select * from sales2 where rowid=(Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product21          4196.88        100     419688         10  445708.656
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3        35308.22        663 23409349.9         21  21822195.9
+Product21          4196.88        100     419688         10  445708.656
+
+21 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Trigger created.
+
+SQL> edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+Trigger created.
+
+SQL> select * from sales2;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3        35308.22        663 23409349.9         21  21822195.9
+Product21          4196.88        100     419688         10  445708.656
+
+21 rows selected.
+
+SQL> insert into sales2 values(null,20,200,null,20,null);
+
+1 row created.
+
+SQL> select * from sales2 where rowid = (Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product22               20        200       4000         20        3776
+
+SQL> update sales2 set quantity = 30 where rowid =(Select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 where rowid = (Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product22          2706.23         30    81186.9         20  76640.4336
+
+SQL> delete from from sales2 where rowid = (Select max(rowid) from sales2);
+delete from from sales2 where rowid = (Select max(rowid) from sales2)
+            *
+ERROR at line 1:
+ORA-00903: invalid table name
+
+
+SQL> delete from  sales2 where rowid = (Select max(rowid) from sales2);
+
+1 row deleted.
+
+SQL> select * from sales2 where rowid = (Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product21          4196.88        100     419688         10  445708.656
+
+SQL> edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig3.sql;
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+SQL> @ C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
+
+Trigger created.
+
+SQL> update sales2 set finalamount = 5500 where rowid = (Select max(rowid) from sales2);
+
+1 row updated.
+
+SQL> select * from sales2 where rowid=(Select max(rowid) from sales2);
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product21          4196.88        100     419688         10  445708.656
+
+SQL> select * from sales2 ;
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Notebook               100         10       1000          7        1121
+Pen                     15         20        300          7           0
+Bag                   1200          2       2400          7      2548.8
+Calculator              29          1        800          7           0
+Water Bottle           300          3        900          7           0
+Pencil Box             150          5        600          7           0
+Geometry Box           220          2        440          7           0
+Register               120          6        720          7           0
+Laptop Stand          1500          1       1500          7        1593
+Mouse                  600          2       1200          7           0
+Product11               56         65       3640         35     2791.88
+
+PNAME               PPUNIT   QUANTITY       IAMT   DISCOUNT FINALAMOUNT
+--------------- ---------- ---------- ---------- ---------- -----------
+Product12               34         65       2210         35     1695.07
+Product13               34         65       2210         78     573.716
+Product14               34         65       2210         78     573.716
+Product15               34         54       1836         78    476.6256
+Product16               34         54       1836         12   1906.5024
+NewRecord1             312        123      38376         10   40755.312
+NewRecord2             567        153      86751         20   81892.944
+NewRecord3             566        654     370164         21  331963.075
+NewRecord3        35308.22        663 23409349.9         21  21822195.9
+Product21          4196.88        100     419688         10  445708.656
+
+21 rows selected.
+
+SQL>  edit C:\Users\Ayush\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\PRACTISE\TRIGGER\trig5.sql;
