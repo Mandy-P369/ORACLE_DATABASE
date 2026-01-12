@@ -195,7 +195,7 @@ ERROR at line 1:
 ORA-01031: insufficient privileges
 
 
-SQL> grant all on players to prince;
+SQL> grant all on players to prince;	
 
 Grant succeeded.
 

@@ -1,6 +1,4 @@
 		PL/SQL
-
-
 SQL*Plus: Release 10.2.0.1.0 - Production on Fri Dec 5 09:43:52 2025
 
 Copyright (c) 1982, 2005, Oracle.  All rights reserved.
