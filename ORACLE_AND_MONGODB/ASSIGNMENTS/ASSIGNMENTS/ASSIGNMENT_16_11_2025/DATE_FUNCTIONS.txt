@@ -1,0 +1,234 @@
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Fri Nov 21 14:45:40 2025
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+Enter user-name: student
+Enter password:
+Last Successful login time: Fri Nov 21 2025 14:41:44 +05:30
+
+Connected to:
+Oracle Database 21c Express Edition Release 21.0.0.0.0 - Production
+Version 21.3.0.0.0
+
+SQL> Select * from dual ;
+
+D
+-
+X
+
+SQL> Select add_months('15-Mar-2025',1) from dual;
+
+ADD_MONTH
+---------
+15-APR-25
+
+SQL> Select add_months('01-Aug-2024',18) from dual ;
+
+ADD_MONTH
+---------
+01-FEB-26
+
+SQL> Select next_day(sysdate,'Sunday') from dual;
+
+NEXT_DAY(
+---------
+23-NOV-25
+
+SQL> Select round(sysdate,'day') from dual;
+
+ROUND(SYS
+---------
+23-NOV-25
+
+SQL> Select round('18-Sept-2024,'day') from dual;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> Select round('18-Sept-2024','day') from dual;
+Select round('18-Sept-2024','day') from dual
+             *
+ERROR at line 1:
+ORA-01722: invalid number
+
+
+SQL> Select next_day('18-Sept-2024','day') from dual;
+Select next_day('18-Sept-2024','day') from dual
+                *
+ERROR at line 1:
+ORA-01861: literal does not match format string
+
+
+SQL> droop table employees;
+SP2-0734: unknown command beginning "droop tabl..." - rest of line ignored.
+SQL> drop table employees;
+drop table employees
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> drop table employee;
+drop table employee
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table employees(doj Date default sysdate);
+
+Table created.
+
+SQL> Select * from employees;
+
+no rows selected
+
+SQL> insert into employees values('18-Apr-2024');
+
+1 row created.
+
+SQL> Select * from employees;
+
+DOJ
+---------
+18-APR-24
+
+SQL> alter table employees add cmeet Date ;
+
+Table altered.
+
+SQL> Select * from employees;
+
+DOJ       CMEET
+--------- ---------
+18-APR-24
+
+SQL> update employees set cmeet = add_months(doj,6) ;
+
+1 row updated.
+
+SQL> Select * from employees;
+
+DOJ       CMEET
+--------- ---------
+18-APR-24 18-OCT-24
+
+SQL> Select round(cmeet) from employees;
+
+ROUND(CME
+---------
+18-OCT-24
+
+SQL> Select round(cmeet,'thursday') from employees;
+Select round(cmeet,'thursday') from employees
+                   *
+ERROR at line 1:
+ORA-01821: date format not recognized
+
+
+SQL> Select round(cmeet,day) from employees;
+Select round(cmeet,day) from employees
+                   *
+ERROR at line 1:
+ORA-00904: "DAY": invalid identifier
+
+
+SQL> Select round(cmeet,'day') from employees;
+
+ROUND(CME
+---------
+20-OCT-24
+
+SQL> Select round(cmeet,'month') from employees;
+
+ROUND(CME
+---------
+01-NOV-24
+
+SQL> Select * from employees;
+
+DOJ       CMEET
+--------- ---------
+18-APR-24 18-OCT-24
+
+SQL> Select to_char(cmeet,'day') from dual;
+Select to_char(cmeet,'day') from dual
+               *
+ERROR at line 1:
+ORA-00904: "CMEET": invalid identifier
+
+
+SQL> Select to_char(cmeet,'day') from employees;
+
+TO_CHAR(CMEET,'DAY')
+------------------------------------
+friday
+
+SQL> Select to_char(cmeet,'day') from employees;
+
+TO_CHAR(CMEET,'DAY')
+------------------------------------
+friday
+
+SQL> Select to_char(cmeet,'day')|| '|' || cmeet from employees;
+
+TO_CHAR(CMEET,'DAY')||'|'||CMEET
+-------------------------------------------------------
+friday   |18-OCT-24
+
+SQL> Select to_char(cmeet,'day')||'|'|| cmeet from employees;
+
+TO_CHAR(CMEET,'DAY')||'|'||CMEET
+-------------------------------------------------------
+friday   |18-OCT-24
+
+SQL> Select "||to_char(cmeet,'day')||'|'||cmeet," from employees;
+Select "||to_char(cmeet,'day')||'|'||cmeet," from employees
+       *
+ERROR at line 1:
+ORA-00904: "||to_char(cmeet,'day')||'|'||cmeet,": invalid identifier
+
+
+SQL> Select "||to_char(cmeet,'day')||'|'||cmeet||" from employees;
+Select "||to_char(cmeet,'day')||'|'||cmeet||" from employees
+       *
+ERROR at line 1:
+ORA-00904: "||to_char(cmeet,'day')||'|'||cmeet||": invalid identifier
+
+
+SQL> Select '"'||to_char(cmeet,'day')||'|'||cmeet||'"' from employees;
+
+'"'||TO_CHAR(CMEET,'DAY')||'|'||CMEET||'"'
+---------------------------------------------------------
+"friday   |18-OCT-24"
+
+SQL> Select * from employees;
+
+DOJ       CMEET
+--------- ---------
+18-APR-24 18-OCT-24
+
+SQL> alter table employees add finalmeeting varchar(25) ;
+
+Table altered.
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DOJ                                                DATE
+ CMEET                                              DATE
+ FINALMEETING                                       VARCHAR2(25)
+
+SQL> update employees set finalmeeting = '"'||to_char(cmeet,'day')||'|'||cmeet||'"' ;
+
+1 row updated.
+
+SQL> Select * from employees;
+
+DOJ       CMEET     FINALMEETING
+--------- --------- -------------------------
+18-APR-24 18-OCT-24 "friday   |18-OCT-24"
+
+SQL> `

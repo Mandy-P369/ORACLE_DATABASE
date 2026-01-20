@@ -1,0 +1,917 @@
+
+SQL> select * from employees;
+
+no rows selected
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(15)
+ DEPARTMENT                                         VARCHAR2(15)
+ SALARY                                             NUMBER
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p1.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on
+SQL> ;
+  1  begin
+  2     INSERT INTO employees VALUES (6, 'Rahul', 'IT', 52000);
+  3     INSERT INTO employees VALUES (7, 'Sneha', 'HR', 47000);
+  4     INSERT INTO employees VALUES (8, 'Vikas', 'Finance', 58000);
+  5     INSERT INTO employees VALUES (9, 'Kiran', 'Sales', 46000);
+  6     INSERT INTO employees VALUES (10, 'Anjali', 'IT', 62000);
+  7     INSERT INTO employees VALUES (11, 'Rohit', 'HR', 43000);
+  8     INSERT INTO employees VALUES (12, 'Meena', 'Finance', 54000);
+  9     INSERT INTO employees VALUES (13, 'Suresh', 'Sales', 49000);
+ 10     INSERT INTO employees VALUES (14, 'Nisha', 'IT', 65000);
+ 11     INSERT INTO employees VALUES (15, 'Deepak', 'HR', 41000);
+ 12* end;
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008518) violated
+ORA-06512: at line 2
+
+
+SQL> Select * from employees;
+
+    EMP_ID EMP_NAME        DEPARTMENT          SALARY
+---------- --------------- --------------- ----------
+         6 Rahul           IT                   52000
+         7 Sneha           HR                   47000
+         8 Vikas           Finance              58000
+         9 Kiran           Sales                46000
+        10 Anjali          IT                   62000
+        11 Rohit           HR                   43000
+        12 Meena           Finance              54000
+        13 Suresh          Sales                49000
+        14 Nisha           IT                   65000
+        15 Deepak          HR                   41000
+
+10 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+SQL> drop table employees;
+
+Table dropped.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+        INSERT INTO employees VALUES (1, 'Aayush', 'IT', 50000);
+                    *
+ERROR at line 2:
+ORA-06550: line 2, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 2, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 3, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 3, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 4, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 4, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 5, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 5, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 6, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 6, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 7, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 7, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 8, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 8, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 9, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 9, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 10, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 10, column 2:
+PL/SQL: SQL Statement ignored
+ORA-06550: line 11, column 14:
+PL/SQL: ORA-00942: table or view does not exist
+ORA-06550: line 11, column 2:
+PL/SQL: SQL Statement ignored
+
+
+SQL> drop table employees;
+drop table employees
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table employees(emp_id number primary key, emp_name varchar(20), department varchar(20), salary number)
+  2  ;
+
+Table created.
+
+SQL> desc employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(20)
+ DEPARTMENT                                         VARCHAR2(20)
+ SALARY                                             NUMBER
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> Select * from employees;
+
+    EMP_ID EMP_NAME             DEPARTMENT               SALARY
+---------- -------------------- -------------------- ----------
+         1 Aayush               IT                        50000
+         2 Ravi                 HR                        45000
+         3 Neha                 Finance                   55000
+         4 Amit                 Sales                     48000
+         5 Pooja                IT                        60000
+         6 Rahul                IT                        52000
+         7 Sneha                HR                        47000
+         8 Vikas                Finance                   58000
+         9 Kiran                Sales                     46000
+        10 Anjali               IT                        62000
+        11 Rohit                HR                        43000
+
+    EMP_ID EMP_NAME             DEPARTMENT               SALARY
+---------- -------------------- -------------------- ----------
+        12 Meena                Finance                   54000
+        13 Suresh               Sales                     49000
+        14 Nisha                IT                        65000
+        15 Deepak               HR                        41000
+
+15 rows selected.
+
+SQL> Select sum(Salary) from employees;
+
+SUM(SALARY)
+-----------
+     775000
+
+SQL> create table employees (emp_id number primary key,emp_name varchar(20),salary number,dept_id number references dept);
+create table employees (emp_id number primary key,emp_name varchar(20),salary number,dept_id number references dept)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table dept (dept_id number primary key , dept_name varchar(20));
+
+Table created.
+
+SQL> create table employees (emp_id number primary key,emp_name varchar(20),salary number,dept_id number references dept);
+create table employees (emp_id number primary key,emp_name varchar(20),salary number,dept_id number references dept)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create table employee(emp_id number primary key,emp_name varchar(20),salary number,dept_id number references dept);
+
+Table created.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER
+ EMP_NAME                                           VARCHAR2(20)
+ SALARY                                             NUMBER
+ DEPT_ID                                            NUMBER
+
+SQL> desc dept;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT_ID                                   NOT NULL NUMBER
+ DEPT_NAME                                          VARCHAR2(20)
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008521) violated
+ORA-06512: at line 2
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> select * from employee;
+
+no rows selected
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008522) violated
+ORA-06512: at line 2
+
+
+SQL> select * from employee;
+
+no rows selected
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008522) violated
+ORA-06512: at line 2
+
+
+SQL> delete from employee;
+
+0 rows deleted.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call1.sql
+begin
+*
+ERROR at line 1:
+ORA-00001: unique constraint (USER1.SYS_C008522) violated
+ORA-06512: at line 2
+
+
+SQL> select * from dept;
+
+   DEPT_ID DEPT_NAME
+---------- --------------------
+         1 IT
+         2 HR
+         3 Finance
+         4 Sales
+         5 Marketing
+         6 Operations
+         7 Admin
+         8 Support
+         9 Research
+        10 Development
+        11 Quality
+
+   DEPT_ID DEPT_NAME
+---------- --------------------
+        12 Logistics
+        13 Procurement
+        14 Legal
+        15 Training
+        16 Security
+        17 Customer Care
+        18 Product
+        19 Compliance
+        20 Strategy
+
+20 rows selected.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call2.sql
+SP2-0310: unable to open file "C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call2.sql"
+SQL> eidt C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call2.sql
+SP2-0734: unknown command beginning "eidt C:\Us..." - rest of line ignored.
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call2.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call2.sql
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         2 Ravi                      48000          2
+         3 Neha                      60000          3
+         4 Amit                      45000          4
+         5 Pooja                     65000          1
+         6 Rahul                     55000          5
+         7 Sneha                     47000          2
+         8 Vikas                     62000          3
+         9 Kiran                     43000          4
+        10 Anjali                    70000          1
+        11 Rohit                     46000          6
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        12 Meena                     58000          3
+        13 Suresh                    49000          7
+        14 Nisha                     72000         10
+        15 Deepak                    41000          8
+        16 Priya                     68000          9
+        17 Arjun                     54000          5
+        18 Kavita                    50000          6
+        19 Manoj                     56000         11
+        20 Rina                      59000         12
+        21 Sunil                     44000         13
+        22 Pankaj                    61000         14
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        23 Komal                     53000         15
+        24 Tarun                     47000         16
+        25 Isha                      75000         17
+        26 Nitin                     52000         18
+        27 Bhavna                    66000         19
+        28 Gopal                     48000         20
+        29 Shweta                    57000         10
+        30 Abhishek                  69000          1
+
+30 rows selected.
+
+SQL> Select * from employee where dept_id in(1);
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         5 Pooja                     65000          1
+        10 Anjali                    70000          1
+        30 Abhishek                  69000          1
+
+SQL> Select * from employee where dept_id in(1,2);
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         2 Ravi                      48000          2
+         5 Pooja                     65000          1
+         7 Sneha                     47000          2
+        10 Anjali                    70000          1
+        30 Abhishek                  69000          1
+
+6 rows selected.
+
+SQL> Select sum(salary) from employee where dept_id in(1,2);
+
+SUM(SALARY)
+-----------
+     351000
+
+SQL> Select sum(salary) from employee where dept_id in(1);
+
+SUM(SALARY)
+-----------
+     256000
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> select * from employee where salary>average(salary) group by dept_id;
+select * from employee where salary>average(salary) group by dept_id
+                                    *
+ERROR at line 1:
+ORA-00904: "AVERAGE": invalid identifier
+
+
+SQL> select * from employee where salary>avg(salary) group by dept_id;
+select * from employee where salary>avg(salary) group by dept_id
+                                    *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> select dept_id from employee where salary>avg(salary) group by dept_id;
+select dept_id from employee where salary>avg(salary) group by dept_id
+                                          *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> select * from employee order by salary desc;
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        25 Isha                      75000         17
+        14 Nisha                     72000         10
+        10 Anjali                    70000          1
+        30 Abhishek                  69000          1
+        16 Priya                     68000          9
+        27 Bhavna                    66000         19
+         5 Pooja                     65000          1
+         8 Vikas                     62000          3
+        22 Pankaj                    61000         14
+         3 Neha                      60000          3
+        20 Rina                      59000         12
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        12 Meena                     58000          3
+        29 Shweta                    57000         10
+        19 Manoj                     56000         11
+         6 Rahul                     55000          5
+        17 Arjun                     54000          5
+        23 Komal                     53000         15
+         1 Aayush                    52000          1
+        26 Nitin                     52000         18
+        18 Kavita                    50000          6
+        13 Suresh                    49000          7
+         2 Ravi                      48000          2
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        28 Gopal                     48000         20
+        24 Tarun                     47000         16
+         7 Sneha                     47000          2
+        11 Rohit                     46000          6
+         4 Amit                      45000          4
+        21 Sunil                     44000         13
+         9 Kiran                     43000          4
+        15 Deepak                    41000          8
+
+30 rows selected.
+
+SQL> select * from dept ;
+
+   DEPT_ID DEPT_NAME
+---------- --------------------
+         1 IT
+         2 HR
+         3 Finance
+         4 Sales
+         5 Marketing
+         6 Operations
+         7 Admin
+         8 Support
+         9 Research
+        10 Development
+        11 Quality
+
+   DEPT_ID DEPT_NAME
+---------- --------------------
+        12 Logistics
+        13 Procurement
+        14 Legal
+        15 Training
+        16 Security
+        17 Customer Care
+        18 Product
+        19 Compliance
+        20 Strategy
+
+20 rows selected.
+
+SQL> select * from employee where dept in(1);
+select * from employee where dept in(1)
+                             *
+ERROR at line 1:
+ORA-00904: "DEPT": invalid identifier
+
+
+SQL> select * from employee where dept in (1);
+select * from employee where dept in (1)
+                             *
+ERROR at line 1:
+ORA-00904: "DEPT": invalid identifier
+
+
+SQL> select * from employee where dept_id in (1);
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         5 Pooja                     65000          1
+        10 Anjali                    70000          1
+        30 Abhishek                  69000          1
+
+SQL> Select avg(salary) from employee where dept_id in (1);
+
+AVG(SALARY)
+-----------
+      64000
+
+SQL> select * from employee group by dept_id;
+select * from employee group by dept_id
+       *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression
+
+
+SQL> select distinct dept_id from employee;
+
+   DEPT_ID
+----------
+         1
+         2
+         3
+         4
+         5
+         6
+         7
+        10
+         8
+         9
+        11
+
+   DEPT_ID
+----------
+        12
+        13
+        14
+        15
+        16
+        17
+        18
+        19
+        20
+
+20 rows selected.
+
+SQL> select distinct dept_id from employee order by dept_id asc;
+
+   DEPT_ID
+----------
+         1
+         2
+         3
+         4
+         5
+         6
+         7
+         8
+         9
+        10
+        11
+
+   DEPT_ID
+----------
+        12
+        13
+        14
+        15
+        16
+        17
+        18
+        19
+        20
+
+20 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> select dept_id from employee where emp_id = 1;
+
+   DEPT_ID
+----------
+         1
+
+SQL> select dept_id from employee where emp_id = 5;
+
+   DEPT_ID
+----------
+         1
+
+SQL> select dept_id from employee where emp_id = 10;
+
+   DEPT_ID
+----------
+         1
+
+SQL> SElect * from employee;
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         2 Ravi                      48000          2
+         3 Neha                      60000          3
+         4 Amit                      45000          4
+         5 Pooja                     65000          1
+         6 Rahul                     55000          5
+         7 Sneha                     47000          2
+         8 Vikas                     62000          3
+         9 Kiran                     43000          4
+        10 Anjali                    70000          1
+        11 Rohit                     46000          6
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        12 Meena                     58000          3
+        13 Suresh                    49000          7
+        14 Nisha                     72000         10
+        15 Deepak                    41000          8
+        16 Priya                     68000          9
+        17 Arjun                     54000          5
+        18 Kavita                    50000          6
+        19 Manoj                     56000         11
+        20 Rina                      59000         12
+        21 Sunil                     44000         13
+        22 Pankaj                    61000         14
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        23 Komal                     53000         15
+        24 Tarun                     47000         16
+        25 Isha                      75000         17
+        26 Nitin                     52000         18
+        27 Bhavna                    66000         19
+        28 Gopal                     48000         20
+        29 Shweta                    57000         10
+        30 Abhishek                  69000          1
+
+30 rows selected.
+
+SQL> select dept_id from employee where emp_id = 12;
+
+   DEPT_ID
+----------
+         3
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL>    select avg(salary) from employee where dept_id in (deptid);
+        select avg(salary) from employee where dept_id in (deptid)
+                                                           *
+ERROR at line 1:
+ORA-00904: "DEPTID": invalid identifier
+
+
+SQL>    select avg(salary) from employee where dept_id in(1);
+
+AVG(SALARY)
+-----------
+      64000
+
+SQL>    select avg(salary) from employee where dept_id in(3);
+
+AVG(SALARY)
+-----------
+      60000
+
+SQL>    select avg(salary) from employee where dept_id in(6);
+
+AVG(SALARY)
+-----------
+      48000
+
+SQL> select emp_name ,salary from employee where dept_id in (3);
+
+EMP_NAME                 SALARY
+-------------------- ----------
+Neha                      60000
+Vikas                     62000
+Meena                     58000
+
+SQL> select emp_name ,salary from employee where dept_id in (3) and salary>avg(salary);
+select emp_name ,salary from employee where dept_id in (3) and salary>avg(salary)
+                                                                      *
+ERROR at line 1:
+ORA-00934: group function is not allowed here
+
+
+SQL> select emp_name ,salary from employee where dept_id in (3) ;
+
+EMP_NAME                 SALARY
+-------------------- ----------
+Neha                      60000
+Vikas                     62000
+Meena                     58000
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+create or declare procedure p3(empid in number,emp_salary out number)
+          *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SP2-0734: unknown command beginning "deptid num..." - rest of line ignored.
+end;
+*
+ERROR at line 7:
+ORA-06550: line 7, column 1:
+PLS-00103: Encountered the symbol "END" when expecting one of the following:
+. ( * @ % & = - + ; < / > at in is mod remainder not rem
+<an exponent (**)> <> or != or ~= >= <= <> and or like like2
+like4 likec between || multiset member submultiset
+The symbol ";" was substituted for "END" to continue.
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+Warning: Procedure created with compilation errors.
+
+SQL> exec p3 ;
+BEGIN p3 ; END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00905: object USER1.P3 is invalid
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+Procedure created.
+
+SQL> exec p3 ;
+BEGIN p3 ; END;
+
+      *
+ERROR at line 1:
+ORA-06550: line 1, column 7:
+PLS-00306: wrong number or types of arguments in call to 'P3'
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 3
+old   4:        empid := &empid;
+new   4:        empid := 3;
+        p3(empid);
+        *
+ERROR at line 5:
+ORA-06550: line 5, column 2:
+PLS-00306: wrong number or types of arguments in call to 'P3'
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid:
+old   4:        empid := &empid;
+new   4:        empid := ;
+        empid := ;
+                 *
+ERROR at line 4:
+ORA-06550: line 4, column 11:
+PLS-00103: Encountered the symbol ";" when expecting one of the following:
+( - + case mod new not null <an identifier>
+<a double-quoted delimited-identifier> <a bind variable>
+continue avg count current exists max min prior sql stddev
+sum variance execute forall merge standard time timestamp
+interval date
+<a string literal with character set specification>
+<a number> <a single-quoted SQL string> pipe
+<an alternatively-quoted string literal with character set specification>
+<an a
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 3
+old   4:        empid := &empid;
+new   4:        empid := 3;
+        p3(empid,result);
+                 *
+ERROR at line 5:
+ORA-06550: line 5, column 11:
+PLS-00201: identifier 'RESULT' must be declared
+ORA-06550: line 5, column 2:
+PL/SQL: Statement ignored
+ORA-06550: line 6, column 23:
+PLS-00201: identifier 'RESULT' must be declared
+ORA-06550: line 6, column 2:
+PL/SQL: Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 4
+old   5:        empid := &empid;
+new   5:        empid := 4;
+44000
+
+PL/SQL procedure successfully completed.
+
+SQL> set serveroutput on ;
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 5
+old   5:        empid := &empid;
+new   5:        empid := 5;
+64000
+
+PL/SQL procedure successfully completed.
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 12
+old   5:        empid := &empid;
+new   5:        empid := 12;
+60000
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\p3.sql
+
+SQL> drop procedure p1 ;
+
+Procedure dropped.
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+         1 Aayush                    52000          1
+         2 Ravi                      48000          2
+         3 Neha                      60000          3
+         4 Amit                      45000          4
+         5 Pooja                     65000          1
+         6 Rahul                     55000          5
+         7 Sneha                     47000          2
+         8 Vikas                     62000          3
+         9 Kiran                     43000          4
+        10 Anjali                    70000          1
+        11 Rohit                     46000          6
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        12 Meena                     58000          3
+        13 Suresh                    49000          7
+        14 Nisha                     72000         10
+        15 Deepak                    41000          8
+        16 Priya                     68000          9
+        17 Arjun                     54000          5
+        18 Kavita                    50000          6
+        19 Manoj                     56000         11
+        20 Rina                      59000         12
+        21 Sunil                     44000         13
+        22 Pankaj                    61000         14
+
+    EMP_ID EMP_NAME                 SALARY    DEPT_ID
+---------- -------------------- ---------- ----------
+        23 Komal                     53000         15
+        24 Tarun                     47000         16
+        25 Isha                      75000         17
+        26 Nitin                     52000         18
+        27 Bhavna                    66000         19
+        28 Gopal                     48000         20
+        29 Shweta                    57000         10
+        30 Abhishek                  69000          1
+
+30 rows selected.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 4
+old   7:        empid := &empid;
+new   7:        empid := 4;
+        select emp_name as empname from employee where emp_id=empid or empdata.salary = emp_salary ;
+                                                                       *
+ERROR at line 9:
+ORA-06550: line 9, column 65:
+PLS-00487: Invalid reference to variable 'EMPDATA'
+ORA-06550: line 9, column 65:
+PL/SQL: ORA-00904: "EMPDATA"."SALARY": invalid identifier
+ORA-06550: line 9, column 2:
+PL/SQL: SQL Statement ignored
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 4
+old   6:        empid := &empid;
+new   6:        empid := 4;
+        select emp_name as empname from employee where salary = emp_salary ;
+        *
+ERROR at line 8:
+ORA-06550: line 8, column 2:
+PLS-00428: an INTO clause is expected in this SELECT statement
+
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> @ C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+Enter value for empid: 4
+old   6:        empid := &empid;
+new   6:        empid := 4;
+Sunil
+44000
+
+PL/SQL procedure successfully completed.
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
+
+SQL> edit C:\Users\Ayush\OneDrive\Desktop\DATA_SCIENTIST\ORACLE_AND_MONGODB\ASSIGNMENTS\ASSIGNMENT_15_12_2025\call3.sql
